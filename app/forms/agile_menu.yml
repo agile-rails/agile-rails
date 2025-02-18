@@ -1,0 +1,140 @@
+#--
+# Copyright (c) 2024+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+menu:
+  10_system_menu:
+    caption: agile.cms_main
+    icon: support
+    
+    items:
+      10: 
+        caption: helpers.label.ar_site.table_title
+        controller: agile
+        icon: public
+        table: ar_site
+      20: 
+        caption: helpers.label.ar_design.table_title
+        controller: agile
+        icon: web
+        table: ar_design
+      30:
+        caption: helpers.label.ar_page.table_title
+        controller: agile
+        icon: description-o
+        table: ar_page
+      40:
+        caption: helpers.label.ar_image.table_title
+        controller: agile
+        icon: image-o
+        table: ar_image
+      60: 
+        caption: helpers.label.ar_link.table_title
+        controller: agile
+        icon: link
+        table: ar_link
+      70: 
+        caption: helpers.label.ar_menu.table_title
+        controller: agile
+        icon: menu
+        table: ar_menu
+      90:
+        caption: helpers.label.ar_category.table_title
+        controller: agile
+        icon: list
+        table: ar_category
+
+      100:
+        caption: helpers.label.ar_poll.table_title
+        controller: agile
+        icon: poll-o
+        table: ar_poll
+      110: 
+        caption: helpers.label.ar_poll_result.table_title
+        controller: agile
+        icon: leaderboard
+        table: ar_poll_result
+
+  11_system_menu:
+    caption: agile.cms_advanced
+    icon: star
+    items:
+      10: 
+        caption: helpers.label.ar_user.table_title
+        controller: agile
+        icon: account_circle-o
+        table: ar_user
+      20: 
+        caption: helpers.label.ar_role.table_title
+        controller: agile
+        icon: manage_accounts
+        table: ar_role
+      30: 
+        caption: helpers.label.ar_permission.table_title
+        controller: agile
+        icon: security
+        table: ar_permission
+      40: 
+        caption: helpers.label.ar_folder_permission.table_title
+        controller: agile
+        icon: shield-o
+        table: ar_folder_permission
+      60: 
+        caption: helpers.label.ar_big_table.table_title
+        controller: agile
+        icon: topic-o
+        table: ar_big_table
+      70: 
+        caption: helpers.label.ar_key_value_store.table_title
+        controller: agile
+        icon: view_list
+        table: ar_key_value_store
+      90:
+        caption: helpers.label.ar_removed_url.table_title
+        controller: agile
+        icon: link_off
+        table: ar_removed_url
+      400:
+        caption: agile.ar_help.title
+        controller: agile
+        icon: help-o
+        table: ar_temp
+        form_name: agile_help
+      500: 
+        caption: helpers.label.ar_journal.table_title
+        controller: agile
+        icon: history
+        table: ar_journal
+
+      510:
+        caption: helpers.label.ar_setup.table_title
+        controller: agile
+        icon: cog-o
+        table: ar_setup
+        form_name: ar_setup
+
+#      600:
+#        caption: agile.browse_collections
+#        controller: agile
+#        icon: list_alt
+#        table: ar_memory
+#        form_name: ar_browse_models

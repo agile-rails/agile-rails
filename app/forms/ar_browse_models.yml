@@ -1,0 +1,48 @@
+## Registration form. Not yet implemented.
+---
+table: ar_memory
+title: Browse collection models
+controls: browse_models
+permissions:
+  can_view: admin
+
+index:
+  actions:
+    10:
+      type: field
+      name: filter
+      field_type: text_field
+      caption: Filter
+      size: 10
+
+
+  data_set:
+    filter: collections
+
+    dblclick:
+      type: link
+      table: ar_memory
+      form_name: ar_browse_fields
+      action: index
+
+    columns:
+      10:
+        name: id
+        caption: Collection
+        td_style: 'font-weight: bold;'
+
+      20:
+        name: description
+        caption: Decription
+
+script: '
+$(document).ready( function() {
+  $("#record_filter").keydown( function(e) {
+    if (e.which == "13" || e.which == "9") {
+      let url = "/agile?form_name=ar_browse_models&table=ar_memory&filter=" + this.value;
+      window.location.href = url;
+      e.preventDefault();
+    };
+  });
+});
+'

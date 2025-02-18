@@ -1,0 +1,1032 @@
+#--
+# Copyright (c) 2023+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+# English (en) localization for AgileRails common models field names
+
+en:
+  helpers:
+# labels for forms #####################################################
+    label:
+
+      ar_site:
+        table_title: Sites
+        1basic: Basic
+        2parameters: Parameters
+        3advanced: Advanced
+        4design: Design
+        5permissions: Permissions
+        6parts: Parts
+
+        name: Name
+        description: Description
+        homepage_link: HomePage link
+        error_link: Error link
+        css: CSS
+        header: Header
+        route_name: Default route name
+        page_title: Page title
+        logo: Logo image
+        favicon: Favicon image
+        page_table: Page table
+        page_class: Page class
+        menu_class: Menu class
+        site_layout: Rails layout
+        files_directory: Files directory
+        active: Active
+        ar_policies: Access policies
+        ar_parts: Parts
+        settings: Settings
+        menu_name: Menu name
+        alias_for: Alias for
+        rails_view: Rails view
+        design: Standard design
+        request_processor: Request processor
+        inherit_policy: Policy from site
+
+      ar_design:
+        table_title: Designs
+        tab1: Base
+        tab2: Body
+        tab3: Parts
+
+        name: Name
+        description: Description
+        body: Body
+        code: Code
+        css: CSS
+        author: Author
+        params: Parameters        
+        updated_by: Updated by
+        active: Active
+        ar_parts: Parts
+        site_id: Site name
+        rails_view: Rails view filename
+        updated_at: Updated
+
+      ar_user_role:
+        table_title: User roles
+
+        ar_role_id: Role
+        valid_from: Valid from
+        valid_to: Valid to
+        updated_by: Updated by
+        active: Active
+
+      ar_user:
+        table_title: Users
+        1base: Base
+
+        id: Id
+        username: Username
+        title: Title
+        first_name: First name
+        middle_name: Middle name
+        last_name: Last name
+        name: Name
+        address: Address
+        post: Post
+        country: Country 
+        phone: Phone
+        email: e-Mail
+        picture: Picture
+        birthdate: Birthdate
+        about: About
+        last_visit: Last visit
+        active: Active
+        valid_from: Valid from   
+        valid_to: Valid to
+        updated_by: Updated by
+        group: Is group
+        member: Member in groups
+        member_a: Member in groups
+        ar_user_roles: Roles
+        password: Password
+        password_confirmation: Confirm password
+
+      ar_poll:
+        table_title: Polls
+        choices_for_operation: 'Submit poll:poll_submit,Link:link'
+        choices_for_display: 'Top:td,Left:lr,Inside:in'
+        tab1: Base
+        tab2: Script
+        tab3: Items
+        tab4: Items - advanced
+
+        name: Poll name
+
+        title: Title
+        sub_text: Short description
+        operation: Operation
+        parameters: Parameters
+        display: Label
+        pre_display: Pre display code
+        css: CSS
+        js: Javascript
+        valid_from: Valid from
+        valid_to: Valid to
+        ar_poll_items: Items
+        form: Form
+        captcha_type: Catpcha type
+
+      ar_poll_item:
+        table_title: Poll items
+        choices_for_field_type: Text:text_field,Text area:text_area,Select:select,Check box:check_box,Submit:submit_tag,Link:link_to,Password:password_field,Radio:radio
+        choices_for_separator: Space:&nbsp;,Empty line:<br />,Horizontal line:<hr>
+
+        name: Name
+        text: Caption
+        field_type: Type
+        size: Size
+        mandatory: Mandatory
+        separator: Separator
+        options: Options
+        order: Order
+        active: Active
+        
+      ar_poll_result:
+        table_title: Polls results
+
+        ar_poll_id: Poll name
+        created_at: Created date
+        data: Data
+        confirmed: Confirmed
+
+      ar_policy:
+        table_title: Access policy declarations
+
+        name: Policy name
+        description: Description
+        is_default: Is default
+        active: Active
+        ar_policy_rules: Policy rules
+        message: Error message
+
+      ar_policy_rule:
+        table_title: Access policy rules
+        choices_for_permission: NO_ACCESS:0,CAN_VIEW:1,CAN_CREATE:2,CAN_EDIT:4,CAN_EDIT_ALL:8,CAN_DELETE:16,CAN_DELETE_ALL:32,CAN_ADMIN:64,SUPERADMIN:128
+        choices_for_sites_permission: NO_ACCESS:0,CAN_VIEW:1,CAN_EDIT:2
+
+        active: Active
+        updated_by: Updated by
+        ar_role_id: User role
+        permission: Permission
+
+      ar_role:
+        table_title: User roles
+
+        name: Name
+        system_name: System name
+        active: Active
+
+      ar_menu:
+        table_title: Menus
+        tab1: Base
+        tab2: Menu items
+        tab3: CSS
+
+        name: Menu name
+        description: Description
+        div_name: Menu div
+        css: CSS
+        link_prepend: Link prepend
+        active: Active
+        ar_menu_items: Menu items
+        ar_site_id: Site
+        new_page: New page
+        edit_page: Edit page
+
+      ar_menu_item:
+        table_title: Menu items
+        tab1: Base
+        tab2: Menu items
+        tab3: As HTML
+
+        caption: Caption
+        picture: Picture
+        link: Link
+        link_prepend: Link prepend
+        target: Target window
+        order: Order
+        ar_menu_items: Submenus
+        page_id: Page
+        css: CSS  
+        active: Active
+        policy_id: Display policy
+        hidden: Hidden
+        clas: Class
+        content: Menu content
+
+      ar_page:
+        table_title: Pages
+        choices_for_comments: 'Allowed:1,Not allowed:0'
+        choices_for_if_scroll: 'Auto,Yes,No'
+        1base: Base
+        2advanced: Advanced
+        3content: Content
+        4parts: Parts
+        5iframe: IFrame
+
+        subject: Subject
+        link: Link
+        sub_subject: Sub subject
+        picture: Picture
+        gallery: Gallery
+        alt_link: Alt link
+        css: CSS
+        script: Skript
+        params: Parameters
+        body: Body
+        menu_id: Menu
+        author_id: Author
+        author_name: Author
+        publish_date: Publish date
+        valid_from: Valid from
+        valid_to: Valid to
+        comments: Comments
+        active: Active
+        ar_parts: Parts
+        policy_id: Access policy
+        ar_site_id: Site
+        ar_design_id: Design
+        ar_poll_id: Poll
+        kats: Categories
+        updated_at: Updated
+        if_url: URL
+        if_width:  Width
+        if_height: Height
+        if_scroll: Scrolling
+        if_border: Border
+        if_params: Parameters
+        if_id: CSS id
+        if_class: CSS class 
+        _update_menu: Update menu
+        div_class: DIV class
+
+      ar_seo:
+        seo: SEO
+        title: Browser title
+        meta_description: Meta description
+        meta_additional: Additional meta data
+        canonical_link: Canonical link
+        ar_json_lds: Schema data
+
+      ar_part:
+        table_title: Parts of content
+        1base: Base
+        2content: Content
+        3advanced: Advanced
+
+        tab1: Base
+        tab2: Advanced
+        tab3: Content
+
+        name: Name
+        description: Description
+        link: Link
+        picture: Picture
+        thumbnail: Thumbnail
+        body: Body
+        css: CSS
+        script: Script
+        script_type: Script type
+        piece_id: Piece
+        div_id: Position (div)
+        order: Order
+        updated_by: Updated by
+        updated_at: Last updated at
+        active: Active
+        valid_from: Valid from
+        valid_to: Valid to
+        policy_id: Access policy
+
+      ar_piece:
+        table_title: Pieces of content
+        tab1: Base
+        tab2: Advanced
+        tab3: Content
+
+        name: Name
+        description: Description
+        link: Link
+        picture: Picture
+        thumbnail: Thumbnail
+        body: Body
+        css: CSS
+        script: Script
+        script_type: Script type
+        piece_id: Piece
+        site_id: Site
+        div_id: Position (div)
+        order: Order
+        updated_by: Updated by
+        updated_at: Last updated at
+        active: Active
+        valid_from: Valid from
+        valid_to: Valid to
+
+      ar_ad:
+        table_title: Ads
+        choices_for_type: Picture:1,Flash:2,Script:3      
+        choices_for_link_target: Same window:_self,New window:_blank
+
+        position: Position
+        description: Description
+        type: Type
+        script: Script
+        file: Filename
+        link: Link
+        height: Height
+        width: Width
+        valid_from: Valid from
+        valid_to: Valid to
+        displays: Displays
+        clicks: Clicks
+        priority: Priority
+        displayed: Displayed
+        clicked: Clicked
+        active: Active
+        updated_by: Updated by
+        ar_site_id: Site
+        link_target: Link open in
+
+      ar_permission:
+        table_title: Table access permissions
+
+        table_name: Table name
+        is_default: Is default
+        active: Active
+        ar_permission_rules: Policy rules
+
+      ar_permission_rule:
+        table_title: Table access rules
+
+        active: Active
+        ar_role_id: User role
+        permission: Permission
+
+      ar_folder_permission:
+        table_title: Folders permissions
+
+        folder_name: Folder name
+        is_default: Is default
+        inherited: Inhrited
+        active: Active
+        ar_folder_rules: Access rules
+
+      ar_folder_rule:
+        table_title: Folder access rules
+
+        ar_role_id: User role
+        permission: Permission
+
+      ar_link:
+        table_title: Alternative links
+
+        link: Link
+        params: Parameters
+        redirect: Redirect
+        ar_site_id: Valid for site
+        page_id: Link to page
+        active: Active
+
+      ar_category:
+        table_title: Categories
+        choices_for_ctype: '1:1,2:2,3:3,4:4' 
+
+        name: Name
+        description: Description
+        ctype: Category type
+        order: Order
+        parent: Parent
+        active: Active
+        ar_site_id: Valid for site
+        updated_at: Last update
+
+      ar_mail:
+        table_title: Mails
+        tab1: Message
+        tab2: Recipients
+        tab3: Other
+        choices_for_status: 'Preparing:0,Ready to send:1,Sending:2,Error:3,Completed:10' 
+
+        subject: Subject
+        body: Body
+        from: From
+        to_test: Test email
+        to_list: Mail lists
+        to_test: Mail addresses
+        schedule: Schedule send
+        send_time: Time send
+        status: Status
+        css: CSS
+
+      ar_mail_list:
+        table_title: Mail lists
+
+        name: Name
+        description: Description
+        params: Parameters
+        active: Active
+
+      ar_mail_address:
+        table_title: Mail addresses
+
+        email: e-Mail
+        ar_user_id: User
+        active: Active        
+        reason: Not active reason
+        ar_mail_list_members: Mail lists
+
+      ar_mail_list_member:
+        table_title: Mail lists
+
+        ar_mail_list_id: Mail list
+        active: Active       
+        reason: Not active reason
+
+      ar_big_table:
+        table_title: Big Table
+
+        key: Key
+        description: Description
+        site_id: Site
+        ar_big_table_values: Values
+        active: Active       
+
+      ar_big_table_value:
+        table_title: Big Table - values
+
+        value: Value
+        description: Value description
+        ar_big_table_locales: Locales
+        active: Active       
+
+      ar_big_table_locale:
+        table_title: Big Table - locales
+
+        locale: Locale
+        description: Value description
+
+      ar_journal:
+        table_title: Update journal
+        1ids: Identification
+        2diff: Difference
+
+        operation: Operation
+        ip: IP address
+        time: Update time
+        site_id: Site
+        user_id: User
+        tables: Table name
+        id: Record id
+        ids: Parent ids
+        diff: Differences
+
+      ar_ident:
+        table_title: Additional identification
+
+        key: Id key
+        value: Value
+
+      ar_key_value_store:
+        table_title: Numbering store
+
+        key: Id key
+        value: Value
+
+      ar_filter:
+        table_title: Filters definitions for browsing tables
+        
+        ar_user_id: User name
+        table: Collection name
+        description: Description
+        filter: Filter definition
+        public: Is public
+        sort: Default sort        
+
+      ar_memory:
+        fields: General
+        ztab: Advanced
+        ar_element: Element name
+        
+      ar_removed_url:
+        table_title: URLs removed from site
+
+        url: URL
+        description: Description
+        ar_site_id: Site
+        updated_at: Updated
+
+      ar_gallery:
+        table_title: Picture gallery documents
+
+        title: Title
+        description: Description 
+        picture: Big picture
+        thumbnail: Small picture
+        doc_id: Document
+        order: Order
+        active: Active
+        created_at: Created
+
+      ar_json_ld:
+        table_title: Schema data
+        choices_for_type: Corporate contact:Organization,Contact:ContactPoint
+
+        name: Name
+        type: Type
+        data: Data
+        created_at: Created
+        updated_at: Updated
+        ar_json_lds: Schema sub element
+        active: Active
+
+
+      ar_image:
+        table_title: Images manager
+
+        upload_file: Upload
+        name: File name
+        short: Short description
+        text: Description text
+        keep_original: Keep original
+        size_o: Original dimension
+        size_l: Large dimension
+        size_m: Medium dimension
+        size_s: Small dimension
+        size_ls: Large dimension
+        size_ms: Medium dimension
+        size_ss: Small dimension
+        offset_lx: X offset
+        offset_ly: Y offset
+        offset_mx: X offset
+        offset_my: Y offset
+        offset_sx: X offset
+        offset_sy: Y offset
+        preview_s: Image
+        preview_m: Image
+        preview_l: Image
+        categories: Categories
+        cats_input: Categories
+        categories_line: Categories
+        created_by: Uploaded by
+
+      ar_setup:
+        table_title: Applications settings
+        tab0: Options
+        tab00: Form
+
+        name: Setup name
+        form: Form
+        data: Data
+        editors: Editors
+
+# help for forms #####################################################
+
+    help:
+      ar_site:
+        name: Name of the site eg. www.mysite.com
+        description: Short description of site
+        homepage_link: Shortcut link when just site name is in the url
+        error_link: Link to error page 
+        css: Site wide CSS
+        header: Additional data used in page html header
+        route_name: Default route name for creating page link. ex. page. Leave blank if not used.
+        page_title: Default page title displayed in browser's top menu when title can not be extracted from document
+        page_table: Name of table holding data for pages
+        page_class: Rails model class name which defines table holding pages data usually DcPage
+        menu_class: Rails model class name which defines table holding menu data usually DcMenu
+        site_layout: Rails layout used to draw response. This is by default content layout.
+        files_directory: Directory name where uploaded files are located
+        logo: Logotype picture for the site
+        favicon: Favicon image. Enter file name relative to public directory.
+        ar_policies: Access policies defined for the site
+        active: Is the site active
+        settings: Various site settings
+        menu_name: Menu name for this site
+        ck_config: CK editor configuration javascript file
+        ck_css: CK editor configuration CSS file
+        alias_for: Is alias name for entered site name
+        rails_view: Rails view filename used as standard design
+        design: Standard design can also be defined at the site level
+        ar_parts: Parts contained in site
+        request_processor: Method which will provide output instead of ar_process_default_request 
+        inherit_policy: Use policy defined on other site
+        
+      ar_user:
+        username: Username
+        title: Title (dr, mag)
+        first_name: Users first name
+        last_name: Users last name
+        name: Name colected from firstname, title and lastname
+        address: Home address
+        post: Post and post city
+        country: Country  
+        phone: Phone number
+        email: e-Mail address
+        picture: Picture file name
+        birthdate: Date of birth
+        about: Short description of user
+        last_visit: Users last visit
+        active: Account is active
+        valid_from: Account is valid from    
+        valid_to: Account is valid until
+        updated_by: Account last updated by
+        group: This is group account
+        member: User is member in selected groups
+        member_a: User is member in selected groups
+        ar_user_roles: Roles for this user
+        password: Password
+        password_confirmation: Password confirmation
+
+      ar_user_role:
+        ar_role_id: User role 
+        has_cms_menu: User is allowed to use CMS menu
+        valid_from: Role is valid from
+        valid_to: Role is valid to
+        updated_by: Role last updated b
+        active: Role is active
+
+      ar_design:
+        name: Unique design name
+        description: Short description of design
+        body: Body of design which will be rendered like any Rails view
+        params: Parameters specific to design
+        css: CSS for design
+        code: Ruby code to be evaluated when page is loading
+        author: Creater if design
+        updated_by: Last updated by
+        active: Is the design active
+        ar_parts: Parts of design
+        rails_view: Rails view (file) name which will be used to render design
+        site_id: Select site name if this design belongs to singe site
+
+      ar_poll:
+        name: Unique poll name
+        title: Title for the poll
+        sub_text: Short description of the poll
+        operation: Operation performed on submit
+        parameters: Aditional parameters for operation
+        display: How label is positioned related to input field
+        css: CSS specific to this poll
+        js: Javascript code specific to this poll
+        pre_display: Method to be run before poll is displayed. Usually for initial filling of form.
+        valid_from: Pole is valid from
+        valid_to: Pole is valid to
+        ar_poll_items: Items for this poll
+        captcha_type: Catpcha type name if captcha is used
+        form: You can specified input items same as input fields on AgileRails form.
+
+      ar_poll_item:
+        name: Name (alias) of returned field name
+        text: Caption of item
+        field_type: Input item type
+        Size: Input item size
+        mandatory: Item entry is mandatory
+        separator: Separator between items
+        options: Options for the item. Depends on item type.
+        order: Order of item on poll
+        active: Item is active        
+
+      ar_poll_result:
+        ar_poll_id: Poll name 
+        created_at: Date when poll result was submited
+        data: Data saved in YAML format
+        confirmed: Poll data was confirmed. Ex. User must click on link in email.
+
+      ar_policy:
+        name: Unique policy name
+        description: Description for this policy
+        is_default: This is default policy for the site
+        active: Policy is active
+        ar_policy_rules: Policy rules 
+        message: Error message when blocked by this policy
+
+      ar_policy_rule:
+        active: Rule is active
+        updated_by: Last updated by
+        ar_role_id: User's role
+        permission: Access permission
+
+      ar_role:
+        name: Role name
+        system_name: System role name if required by application
+        active: Role is active
+
+      ar_simple_menu:
+        description: Short description of menu
+        css: CSS for this menu
+        div_name: Div id name around menu area
+        link_prepend: Link field usually holds direct link to document. Prepand field holds data, that has to be prepanded to the link.
+        active: Active
+        ar_simple_menu: Menu items
+        ar_site_id: Site to which this menu belongs to
+
+      ar_simple_menu_item:
+        caption: Caption of menu
+        picture: Picture for the menu
+        link: Link called when menu is chosen
+        link_prepend: Link field usually holds direct link to document. Prepand field holds data, that has to be prepanded to the link.
+        target: Target window for the link. Leave empty when same window.
+        order: Order on which menu item is shown. Lower number means prior position.
+        submenu: Submenu captions in form (caption\link).
+        css: CSS only for this menu item 
+        active: Is active
+        policy_id: Menu item will be diplayed according to this policy
+
+      ar_menu:
+        description: Short description of menu
+        css: CSS for this menu
+        div_name: Div id name around menu area
+        active: Active
+        link_prepend: Link field usually holds direct link to document. Prepand field holds data, that has to be prepanded to the link.
+        ar_menu_items: Menu items
+        ar_site_id: Site to which this menu belongs to
+
+      ar_menu_item:
+        caption: Caption of menu item
+        picture: Picture for the menu
+        link: Link called when menu is chosen
+        link_prepend: Link field usually holds direct link to document. Prepand field holds data, that has to be prepanded to the link.
+        target: Target window for the link. Leave empty when same window.
+        order: Order on which menu item is shown. Lower number means prior position.
+        ar_menu_items: Submenu items
+        page_id: Page link 
+        css: CSS only for this menu item 
+        active: Is active
+        policy_id: Menu item will be diplayed according to this policy
+        hidden: Menu item will not be displayed, but it is active
+        clas: HTML class will be applied to menu item
+        content: Submenu will be displayed as HTML content
+
+      ar_page:
+        subject: Articles subject
+        link: Friendly link defined
+        sub_subject: Sub subject, short description of text
+        picture: Picture used in conjunction with page
+        gallery: Picture gallery id used with page
+        alt_link: Alternative link, by which page could be found
+        css: CSS only for this menu page
+        script: Javascript only for this page
+        params: Special parameters which may come handy when displaying page
+        menu_id: Top menu under where this page is displayed
+        author_id: Author of the article
+        author_name: Author of the article
+        publish_date: Publish date
+        valid_from: Article is valid from date
+        valid_to: Article is valid to date
+        comments: Comments on this article are allowed
+        active: Page is active
+        ar_parts: Parts of the article
+        policy_id: Access policy for the page
+        ar_site_id: The page belongs to one site only
+        ar_design_id: Design used for rendering page
+        ar_poll_id: Select poll, if poll is to be used with page
+        kats: Categories for this article
+        body: Content of this page
+        if_url: URL adress of page which will be loaded into IFrame
+        if_width:  IFrame area width
+        if_height: IFrame area height
+        if_scroll: Scroll bars visibility
+        if_border: Thickness of border around IFrame area. When 0, no border is shown.
+        if_params: Parameters added to URL address    
+        if_id: CSS id of IFrame object
+        if_class: CSS class of IFrame object
+        _update_menu: Update link in selected menu to point to this document
+        div_class: Class name given to top level div
+
+      ar_seo:
+        title: SEO optimised page title
+        meta_description: SEO optimised page description
+        canonical_link: Canonical link the, when page uses aditional parameters
+        ar_json_lds: Schema data available for this web page
+
+      ar_part:
+        name: Parts can be searched by name or by id
+        description: Short description of part
+        link: Link when part can be accessed with pretty link
+        picture: Picture contents of part
+        thumbnail: Small version of picture if available
+        body: Content of this part
+        css: CSS
+        script: Script, if script is included in part
+        script_type: Script type 
+        piece_id: Piece name if part is connected to piece
+        div_id: Div id (position name) where this part is displayed as defined on design
+        order: Order between parts
+        updated_by: Last updated by
+        updated_at: Last updated at
+        active: Part is active
+        valid_from: Part is valid from
+        valid_to: Part is valid to
+        policy_id: Access policy for the part
+
+      ar_piece:
+        name: Unique name for piece
+        description: Short description of piece
+        picture: Picture contents of piece
+        link: Link when piece can be accessed with pretty link
+        thumbnail: Small version of picture if available
+        body: Content of this piece
+        css: CSS
+        script: Script, if script is included in piece
+        script_type: Script type 
+        site_id: Site name where this piece will belong to
+        div_id: Div (position name) id on design where this piece is rendered
+        order: Order to be used when pieces are positioned in the same div (location)
+        updated_by: Last updated by
+        updated_at: Last updated at
+        active: Piece is active
+        valid_from: Piece is valid from
+        valid_to: Piece is valid to
+
+      ar_ad:
+        position: Position (div id) where this ad will be displayed
+        description: Short description
+        type: Content type of add
+        script: JavaScript script, when script type
+        link: Link to page (site, dokument) when ad is clicked
+        file: Picture or flash filename
+        height: Height of ad
+        width: Width of ad
+        valid_from: Ad is valid from
+        valid_to: Ad is valid to
+        displays: Maximum number of time this add is displayed
+        clicks: Maximum number of clicks this ad will receive
+        priority: Priority. Higher priority means ad is shown more often. Priority is calculated only between candidats to be displayed. 
+        displayed: No. of times this add has been displayed
+        clicked: No. of times this ad has been clicked
+        active: Ad is active
+        updated_by: Record last updated by
+        ar_site_id: Ad is valid for the site
+        link_target: Define if link is open in new window or same
+
+      ar_permission:
+        table_name: Permission is valid for collection
+        is_default: This is default permission for all tables in database
+        active: Permission is active
+        ar_policy_rules: Defined policy rules
+        ar_permission_rules: Rules for access table data granular for user roles
+
+      ar_permission_rule:
+        active: Is active
+        ar_role_id: User's role
+        permission: Access permission
+
+      ar_folder_permission:
+        folder_name: Folder name
+        is_default: Is default
+        inherited: Inherit permissions from parent
+        active: Permission is valid
+        ar_folder_rules: Folder access rules
+
+      ar_folder_rule:
+        ar_role_id: User role
+        permission: Permission on a folder
+
+      ar_link:
+        link: Link to be redirected to different page
+        params: Aditional parameters passed to document renderer
+        redirect: Redirect to another link
+        page_id: Page redirected to by this shortcut link
+        ar_site_id: Link is valid for site
+        active: Link is active
+
+      ar_category:
+        name: Category name
+        description: Additional description of category
+        ctype: Category type. Could be used for grouping categories. 
+        order: Additional order, which can be used for sorting.
+        parent: Parent category. Leave blank if this is top level category.
+        active: Category is active.
+        ar_site_id: Category is valid only for site
+        updated_at: Last update
+
+      ar_mail:
+        subject: Message subject
+        body: Message body
+        from: Message sender
+        to_test: Address where test message will be sent
+        to_list: Mail addresses lists where message will be sent
+        to_address: Mail addresses where message will be sent
+        schedule: Message will be sent after this hour
+        send_time: Time when message was sent
+        status: Status of message
+        css: CSS added to final message
+
+      ar_mail_list:
+        name: Mail list name
+        description: Aditional description of mailing list
+        params: Aditional parameters for list
+        active: Mailing list is active
+
+      ar_mail_address:
+        email: email address
+        ar_user_id: User if user is listed in users database
+        active: Address is active        
+        reason: Description of deactivation
+        ar_mail_list_members: email is a member of this mail lists
+
+      ar_mail_list_member:
+        ar_mail_list_id: Mail list
+        active: Address is active        
+        reason: Description of deactivation
+
+      ar_big_table:
+        key: Key (ident) used to retrieve key/values
+        site_id: Data will be used only for defined site. If empty, then it is default for all sites in database.
+        active: This key is active
+        ar_big_table_values: Values defined by this key
+
+      ar_big_table_value:
+        value: Value
+        ar_big_table_locales: Locale translations for the value
+        locales: "Localized translation of value descripotion in YAML format. eg:<br>en: English<br>sl: Slovensko"
+
+      ar_journal:
+        operation: Operation
+        ip: ip address from where operation was performed
+        time: Time of operation
+        site_id: Site
+        user_id: User
+        tables: Table name
+        id: Record id
+        ids: Parent ids
+        diff: Differences
+        
+      ar_ident:
+        key: Key which defines ident
+        value: Ident value
+        
+      ar_key_value_store:
+        key: Identification key
+        value: Stored value
+
+      ar_filter:
+        ar_user_id: User name when filter is for user only
+        table: Collection to which filter apply
+        description: Filter description
+        filter: Filter definition in YAML
+        public: Filter is available to all users
+        sort: Default sort when selecting filter
+                
+      ar_removed_url:
+        url: URL which was removed from site
+        description: Reason why was URL removed
+        ar_site_id: Site that URL belongs to
+
+      ar_gallery:
+        title: Picture title
+        description: Description of picture
+        picture: Big picture file name
+        thumbnail: Small picture file name
+        doc_id: Document associated with gallery
+        order: Order
+        active: Document is active
+
+      ar_json_ld:
+        name: Name of schema element
+        type: Type of schema structure
+        data: Data in YAML format
+        active: Document is active
+        add_schema: Add new schema
+        add_error: Schema element %{schema} already exists!
+
+      ar_image:
+        upload_file: Select file to upload
+        name: Original file name
+        short: Short image description
+        text: Longer image description text
+        keep_original: Keep original image
+        size_o: Dimension of original image
+        size_l: Dimension for large image
+        size_m: Dimension form medium size image
+        size_s: Dimension for small size image
+        categories: Categorise images on specific keywords
+        created_by: Image was uploaded by
+
+    ar_setup:
+      name: Setup name (typically application or module name)
+      form: Form definition for entering settings. Edit fields must be defined on tabs
+      data: Actual data saved
+      editors: List of users, which can edit this setup beside administrators

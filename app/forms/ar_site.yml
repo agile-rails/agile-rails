@@ -1,0 +1,149 @@
+## YAML Template for site
+---
+table: ar_site
+
+index:
+  filter: name, page_title, description, homepage_link
+  actions: standard
+
+  data_set:
+    select: name
+    actions:
+      1: edit
+      2: delete
+      10:
+        type: duplicate
+        dup_fields: name
+
+    columns:
+      10:
+        name: name
+        width: 20%
+      20:
+        name: alias_for
+        width: 20%
+      30:
+        name: description
+        width: 60%
+
+form:
+  title: 
+    field: name
+  actions: standard
+
+  tabs:
+    1basic:
+      10:
+        name: name
+        type: text_field
+        size: 30
+      20:
+        name: description
+        type: text_field
+        size: 50
+      30:
+        name: alias_for
+        type: text_field
+        size: 30
+      40:
+        name: page_title
+        type: text_field
+        size: 80
+      50:
+        name: homepage_link
+        type: text_field
+        size: 30
+      60:
+        name: error_link
+        type: text_field
+        size: 50
+      70:
+        name: request_processor
+        type: text_field
+        size: 30
+      80:
+        name: files_directory
+        type: text_field
+        size: 30
+      90:
+        name: logo
+        type: file_select
+        size: 50
+      100:
+        name: favicon
+        type: file_select
+        size: 50
+      110:
+        name: active
+        type: check_box
+        size: 50
+
+    2parameters:
+      10:
+        name: route_name
+        type: text_field
+        size: 20
+      30:
+        name: site_layout
+        type: text_field
+        size: 20
+      40:
+        name: page_class
+        type: text_field
+        size: 20
+      50:
+        name: menu_class
+        type: text_field
+        size: 20
+      70:
+        name: menu_id
+        type: select
+        choices: eval ArSite.choices_for_menu
+        depend: menu_class
+      90:
+        name: settings
+        type: text_area
+        size: 100x20
+
+    3advanced:        
+      10:
+        name: header
+        type: text_area
+        size: 100x10
+
+      20:
+        name: css
+        type: text_area
+        size: 100x40
+
+    4design:
+      10:
+        name: rails_view
+        type: text_field
+        size: 50
+
+      20:
+        name: design
+        type: text_area
+        size: 130x40
+
+    5permissions:
+      10:
+        name: inherit_policy
+        type: select
+        choices: eval ArSite.choices_for_sites
+        include_blank: true
+      20:
+        name: ar_policies
+        type: belongs_to
+        form_name: ar_policy
+        belongs_to: ar_site
+        load: delay
+
+    6parts:
+      10:
+        name: ar_parts
+        caption: false
+        type: belongs_to
+        form_name: ar_part
+        load: delay

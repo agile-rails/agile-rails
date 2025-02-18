@@ -1,0 +1,140 @@
+## YAML Template for page
+---
+table: ar_user
+
+index:
+  sort: email
+  filter: username, first_name, last_name, last_visit, email
+  actions: standard
+
+  data_set:
+    actions:
+      1: edit
+      2: delete
+
+    columns:
+      10:
+        name: username
+      20:
+        name: name
+        width: 20%
+      100:
+        name: active
+        eval: agile_icon_for_boolean
+        width: 5%
+
+form:
+  title: 
+    field: user
+    
+  actions: standard,save
+
+  tabs:
+    1base:
+
+      10:
+        name: username
+        type: text_field
+        size: 15
+        group: 2
+        html:
+          autocomplete: 'off'
+      15:
+        name: group
+        type: check_box
+      20:
+        name: title
+        type: text_field
+        size: 5
+      30:
+        name: first_name
+        type: text_field
+        size: 30
+        group: 3
+
+      40:
+        name: middle_name
+        type: text_field
+        size: 20
+
+      50:
+        name: last_name
+        type: text_field
+        size: 20
+
+      60:
+        name: company
+        type: text_field
+        size: 50
+
+      70:
+        name: address
+        type: text_field
+        size: 30
+        group: 2
+
+      80:
+        name: post
+        type: text_field
+        size: 30
+
+      90:
+        name: country
+        type: select
+        choices: eval ArUser.choices_for_country
+
+      100:
+        name: email
+        type: text_field
+        size: 30
+        group: 2
+
+      110:
+        name: phone
+        type: text_field
+        size: 20
+
+      120:
+        name: birthdate
+        type: date_select
+        options:
+          start_year: 1930
+
+      130:
+        name: picture
+        type: text_field
+        size: 50
+
+      140:
+        name: about
+        type: text_area
+        size: 100x5
+
+      150:
+        name: password
+        type: password_field
+        size: 20
+        group: 2
+        line: top
+        html:
+          autocomplete: new-password
+
+      160:
+        name: password_confirmation
+        type: password_field
+        size: 20
+
+      170:
+        name: ar_user_roles
+        type: belongs_to
+        form_name: ar_user_role
+      180:
+        name: active
+        type: check_box
+
+      200:
+        name: member_a
+        type: select
+        multiple: true
+        choices: eval ArUser.groups_for_select
+        line: top

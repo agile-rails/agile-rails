@@ -1,0 +1,39 @@
+
+form:
+  actions:
+    10:
+      type: ajax
+      caption: agile.refresh
+      icon: cog
+      table: ar_temp
+      form_name: &report
+      action: run
+      control: &report.collect_data
+      method: post
+
+    20:
+      type: ajax
+      caption: agile.print
+      icon: print
+      table: ar_temp
+      form_name: &report
+      action: run
+      control: &report.print
+      method: post
+
+    30:
+      type: ajax
+      caption: agile.export
+      icon: file-excel-o
+      table: ar_temp
+      form_name: &report
+      action: run
+      control: &report.export
+
+  fields:
+    1000:
+      name: ar_temp
+      type: belongs_to
+      caption: false
+      table: ar_temp
+      form_name: &report

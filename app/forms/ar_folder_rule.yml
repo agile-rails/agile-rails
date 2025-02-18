@@ -1,0 +1,48 @@
+# Form for ar_folder_rules
+table: ar_folder_rule
+control: belongs_to
+
+index:
+  actions: new
+
+  data_set:
+    actions: standard
+#
+# Choose columns from
+#  id,ar_folder_permission_id,ar_role_id,permission,active,created_by,updated_by,created_at,updated_at
+    columns:
+      10:
+        name: ar_role_id
+        eval: agile_name_for_id,ar_role,name
+        width: 30%
+      20:
+        name: permission
+        eval: ArPermission.permission_name_for_value
+      30:
+        name: created_by
+        eval: agile_name_for_id,ar_user,name
+      40:
+        name: updated_at
+        format: D
+      50:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  actions:
+    standard: true
+    location: bottom
+
+  fields:
+    10:
+      name: ar_role_id
+      type: select
+      choices: eval agile_choices_for('ar_role','name','id')
+    20:
+      name: permission
+      type: select
+      choices: eval ArPermission.choices_for_permissions
+
+    100:
+      name: active
+      type: check_box

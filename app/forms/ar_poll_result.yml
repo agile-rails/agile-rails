@@ -1,0 +1,88 @@
+## Form for retrieveng poll results
+---
+table: ar_poll_result
+
+index:
+  filter: data as text_field
+  actions:
+    1: filter
+    10: 
+      type: field
+      name: poll_id
+      field_type: select
+      choices: eval agile_choices_for('ar_poll','name','id')
+      position: left
+      include_blank: -- select poll --
+
+    30: 
+      type: field
+      name: start_date
+      field_type: date_picker
+      position: left
+
+    40: 
+      type: field
+      name: end_date
+      field_type: date_picker
+      options: 
+        openOnFocus: false
+      position: left
+
+    50:
+      type: ajax
+      caption:  agile.filter_poll
+      title:  agile.filter_poll_title
+      icon: cog
+      controller: agile
+      action: run
+      control: ar_poll_result.set_filter
+      method: post
+    
+    60: 
+      type: ajax
+      caption:  agile.export_poll
+      title:  agile.export_poll_title
+      controller: agile
+      icon: table
+      action: run
+      control: ar_poll_result.do_export
+      method: post
+
+  data_set:
+    actions: standard
+
+    columns:
+      10:
+        name: ar_poll_id
+        eval: agile_name_for_id,ar_poll,name
+        width: 25%
+      20:
+        name: created_at
+        format: '%d.%m.%Y %H:%M'
+        width: 10%
+      30:
+        name: confirmed
+        eval: agile_icon_for_boolean
+        width: 5%
+
+form:
+  actions: 
+    1: back
+    2: save&back
+      
+  fields:
+    10:
+      name: ar_poll_id
+      type: select
+      choices: eval agile_choices_for('ar_poll','name','id')
+    20:
+      name: data
+      type: text_area
+      size: 100x25
+    30:
+      name: confirmed
+      type: check_box
+    40:
+      name: created_at
+      type: readonly
+      format: '%d.%m.%Y %H:%M'

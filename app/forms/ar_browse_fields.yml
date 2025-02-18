@@ -1,0 +1,35 @@
+## Registration form. Not yet implemented.
+---
+table: ar_memory
+title: Browse field definitions
+controls: browse_models
+permissions:
+  can_view: admin
+
+index:
+  actions:
+    1: back
+
+  data_set:
+    filter: all_fields
+
+    columns:
+      10:
+        name: collection
+        caption: Collection
+        width: 10%
+      20:
+        name: field
+        caption: Field name
+      30:
+        name: type
+        caption: Field type
+      40:
+        name: description
+        caption: description
+        width: 25%
+        style:
+          eval: "document['field'] == document['description'] ? 'color: #f43;' : 'color: #000;'"
+      50:
+        name: _default
+        caption: Default

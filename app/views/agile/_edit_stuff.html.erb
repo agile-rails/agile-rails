@@ -1,0 +1,57 @@
+<div id="agile-div">
+  <button class="cms-toggle mode-<%= session[:edit_mode] %>" title="<%= t('agile.toggle_cms')%>"></button>
+
+  <% if session[:edit_mode] > 1 %>
+    <div class="agile-top">
+      <div id="cms-top-menu">
+
+        <% if @page %>
+          <%= link_to( mi_icon('description-o', title: "#{t('agile.edit_page')}"),
+              { controller: :agile, action: :edit, table: @site.page_class, id: @page.id }, target: :iframe_cms) %>
+        <% end %>
+
+        <% if @design %>
+          <%= link_to( mi_icon('web', title: "#{t('agile.edit_design')}"),
+              { controller: :agile, action: :edit, table: :ar_design, id: @design.id }, target: :iframe_cms) %>
+        <% end %>
+
+        <% if @site %>
+          <%= link_to( mi_icon('public', title: "#{t('agile.edit_site')}"),
+              { controller: :agile, action: :edit, table: :ar_site, id: @site.id }, target: :iframe_cms) %>
+        <% end %>
+        <span>|</span>
+        
+        <%= link_to( mi_icon('compress', title: t('agile.minimize')), '#',
+            onclick: "$('#iframe_cms').height(1); return false;" ) %>
+
+        <%= link_to( mi_icon('expand', title: t('agile.maximize')), '#',
+            onclick: "$('#iframe_cms').height( $('#iframe_cms').height() + 500); return false;")  %>
+
+        <%= link_to( mi_icon('refresh', title: t('agile.reload')), '#',
+            onclick: "document.location.reload(true); return false;")  %>
+        <span>|</span>
+
+        <%= link_to( mi_icon('content_paste-o', title: t('agile.rpaste_title')),
+            { controller: :agile_common, action: :paste_clipboard }, target: :iframe_cms) %>
+
+        <%#= AgileFormFields::Elfinder.file_manager_url(self) %>
+
+      </div>
+    </div>
+<% if false %>
+    <div id="menu-hamburger"><%= mi_icon('bars') %></div>
+<% end %>
+    <div class="agile-container">
+      <div id="cms-menu">
+        <%= agile_application_menu %>
+      </div>
+
+      <div class="agile-iframe" style="width: 99%;">
+        <iframe id="iframe_cms" name="iframe_cms"></iframe>
+      </div>
+      <div style="clear: both;"></div>
+
+    </div>
+  
+  <% end %>
+</div>

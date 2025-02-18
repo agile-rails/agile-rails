@@ -1,0 +1,41 @@
+# Form for ar_removed_url
+table: ar_removed_url
+
+index:
+  filter: url, ar_site_id
+  actions: standard
+
+  data_set:
+    actions: standard
+
+    columns:
+      10:
+        name: ar_site_id
+        eval: agile_name_for_id,ar_site,name
+      20:
+        name: url
+        width: 40%
+      30:
+        name: updated_at
+        format: '%d.%m.%Y'
+
+form:
+  title:
+    field: url
+
+  actions: standard
+
+  fields:
+    10:
+      name: url
+      type: text_field
+      size: 50
+    20:
+      name: description
+      type: text_field
+      size: 50
+    30:
+      name: ar_site_id
+      type: select
+      choices: eval agile_choices_for('ar_site','name','id')
+      include_blank: true

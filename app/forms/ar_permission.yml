@@ -1,0 +1,52 @@
+## YAML Template
+---
+table: ar_permission
+
+index:
+  filter: table_name
+  actions:
+    1: new
+
+  data_set:
+    actions:
+      1: edit
+      2:
+        type: duplicate
+        dup_fields: table_name
+      3: delete
+
+    columns:
+      10:
+        name: table_name
+
+      20:
+        name: active
+        eval: agile_icon_for_boolean
+
+      30:
+        name: is_default
+        eval: agile_icon_for_boolean
+
+form:
+  actions: back,save
+  title:
+    field: name
+
+  fields:
+
+    10:
+      name: table_name
+      type: text_with_select
+      choices: eval agile_choices_for_all_tables
+      html:
+        size: 30
+        
+    20:
+      name: is_default
+      type: check_box
+
+    60:
+      name: ar_permission_rules
+      caption: false
+      type: belongs_to
+      table: ar_permission_rule

@@ -1,0 +1,170 @@
+#--
+# Copyright (c) 2024+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#+
+module AgileFormFields
+
+###########################################################################
+# Implementation of tree_select AgileRails form field. Field will provides
+# multiple select functionality displayed as a tree. Might be used for selecting
+# multiple categories in a env-child tree view.# 
+# 
+# ===Form options:
+# * +name:+ field name (required)
+# * +type:+ tree_select (required)
+# * +choices:+ Values for choices separated by comma. Values can also be specified like description:value.
+# In this case description will be shown to user, but value will be saved to document.
+#   choices: 'OK:0,Ready:1,Error:2'
+#   choices: Ruby,Pyton,PHP
+# * +eval:+ Choices will be provided by evaluating expression
+#   choices: eval ModelName.choices_for_field; Model class should define method which will provide data for field.
+#   Data returned must be of type Array and have 3 elements.
+#   1 - description text
+#   2 - id values separated by ;
+#   3 - parent id
+#   4 - order
+# * +html:+ html options which apply to select and text_field fields (optional)
+# 
+# Form example:
+#    10:
+#      name: categories
+#      type: tree_select
+#      choices: eval Categories.all_categories
+#      multiple: true
+#      parent_disabled: false
+#      parent_opened: false
+#      size: 50x10
+###########################################################################
+class TreeSelect < Select
+
+###########################################################################
+# Prepare choices for AgileRails form field rendering.
+###########################################################################
+def make_tree(parent)
+  return '' unless @choices[parent.to_s]
+
+  @html += '<ul>'
+  choices = if @choices[parent.to_s].first[3] != 0
+              @choices[parent.to_s].sort_by { _1[3].to_i } # sort by order if first is not 0
+            else
+              #@choices[parent.to_s].sort_alphabetical_by(&:first) # use UTF-8 sort
+              @choices[parent.to_s].sort_by(&:first)
+            end
+  choices.each do |choice|
+    data = [%("selected" : #{choice.last ? 'true' : 'false'} )]
+    # only for parent objects
+    if @choices[ choice[1].to_s ]
+      # parent is not selectable
+      data += '"disabled" : true' unless @env.agile_dont?(@yaml['parent_disabled'], true)
+      # parents are opened on start
+      data += '"opened" : true' unless @env.agile_dont?(@yaml['parent_opened'], true)
+    end
+    # data-jstree must be singe quoted
+    @html += %(<li data-id="#{choice[1]}" data-jstree='{#{data.join(' , ')}}'>#{choice.first}\n)
+    # call recursively for children     
+    make_tree(choice[1]) if @choices[choice[1].to_s]
+    @html += '</li>'
+  end
+  @html + '</ul>'
+end
+
+###########################################################################
+# Render tree_select field html code
+###########################################################################
+def render
+  set_initial_value('html','value')
+  record = record_text_for(@yaml['name'])
+  clas   = 'tree-select' + (@readonly ? ' ar-readonly' : '')
+  @html += %(<div id="#{@yaml['name']}" class="#{clas}" #{set_style()} >)
+
+  # Create @choices hash. The key is parent object id
+  @choices = {}
+  choices_in_eval(@yaml['choices']).each do |data|
+    @choices[ data[2].to_s ] ||= [] 
+    @choices[ data[2].to_s ] << (data << false)
+  end
+  # Set last element of hash to true when selected. To speed up selection when there is a lot of items
+  current_values = {}
+  current = @record.send(@yaml['name']) || []
+  current = [current] unless current.is_a?(Array) # non array fields
+  current.each { |e| current_values[e.to_s] = true }
+
+  # set third element of @choices when selected
+  @choices.keys.each do |key|
+    0.upto( @choices[key].size - 1 ) do |i|
+      choice = @choices[key][i]
+      choice[choice.size - 1] = true if current_values[ choice[1].to_s ]
+    end
+  end
+  make_tree(nil)
+  @html += '</div>'
+  # add hidden communication field
+  @html += @env.hidden_field(record, @yaml['name'], value: current.join(','))
+  # save multiple indicator for data processing on return
+  @html += @env.hidden_field(record, "#{@yaml['name']}_multiple", value: 1) if @yaml['multiple']
+  # javascript to update hidden record field when tree looses focus
+  readonly_code = %(
+,
+"conditionalselect" : function (node) {
+return false; }
+)
+
+  @js =<<~EOJS
+    $(function(){
+      $("##{@yaml['name']}").jstree( {
+        "checkbox" : {"three_state" : false},
+        "core" : { "themes" : { "icons": false },
+                   "multiple" : #{@yaml['multiple'] ? 'true' : 'false'}  },
+        "plugins" : ["checkbox", "conditionalselect"]
+        #{@readonly ? readonly_code : ''}
+      });
+    });
+
+    $(document).ready(function() {
+      $('##{@yaml['name']}').on('focusout', function(e) {
+        var checked_ids = [];
+        var checked = $('##{@yaml['name']}').jstree("get_checked", true);
+        $.each(checked, function() {
+          checked_ids.push( this.data.id );
+        });
+        $('#record_#{@yaml['name']}').val( checked_ids.join(",") );
+      });
+    });
+  EOJS
+  self
+end
+
+###########################################################################
+# Return value. Return nil if input field is empty
+###########################################################################
+def self.get_data(params, name)
+  return nil if params['record'][name].blank?
+
+  result = params['record'][name].split(',')
+  result.delete_if(&:blank?)
+  return nil if result.size == 0
+
+  # return only first element if multiple values select was not allowed
+  params['record']["#{name}_multiple"] == '1' ? result : result.first  
+end
+
+end
+end

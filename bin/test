@@ -1,0 +1,6 @@
+#!/bin/bash
+echo #
+echo # You must position to test/test_app directory and run bin/test from there
+echo #
+echo cd test/test_app
+echo bin/test

@@ -1,0 +1,118 @@
+## YAML Template for Polls
+---
+table: ar_poll
+
+index:
+  filter: name, title
+  actions: standard
+
+  data_set:
+    actions:
+      1: edit
+      2:
+        type: duplicate
+        dup_fields: name
+
+      3: delete
+
+    columns:
+      1:
+        name: name
+      2:
+        name: title
+        width: 40%
+      3:
+        name: valid_from
+      4:
+        name: valid_to
+
+form:
+  title: 
+    field: description
+    
+  actions: standard
+
+  tabs:
+    tab1:
+      10:
+        name: name
+        type: text_field
+        size: 50
+
+      20:
+        name: title
+        type: text_field
+        size: 50
+
+      30:
+        name: sub_text
+        type: html_field
+        options: 'height: 400'
+
+      35:
+        name: pre_display
+        type: text_field
+        size: 50
+      40:
+        name: operation
+        type: select
+
+      50:
+        name: parameters
+        type: text_field
+        size: 50
+
+      60:
+        name: display
+        type: select
+
+      70:
+        name: captcha_type
+        type: text_field
+        size: 10
+
+      80:
+        name: valid_from
+        type: datetime_picker
+        options:
+          include_blank: true
+        group: 2
+
+      90:
+        name: valid_to
+        type: datetime_picker
+        options:
+          include_blank: true
+
+      100:
+        name: css
+        type: text_area
+        size: 100x20
+
+      110:
+        name: active
+        type: check_box
+    tab2:
+      10:
+        name: js
+        type: text_area
+        caption: false
+        size: 100x50
+        html:
+          style: 'font-family:courier;'
+    tab3:
+      20:
+        name: ar_poll_items
+        caption: false
+        type: belongs_to
+        form_name: ar_poll_item
+        load: delay
+
+    tab4:
+      10:
+        name: form
+        caption: false
+        type: text_area
+        size: 100x50
+        html:
+          style: 'font-family:courier;'

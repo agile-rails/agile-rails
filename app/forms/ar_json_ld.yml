@@ -1,0 +1,56 @@
+## YAML Template for Link
+---
+table: ar_json_ld
+
+index:
+  actions:
+    1: new
+    10: 
+      type: menu
+      eval: ArJsonLd.add_schema_menu(self)
+      caption: helpers.help.ar_json_ld.add_schema
+
+  data_set:
+    actions:
+      1: edit
+      2: delete
+
+    columns:
+      10:
+        name: name
+        width: 20%
+      20:
+        name: type
+        width: 20%
+      30:
+        name: updated_at
+        width: 20%
+      40:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  title: 
+    field: type
+    
+  actions: standard
+    
+  fields:
+    10:
+      name: name
+      type: text_field
+      size: 20
+
+    20:
+      name: type
+      type: text_with_select
+      choices: eval ArJsonLd.choices_for_type
+
+    30:
+      name: data
+      type: text_area
+      size: 100x8
+    40:
+      name: ar_json_lds
+      type: belongs_to
+      table: ar_json_ld

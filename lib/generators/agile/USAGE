@@ -1,0 +1,11 @@
+Description:
+    agile:new_form generator will create Agile Rails form from model description.
+    Options:
+      --extra: Will create some extra commented code for help default: --no-extra
+      --tabs: Will create form entry fields with tabs default: --no-tabs
+
+Example:
+    rails generate agile:new_form model_name
+
+    This will create:
+        forms/model_name.yml

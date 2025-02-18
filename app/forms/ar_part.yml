@@ -1,0 +1,91 @@
+
+table: ar_part
+control: belongs_to
+
+index:
+  actions:
+    1: new
+
+  data_set:
+    actions:
+      1: edit
+      2: duplicate
+      3: delete
+
+    columns:
+      1:
+        name: name
+      2:
+        name: div_id
+      3:
+        name: updated_by
+        eval: agile_name_for_id,ar_user,name
+      4:
+        name: updated_at
+
+form:
+  title: 
+    field: subject
+    
+  actions: standard
+  tabs:
+    1base:
+      10:
+        name: name
+        type: text_field
+        size: 50
+      15:
+        name: link
+        type: text_field
+        size: 50
+      20:
+        name: description
+        type: text_field
+        size: 50
+      30:
+        name: picture
+        type: file_select
+        size: 50
+      35:
+        name: thumbnail
+        type: file_select
+        size: 50
+      40:
+        name: div_id
+        type: text_field
+        size: 50
+
+      60:
+        name: order
+        type: text_field
+        size: 2
+      70:
+        name: params
+        type: text_area
+        size: 100x10
+
+    2content:
+      10:
+        name: body
+        caption: false
+        type: html_field
+        options: 'height: 800'
+
+    3advanced:
+      10:
+        name: policy_id
+        type: select
+        choices: eval agile_choices_for_site_policies
+        include_blank: true
+      20:
+        name: css
+        type: text_area
+        size: 100x10
+      30:
+        name: script_type
+        type: text_field
+
+      40:
+        name: script
+        type: text_area
+        size: 100x10

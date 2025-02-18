@@ -1,0 +1,24 @@
+<div id="ar-form-container">
+  <div id="ar-form-left">
+    <%= agile_form_left %>
+  </div>
+
+  <div id="ar-form-right">
+    <%= agile_flash_messages %>
+    <%= agile_error_messages_for @record %>
+    <%= agile_warning_messages_for @record %>
+
+    <div class="ar-form-frame">
+    <% fields = agile_fields_for_form %>
+    <%= agile_actions_for_form 'top' %>
+
+    <%= fields %>
+    <%= agile_document_statistics %>
+
+    <%= agile_actions_for_form 'bottom' %>
+    </div>
+
+    <%= javascript_tag(@js)  unless @js.blank? %>
+    <% if @css.present? %><style><%= @css %></style><% end %>
+  </div>
+</div>

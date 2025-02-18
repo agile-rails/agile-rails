@@ -1,0 +1,7 @@
+
+title: Test data set as method
+
+index:
+  data_set:
+    type: method
+    eval: data_set_as_method

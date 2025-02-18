@@ -1,0 +1,28 @@
+## Form
+table: ar_memory
+title: Settings for site
+controls: settings_form_control
+
+form:
+  actions: 
+    1: save
+
+  fields:
+      
+    10:
+      name: field1
+      type: text_field
+      text: Setting 1
+      help: Help text for setting 1
+
+    20:
+      name: field2
+      type: text_field
+      text: Setting 2
+      help: Help text for setting 2
+
+    30:
+      name: field3
+      type: text_field
+      text: Setting 3
+      help: Help text for setting 3

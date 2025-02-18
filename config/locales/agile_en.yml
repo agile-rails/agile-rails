@@ -1,0 +1,162 @@
+#--
+# Copyright (c) 2023+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+# English (en) localization for AgileRails
+en:
+  agile:
+    "true": "yes"
+    "false": "no"
+    record_deleted: Record deleted!
+    confirm_delete: Confirm record deletion!
+    confirm_dup: Confirm record duplication!
+    not_authorized: User not authorized for this operation!
+    record_disabled: Record disabled!
+    record_enabled: Record enabled!
+    record_saved: Record saved!
+    record_info: Info
+    record_no_delete: Record can not be deleted!
+    record_no_update: Record can not be updated!
+    copy_clipboard: Copy record data into new window
+    paste_clipboard: Update or create record
+    paste_title: Insert (update) records from JSON data
+    paste_update: Update existing record if record._id exists
+    edit_content: Edit content
+    edit_advanced: Advanced edit
+    edit_new_page: Create new page
+    edit_new_part: Create new part
+    edit_design: 'Edit: Design'
+    edit_site: 'Edit: Site'
+    edit_page: 'Edit: Page'
+    file_manager: File manager
+    edit_selected: Edit records in selected collection
+    invalid_username: Invalid username or password!
+    menu_plus: Show alternative menu
+    not_email: is not valid e-mail address!
+    not_valid: is not valid!
+    updated_by_other: Record was updated by other user. Please reenter your data.
+    dfs: Double submit error! Returning back in history is prohibited.
+    not_id: Value entered is not ID!
+    cms_main: Main tables
+    cms_advanced: Advanced tables
+    search_placeholder: Start typing to search
+    login: Login into Agile system
+    username: User name
+    password: Password
+    form_error: Error loading form %{form_name}
+    img_large: Click for larger image
+    no_class: Class [%{class}] not defined!
+    no_method: Method (helper) [%{method}] not defined!
+    img_alt_not_present: All images in body must have alternative text entered
+    already_defined: already defined!
+    search: Search
+    
+    toggle_cms: Toggle system edit/view mode
+    edit: Edit
+    show: Show
+    duplicate: Duplicate
+    new: New
+    sort: Sort
+    filter: Filter
+    refresh: Refresh
+    back: Back
+    next: Next
+    finish: Finish
+    steps: Steps
+    close: Close
+    cancel: Cancel
+    delete: Delete
+    enable: Enable
+    disable: Disable
+    disabled: 'Disabled '
+    save: Save
+    save&back: Save & back
+    save&close: Save & close
+    filter_on: Filter ON
+    filter_off: Filter OFF
+    filter_set: Set filter
+    maximize: Maximize
+    minimize: Minimize
+    reload: Reload
+    error: Error!
+    errors_no: 'No. of errors:'
+    runtime_error: Runtime error!
+    two_chars: type in at least two chars
+    print: Print
+    export: Export
+    result: Result
+
+    created_by: Created by
+    updated_by: Updated by
+    created_at: Created at
+    updated_at: Updated at
+    active: Active
+    new_record: New record
+    
+    filter_poll: Filter
+    filter_poll_title: Filter poll data
+    export_poll: Export
+    export_poll_title: Upload poll data in a file
+
+    choices_for_filter_operators: 'Equal to:eq,Contains:like,Greater then:gt,Less then:lt,Is empty:empty'
+    
+    browse_collections: Browse all collections
+    category_has_subs: Category can't be deleted, because it contains sub-elements.
+    category_as_tree: Edit in treeview
+
+    iframe_save_to_view: To add content you must first save the data!
+
+    ar_journal:
+      zero_selected: No data selected!
+      restored: Data has been restored.      
+      restore: Restore      
+      
+    ar_captcha:
+      simple_message: Please write in the name of month no %{number} in a year.
+
+    filters:
+      this_site_only: Only records of currently selected web site
+
+    ar_help:
+      help: HELP
+      fields_button: Data description
+      comments_button: Comments
+      title: Manage help documentation
+      project: Project
+      lang: Locale
+      project_refresh: Refresh
+      project_refresh_title: Refresh list of available records
+      form_name: Form
+      updated_at: Updated
+      1basic: Basic
+      2index: Index
+      3form: Form
+
+    ar_image:
+      wrong_type: Image type not allowed! Types allowed are (jpg jpeg png gif svg webp).
+      no_file: Original image file not present. Try to upload image file again.
+      invoke: Invoke images manager.
+      search: Search and select image
+      select: Click to select
+      preview: Click to view image
+      available: Available image sizes
+      offset_error: Enter either X or Y offset.

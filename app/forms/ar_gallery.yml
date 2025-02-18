@@ -1,0 +1,55 @@
+# Form for ar_gallery
+table: ar_gallery
+index:
+  filter: id as text_field, doc_id as text_field
+  actions: standard
+
+  data_set:
+    actions: standard
+
+    columns:
+      10:
+        name: doc_id
+      20:
+        name: title
+      30:
+        name: created_at
+        width: 10%
+      50:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  actions: standard
+
+  fields:
+    10:
+      name: doc_id
+      type: readonly
+      group: 2
+    15:
+      name: doc_type
+      type: readonly
+    20:
+      name: title
+      type: text_field
+      size: 50
+    30:
+      name: description
+      type: text_area
+      size: 80x10
+    40:
+      name: picture
+      type: file_select
+      size: 50
+    50:
+      name: thumbnail
+      type: file_select
+      size: 50
+    60:
+      name: order
+      type: text_field
+      size: 3
+    70:
+      name: active
+      type: check_box

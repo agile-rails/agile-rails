@@ -1,0 +1,60 @@
+## YAML Template for Link
+---
+table: ar_link
+
+index:
+  actions: standard
+
+  data_set:
+    actions:
+      1: edit
+      2:
+        type: duplicate
+        dup_fields: name
+      3: delete
+
+    columns:
+      10:
+        name: link
+        width: 20%
+      20:
+        name: redirect
+        width: 20%
+      30:
+        name: params
+
+form:
+  title: 
+    field: name
+    
+  actions: standard
+    
+  fields:
+    10:
+      name: link
+      type: text_field
+      size: 40
+
+    20:
+      name: ar_site_id
+      type: select
+      choices: eval ArSite.choices_for_sites
+      include_blank: True
+
+    30:
+      name: redirect
+      type: text_field
+      size: 40
+     
+    40:
+      name: page_id
+      type: text_autocomplete
+      table: 
+        eval: '@env.agile_get_site.page_class'
+      search: subject
+      size: 60
+     
+    50:
+      name: params
+      type: text_area
+      size: 80x5

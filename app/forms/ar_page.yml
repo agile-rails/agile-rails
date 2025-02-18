@@ -1,0 +1,187 @@
+## YAML Template for page
+---
+table: ar_page
+#include: ar_seo not yet implemented
+
+index:
+  filter: subject, sub_subject as text_field, link, alt_link, author_name, ar_site_id, body as text_field
+  actions: standard
+
+  data_set:
+    per_page: 2
+    actions:
+      1: edit
+      2:
+        type: duplicate
+        dup_fields: subject
+      3: delete
+
+    columns:
+      1:
+        name: subject
+        width: 40%
+      2:
+        name: alt_link
+      3:
+        name: publish_date
+      4:
+        name: updated_at
+
+form:
+  title: 
+    field: subject
+    
+  actions: standard
+  tabs:
+    1base:
+      10:
+        name: subject
+        type: text_field
+        size: 50
+      20:
+        name: link
+        type: text_field
+        size: 50
+      40:
+        name: alt_link
+        type: text_field
+        size: 50
+        text: Alternative link
+      50:
+        name: sub_subject
+        type: text_area
+        html:
+          size: 100x10
+      60:
+        name: author_name
+        type: text_field
+        size: 30
+
+      70:
+        name: publish_date
+        type: datetime_picker
+        step: 15
+
+      80:
+        name: picture
+        type: file_select
+        size: 50
+      90:
+        name: gallery
+        type: check_box
+      100:
+        name: valid_from
+        type: datetime_picker
+        step: 15
+
+      110:
+        name: valid_to
+        type: datetime_picker
+        step: 15
+
+      200:
+        name: active
+        type: check_box
+
+#      120:
+#        name: kats
+#        type: tree_select
+#        choices: eval ArCategory.choices_for_categories(@env.agile_get_site)
+#        style: 'max-height: 300px'
+#        multiple: true
+
+    2advanced:
+      10:
+        name: ar_design_id
+        type: select
+        choices: eval ArDesign.choices_for_designs(@env.agile_get_site)
+        include_blank: true
+      15:
+        name: div_class
+        type: text_field
+        size: 20
+
+      20:
+        name: menu_id
+        type: tree_select
+        choices: eval @env.agile_menu_class.choices_for_menu_as_tree(@record.ar_site_id)
+        style: 'max-height: 300px'
+
+      25:
+        name: _update_menu
+        type: check_box
+        help: helpers.help.ar_page._update_menu
+        caption: helpers.label.ar_page._update_menu
+
+      30:
+        name: params
+        type: text_area
+        size: 100x10
+      40:
+        name: ar_site_id
+        type: select
+        choices: eval ArSite.choices_for_sites
+        include_blank: true
+      50:
+        name: ar_poll_id
+        type: select
+        choices: eval agile_choices_for('ar_poll','name')
+        include_blank: true
+      60:
+        name: policy_id
+        type: select
+        choices: eval agile_choices_for_site_policies
+        include_blank: true
+
+      70:
+        name: css
+        type: text_area
+        size: 100x20
+
+    3content:
+      10:
+        name: body
+        caption: false
+        type: html_field
+        options: 'height: 1000'
+       
+    4parts:
+      10:
+        name: parts
+        caption: false
+        type: belongs_to
+        form_name: ar_part
+        load: delay
+
+    5iframe:
+      10:
+        name: if_url
+        type: text_field
+        size: 80
+      20:
+        name: if_border
+        type: text_field
+        size: 2
+      30:
+        name: if_width
+        type: text_field
+        size: 5
+      40:
+        name: if_height
+        type: text_field
+        size: 5
+      50:
+        name: if_scroll
+        type: select
+      60:
+        name: if_id
+        type: text_field
+        size: 10
+      70:
+        name: if_class
+        type: text_field
+        size: 10
+      80:
+        name: if_params
+        type: text_area
+        size: 80x10

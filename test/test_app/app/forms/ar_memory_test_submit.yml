@@ -1,0 +1,31 @@
+table: ar_memory
+title: Testing ar_memory browser
+control: ar_memory_test_submit
+
+index: 
+  actions: new
+
+  data_set:
+    filter: filter_1
+
+    columns:
+      10:
+        name: name
+        caption: name
+        size: 20%
+      20:
+        name: description
+        caption: description
+        size: 20%
+
+form:
+  actions: standard
+  fields:
+    10:
+      name: name
+      type: text_field
+      size: 60
+    20:
+      name: description
+      type: text_field
+      size: 50

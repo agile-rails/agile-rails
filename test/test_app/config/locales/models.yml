@@ -1,0 +1,58 @@
+#--
+# Copyright (c) 2024+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+en:
+  helpers:
+    label:
+      model1:
+        table_title: Table of model1
+# choices        
+        choices_for_one_two_three: 'One:1,Two:2,Three:3'
+        choices_for_categories: 'Category-1,Category-2,Category-3'
+        
+        name: Model1 name
+        active: Is active
+        yes_no: Is true
+        one_two_three: Value
+        categories: Categories
+        time: Some time
+        date: Date
+        created_by: Created by
+        updated_by: Updated by
+        created_at: Created at
+        updated_at: Updated at
+
+#####################################################
+    help:
+      model1:
+        name: Model1 name helper
+        active: Is active helper
+        yes_no: Yes helper
+        one_two_three: Value helper
+        categories: Categories helper
+        time: Some time helper
+        date: Date helper
+        created_by: Created by helper
+        updated_by: Updated by helper
+        created_at: Created at helper
+        updated_at: Updated at helper

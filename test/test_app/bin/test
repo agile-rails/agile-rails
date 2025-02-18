@@ -1,0 +1,8 @@
+#!/bin/bash
+export RAILS_ENV=test
+
+rails test test/system/login_test.rb
+rails test test/system/agile_forms_test.rb
+rails test test/system/ar_memory_test.rb
+rails test test/system/data_set_as_method_test.rb
+

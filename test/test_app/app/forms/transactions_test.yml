@@ -1,0 +1,16 @@
+## Form
+extend: ar_removed_url
+control: transactions_test
+transaction: true
+
+form:
+  actions: 
+    1: back
+    2: save&back
+
+    10:
+      type: submit
+      caption: 1. Save with abort transaction
+    20:
+      type: submit
+      caption: 2. Save with runtime error

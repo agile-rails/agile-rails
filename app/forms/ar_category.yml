@@ -1,0 +1,73 @@
+## YAML Template for page
+---
+table: ar_category
+
+index:
+  filter: name, description, ar_site_id, parent
+  actions:
+    1: new
+    2: filter
+    10:
+      type: link
+      icon: account_tree-o
+      caption: agile.category_as_tree
+      table: ar_category
+      form_name: ar_category_as_tree
+
+  data_set:
+    actions:
+      1: edit
+      2: duplicate
+      5: delete
+
+    columns:
+      1:
+        name: name
+        width: 30%
+      2:
+        name: updated_at
+        width: 10%
+      3:
+        name: active
+        eval: agile_icon_for_boolean
+        width: 10%
+
+form:
+  title: 
+    field: name
+    
+  actions: standard
+
+  fields:
+
+    10:
+      name: name
+      type: text_field
+      size: 30
+    20:
+      name: description
+      type: text_field
+      size: 100
+    30:
+      name: ctype
+      type: select
+      choices: eval ArCategory.choices_for_ctype(@env.agile_get_site)
+
+    40:
+      name: order
+      type: text_field
+      size: 5
+    50:
+      name: ar_site_id
+      type: select
+      choices: eval ArSite.choices_for_sites
+      include_blank: true
+    60:
+      name: parent
+      type: select
+      choices: eval ArCategory.values_for_parent
+      include_blank: true
+    70:
+      name: active
+      type: check_box
+

@@ -1,0 +1,57 @@
+---
+table: ar_user_role
+control: belongs_to
+
+index:
+  actions:
+    1: new
+
+  data_set:
+    actions:
+      1: edit
+      2: delete
+
+    columns:
+      1:
+        name: ar_role_id
+        width: 25%
+        eval: agile_name_for_id,ar_role,name
+
+      2:
+        name: valid_from
+        width: 10%
+
+      3:
+        name: valid_to
+        width: 10%
+
+      4:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  actions: standard
+
+  fields:
+
+    10:
+      name: ar_role_id
+      type: select
+      choices: eval ArRole.choices_for_roles
+
+    20:
+      name: valid_from
+      type: date_picker
+
+    30:
+      name: valid_to
+      type: date_picker
+
+    40:
+      name: active
+      type: check_box
+
+    100:
+      name: ar_user_id
+      type: hidden_field
+      

@@ -1,0 +1,19 @@
+<% if session[:edit_mode]&.to_i > 0 %>
+  <%= render partial: 'edit_stuff' %>
+<% else %>
+  <div id="ar-login">
+    <h2><%= t('agile.login') %></h2>
+    <%= agile_flash_messages %>
+    <%= form_tag controller: 'agile_common', action: 'process_login', return_to: '/', method: :put do %>
+      <div class="label"><%= t('agile.username') %></div>
+      <div class="input"><%= text_field('record', 'username') %></div>
+
+      <div class="label"><%= t('agile.password') %></div>
+      <div class="input"><%= password_field('record', 'password') %></div>
+      
+      <div class="label"></div>
+      <div class="input"><%= submit_tag t('agile.login'), class: 'ar-submit' %></div>
+      <%= hidden_field_tag('return_to_error', request.url ) %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+
+<div class="ar-help"><a id="help-top"></a>
+  <h1><%= t('agile.ar_help.help') %>: <%= agile_form_title %></h1>
+  <div class="help-buttons">
+    <% if params[:type] == 'form' %>
+      <button onclick="location.href='#fields'; return false;"><%= t('agile.ar_help.fields_button') %></button>
+    <% end %>
+    <% if @commnets %>
+      <button onclick="location.href='#comments'; return false;"><%= t('agile.ar_help.comments_button') %></button>
+    <% end %>
+    <div class="close"><%= mi_icon('close', class: 'ar-link') %></div>
+  </div>
+
+  <div class="help-body"><%= agile_help_body if @help %></div>
+  <div class="help-fields"><%= agile_help_fields if params[:type] == 'form' %></div>
+
+  <div class="help-top" onclick="location.href='#help-top'; return false;"><%= mi_icon('arrow-up') %></div>
+</div>

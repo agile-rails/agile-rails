@@ -1,0 +1,104 @@
+#--
+# Copyright (c) 2024+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#+
+module AgileFormFields
+
+###########################################################################
+# Implementation of date_picker AgileRails form field with help of jQuery DateTimePicker plugin.
+# 
+# Since javascript date(time) format differs from ruby date(time) format localization
+# must be provided in order for date_picker object works as expected. For example:
+# 
+#   en:
+#    datetimepicker: 
+#     formats:
+#     date: 'Y/m/d'
+#     datetime: 'Y/m/d H:i'
+#
+#   sl:
+#    datetimepicker: 
+#     formats:
+#      date: 'd.m.Y'
+#      datetime: 'd.m.Y H:i'
+#
+# ===Form options:
+# * +type:+ date_picker (required)
+# * +name:+ Field name (required) 
+# * +options:+ options which apply to date_picker field. All options can be found here http://xdsoft.net/jqplugins/datetimepicker/ .
+# Options can be defined in single line like:
+# * options: 'inline: true,lang: "sl"' or
+# 
+# * options: 
+#   * inline: true
+#   * lang: '"sl"'
+#   
+# * +html:+ html options which apply to date_picker field (optional)
+# 
+# Form example:
+#    10:
+#      name: created
+#      type: date_picker
+#      options: 'inline: true,lang: "sl"'
+###########################################################################
+class DatePicker < AgileFormField
+  
+###########################################################################
+# Render date_picker field html code
+###########################################################################
+def render
+  value = @record.try(@yaml['name']) ? I18n.localize(@record[@yaml['name']].to_date) : nil
+  set_initial_value
+  @yaml['html']['size'] ||= @yaml['size'] || 10
+  @yaml['html']['value'] ||= value
+  @yaml['html']['autocomplete'] ||= 'off'
+  @yaml['html']['class'] = @yaml['html']['class'].to_s + ' date-picker'
+
+  options = options_to_hash(@yaml['options'])
+  options['lang']   ||= I18n.locale.to_s
+  options['format'] ||= t('datetimepicker.formats.date')
+  options['timepicker'] = false
+  options['scrollMonth'] ||= false
+  options['scrollInput'] ||= false
+
+  record = record_text_for(@yaml['name'])
+  @html += @env.text_field(record, @yaml['name'], @yaml['html'])
+  @js += %(
+$(document).ready(function() {
+  $("##{record}_#{@yaml['name']}").datetimepicker({
+    #{hash_to_options(options)}
+  });
+});
+) unless @readonly
+  
+  self
+end
+
+###########################################################################
+# DatePicker get_data method.
+###########################################################################
+def self.get_data(params, name)
+  t = params['record'][name] ? params['record'][name].to_datetime : nil
+  t ? Time.zone.local(t.year, t.month, t.day) : nil
+end
+
+end
+end

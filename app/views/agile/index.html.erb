@@ -1,0 +1,14 @@
+<% agile_update_form %>
+
+<div <%= agile_form_id %> class="ar-form-frame">
+  <%= agile_title_for_index @records %>
+
+  <%= agile_actions_for_index %>
+  <%= agile_div_filter %>
+  <%= agile_flash_messages %>
+  <div id="result"> <%= render partial: 'result' %></div>
+</div>
+
+<%= javascript_tag(@js) unless @js.blank? %>
+<% unless @css.blank? %><style><%= @css %></style><% end %>
+<div id="popup" style="display: none;"></div>

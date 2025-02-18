@@ -1,0 +1,19 @@
+# datetimepicker default formats
+
+en:
+  datetimepicker: 
+    formats:
+      date: 'd/m/Y'
+      datetime: 'd/m/Y H:i'
+
+sl:
+  datetimepicker: 
+    formats:
+      date: 'd.m.Y'
+      datetime: 'd.m.Y H:i'
+
+de:
+  datetimepicker:
+    formats:
+      date: 'Y/m/d'
+      datetime: 'Y/m/d H:i'

@@ -1,0 +1,975 @@
+---
+ar_roles:
+- id: 1
+  name: Guest
+  system_name: guest
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-24 06:35:43.084671000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: 2023-02-24 06:35:43.084671000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-05-02 19:34:45.238575000 Z
+    zone: *1
+    time: 2023-05-02 19:34:45.238575000 Z
+- id: 2
+  name: Administrator
+  system_name: admin
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-24 06:35:53.293755000 Z
+    zone: *1
+    time: 2023-02-24 06:35:53.293755000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-24 06:36:00.245638000 Z
+    zone: *1
+    time: 2023-02-24 06:36:00.245638000 Z
+- id: 3
+  name: User account
+  system_name: user
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-24 06:36:10.895157000 Z
+    zone: *1
+    time: 2023-02-24 06:36:10.895157000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-05-02 19:35:21.246576000 Z
+    zone: *1
+    time: 2023-05-02 19:35:21.246576000 Z
+ar_permissions:
+- id: 1
+  table_name: ar_poll
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-20 18:07:27.666945000 Z
+    zone: *1
+    time: 2023-03-20 18:07:27.666945000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 10:03:22.049678000 Z
+    zone: *1
+    time: 2023-07-23 10:03:22.049678000 Z
+- id: 2
+  table_name: default
+  is_default: true
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 08:25:25.323861000 Z
+    zone: *1
+    time: 2023-07-23 08:25:25.323861000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 08:25:46.357609000 Z
+    zone: *1
+    time: 2023-07-23 08:25:46.357609000 Z
+- id: 3
+  table_name: ar_memory
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-26 18:17:06.108388000 Z
+    zone: *1
+    time: 2023-07-26 18:17:06.108388000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-26 18:17:06.108388000 Z
+    zone: *1
+    time: 2023-07-26 18:17:06.108388000 Z
+ar_users:
+- id: 2
+  username: admin
+  first_name: Admin
+  last_name: User
+#name: Admin User
+  company: Comp
+  email: unknown@
+  birthdate: 2022-11-13
+  active: true
+  updated_by: 2
+  password_digest: "$2a$10$ifVfdEeCCetvUDl1n2JgCuTPdyyLyl6tXjEX5YlKJjzWErN4lzBkC"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2022-11-13 10:34:17.193549000 Z
+    zone: *1
+    time: 2022-11-13 10:34:17.193549000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 09:16:33.551003000 Z
+    zone: *1
+    time: 2023-07-23 09:16:33.551003000 Z
+- id: 6
+  username: user
+  first_name: Some
+  last_name: User
+  email: user@some.com
+  birthdate: 2023-07-06
+  active: true
+  created_by: 2
+  updated_by: 2
+  password_digest: "$2a$12$Ma/S23WAA8ci8HYPifsvvObTcx7C9KVVYSgV7PqSCW8Zrc7.UAO4C"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 06:05:01.376852000 Z
+    zone: *1
+    time: 2023-07-06 06:05:01.376852000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 06:05:01.376852000 Z
+    zone: *1
+    time: 2023-07-06 06:05:01.376852000 Z
+
+ar_pages:
+- id: 1
+  subject: Home page
+  link: home
+  body: "<p>Home</p>\r\n"
+  menu_id: 1;2
+  publish_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2020-07-15 14:35:00.000000000 Z
+    zone: *1
+    time: 2020-07-15 14:35:00.000000000 Z
+  comments: 1
+  active: true
+  updated_by: 2
+  if_border: 0
+  if_scroll: Auto
+  ar_site_id: 2
+  ar_design_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2020-07-14 18:35:38.381000000 Z
+    zone: *1
+    time: 2020-07-14 18:35:38.381000000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-05-02 19:42:53.762482000 Z
+    zone: *1
+    time: 2023-05-02 19:42:53.762482000 Z
+- id: 6
+  subject: Diary
+  link: diary
+  body: "<p>Diary</p>\r\n"
+  menu_id: 3;15
+  publish_date: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2020-07-15 20:35:00.000000000 Z
+    zone: *1
+    time: 2020-07-15 20:35:00.000000000 Z
+  comments: 1
+  active: true
+  created_by: 2
+  updated_by: 2
+  if_border: 0
+  if_scroll: Auto
+  ar_site_id: 2
+  ar_design_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-06-18 14:40:10.597675000 Z
+    zone: *1
+    time: 2023-06-18 14:40:10.597675000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-06-18 14:41:02.062456000 Z
+    zone: *1
+    time: 2023-06-18 14:41:02.062456000 Z
+
+ar_user_roles:
+- id: 1
+  ar_role_id: 2
+  ar_user_id: 2
+  valid_from: 2023-03-14
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-14 17:11:15.680777000 Z
+    zone: *1
+    time: 2023-03-14 17:11:15.680777000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-14 17:11:31.119290000 Z
+    zone: *1
+    time: 2023-03-14 17:11:31.119290000 Z
+
+ar_policies:
+- id: 2
+  name: Default policy
+  description: Default policy
+  is_default: true
+  active: true
+  updated_by: 2
+  message: Error message.
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-20 18:03:40.873301000 Z
+    zone: *1
+    time: 2023-03-20 18:03:40.873301000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-13 11:01:24.816582000 Z
+    zone: *1
+    time: 2023-04-13 11:01:24.816582000 Z
+- id: 3
+  name: Open for all
+  description: Open for all
+  active: true
+  updated_by: 2
+  message: This text shouldn't be visible!
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-12 13:46:57.387465000 Z
+    zone: *1
+    time: 2023-04-12 13:46:57.387465000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-05-02 19:37:00.057519000 Z
+    zone: *1
+    time: 2023-05-02 19:37:00.057519000 Z
+- id: 4
+  name: No access
+  description: No access
+  active: true
+  updated_by: 2
+  message: This page is visible only by admins. <%= login_dialog %>
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-13 10:52:23.233409000 Z
+    zone: *1
+    time: 2023-04-13 10:52:23.233409000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-05-02 19:40:12.420088000 Z
+    zone: *1
+    time: 2023-05-02 19:40:12.420088000 Z
+
+ar_sites:
+- id: 2
+  name: my.site.com
+  homepage_link: home
+  page_class: ArPage
+  menu_class: ArMenu
+  files_directory: files
+  active: true
+  updated_by: 2
+  menu_name: portal-menu
+  menu_id: 1
+  settings: "ckeditor:\r\n config_file: /files/ck_config.js\r\n css_file: /files/ck_css.css\r\n"
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2020-07-14 18:35:38.278000000 Z
+    zone: *1
+    time: 2020-07-14 18:35:38.278000000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-08-07 18:07:30.598353000 Z
+    zone: *1
+    time: 2023-08-07 18:07:30.598353000 Z
+- id: 8
+  name: development
+  description: dummy site pointer
+  page_class: ArPage
+  menu_class: ArMenu
+  active: true
+  created_by: 2
+  updated_by: 2
+  menu_id: 1
+  alias_for: my.site.com
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-30 13:34:17.686382000 Z
+    zone: *1
+    time: 2023-07-30 13:34:17.686382000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-08-07 18:06:25.191374000 Z
+    zone: *1
+    time: 2023-08-07 18:06:25.191374000 Z
+
+ar_polls:
+- id: 2
+  name: login
+  title: Portal login
+  operation: link
+  parameters: "/portal/process_login"
+  display: td
+  form: "-\r\n   name: username\r\n   text: 'Username:'\r\n   type: text_field\r\n
+    \  html:\r\n     size: 15\r\n-\r\n   name: password\r\n   text: 'Password:'\r\n   type:
+    password_field\r\n   html:\r\n     size: 15\r\n-\r\n   name: send\r\n   text:
+    Prijava\r\n   type: submit_tag\r\n"
+  active: true
+  created_by: 5
+  updated_by: 5
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-20 12:03:35.064935000 Z
+    zone: *1
+    time: 2023-04-20 12:03:35.064935000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-20 12:04:12.692327000 Z
+    zone: *1
+    time: 2023-04-20 12:04:12.692327000 Z
+
+ar_parts:
+- id: 8
+  name: site aaa
+  link: site-aaa
+  order: 0
+  active: true
+  parent_id: 2
+  parent_type: ArSite
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 14:35:05.006981000 Z
+    zone: *1
+    time: 2023-04-10 14:35:05.006981000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 14:35:05.006981000 Z
+    zone: *1
+    time: 2023-04-10 14:35:05.006981000 Z
+- id: 9
+  name: diary part 1
+  link: diary-part-1
+  order: 0
+  active: true
+  parent_id: 2
+  parent_type: ArPage
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 14:35:52.427354000 Z
+    zone: *1
+    time: 2023-04-10 14:35:52.427354000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 14:35:52.427354000 Z
+    zone: *1
+    time: 2023-04-10 14:35:52.427354000 Z
+- id: 10
+  name: design 111
+  link: design-111
+  order: 0
+  active: true
+  parent_id: 1
+  parent_type: ArDesign
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 15:40:16.845446000 Z
+    zone: *1
+    time: 2023-04-10 15:40:16.845446000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 15:40:16.845446000 Z
+    zone: *1
+    time: 2023-04-10 15:40:16.845446000 Z
+- id: 11
+  name: ADSS
+  link: adss
+  body: "<p>SADC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S</p>\r\n"
+  order: 0
+  active: true
+  parent_id: 1
+  parent_type: ArSite
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:10:53.612882000 Z
+    zone: *1
+    time: 2023-07-06 07:10:53.612882000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:10:53.612882000 Z
+    zone: *1
+    time: 2023-07-06 07:10:53.612882000 Z
+- id: 12
+  name: asdc
+  link: sadf
+  description: acv
+  order: 0
+  active: true
+  parent_id: 1
+  parent_type: ArPage
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 10:43:24.847996000 Z
+    zone: *1
+    time: 2023-07-06 10:43:24.847996000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 10:43:24.847996000 Z
+    zone: *1
+    time: 2023-07-06 10:43:24.847996000 Z
+
+ar_policy_rules:
+- id: 1
+  ar_policy_id: 2
+  ar_role_id: 2
+  permission: 2
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-12 14:12:44.049159000 Z
+    zone: *1
+    time: 2023-04-12 14:12:44.049159000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-30 16:31:20.014206000 Z
+    zone: *1
+    time: 2023-07-30 16:31:20.014206000 Z
+- id: 4
+  ar_policy_id: 3
+  ar_role_id: 1
+  permission: 1
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-12 14:57:16.246599000 Z
+    zone: *1
+    time: 2023-04-12 14:57:16.246599000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-12 14:57:16.246599000 Z
+    zone: *1
+    time: 2023-04-12 14:57:16.246599000 Z
+- id: 5
+  ar_policy_id: 2
+  ar_role_id: 1
+  permission: 0
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-13 10:12:34.400861000 Z
+    zone: *1
+    time: 2023-04-13 10:12:34.400861000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-13 10:12:34.400861000 Z
+    zone: *1
+    time: 2023-04-13 10:12:34.400861000 Z
+- id: 6
+  ar_policy_id: 2
+  ar_role_id: 3
+  permission: 1
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-13 10:45:59.439421000 Z
+    zone: *1
+    time: 2023-04-13 10:45:59.439421000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-13 10:45:59.439421000 Z
+    zone: *1
+    time: 2023-04-13 10:45:59.439421000 Z
+- id: 8
+  ar_policy_id: 4
+  ar_role_id: 3
+  permission: 0
+  updated_by: 5
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 07:50:27.202116000 Z
+    zone: *1
+    time: 2023-04-21 07:50:27.202116000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 07:50:27.202116000 Z
+    zone: *1
+    time: 2023-04-21 07:50:27.202116000 Z
+- id: 9
+  ar_policy_id: 1
+  ar_role_id: 2
+  permission: 4
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:09:32.380947000 Z
+    zone: *1
+    time: 2023-07-06 07:09:32.380947000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:09:32.380947000 Z
+    zone: *1
+    time: 2023-07-06 07:09:32.380947000 Z
+- id: 10
+  ar_policy_id: 1
+  ar_role_id: 1
+  permission: 0
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:10:01.970206000 Z
+    zone: *1
+    time: 2023-07-06 07:10:01.970206000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:10:01.970206000 Z
+    zone: *1
+    time: 2023-07-06 07:10:01.970206000 Z
+- id: 11
+  ar_policy_id: 1
+  ar_role_id: 3
+  permission: 4
+  updated_by: 2
+  active: true
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:10:10.965848000 Z
+    zone: *1
+    time: 2023-07-06 07:10:10.965848000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 07:10:10.965848000 Z
+    zone: *1
+    time: 2023-07-06 07:10:10.965848000 Z
+ar_menus:
+- id: 1
+  name: prvi menu
+  description: Moj prvi menu
+  active: true
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 08:42:39.974945000 Z
+    zone: *1
+    time: 2023-02-23 08:42:39.974945000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 08:42:39.974945000 Z
+    zone: *1
+    time: 2023-02-23 08:42:39.974945000 Z
+- id: 2
+  name: drugi-menu
+  description: Moj drugi menu
+  active: true
+  ar_site_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 09:25:15.019008000 Z
+    zone: *1
+    time: 2023-02-23 09:25:15.019008000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 09:25:15.019008000 Z
+    zone: *1
+    time: 2023-02-23 09:25:15.019008000 Z
+- id: 3
+  name: portal-menu
+  description: Menu za portal
+  active: true
+  created_by: 5
+  updated_by: 5
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 07:52:55.681684000 Z
+    zone: *1
+    time: 2023-04-21 07:52:55.681684000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-25 10:24:11.006411000 Z
+    zone: *1
+    time: 2023-04-25 10:24:11.006411000 Z
+ar_menu_items:
+- id: 1
+  caption: aaaaa
+  link: aaaaa
+  order: 20
+  active: true
+  parent_id: 0
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 09:49:06.578475000 Z
+    zone: *1
+    time: 2023-02-23 09:49:06.578475000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 09:49:20.486060000 Z
+    zone: *1
+    time: 2023-02-23 09:49:20.486060000 Z
+- id: 2
+  caption: bbbb
+  link: bbbb
+  order: 80
+  active: true
+  parent_id: 0
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 09:49:14.715350000 Z
+    zone: *1
+    time: 2023-02-23 09:49:14.715350000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 09:49:27.645564000 Z
+    zone: *1
+    time: 2023-02-23 09:49:27.645564000 Z
+- id: 4
+  caption: dddddd
+  link: dddddd
+  active: true
+  parent_id: 3
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 11:41:22.169880000 Z
+    zone: *1
+    time: 2023-02-23 11:41:22.169880000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 11:41:22.169880000 Z
+    zone: *1
+    time: 2023-02-23 11:41:22.169880000 Z
+- id: 6
+  caption: bbb2
+  link: bbb2
+  active: true
+  parent_id: 2
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 11:42:07.591322000 Z
+    zone: *1
+    time: 2023-02-23 11:42:07.591322000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 11:42:07.591322000 Z
+    zone: *1
+    time: 2023-02-23 11:42:07.591322000 Z
+- id: 7
+  caption: '435435'
+  link: '435435'
+  active: true
+  parent_id: 4
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 11:46:01.308925000 Z
+    zone: *1
+    time: 2023-02-23 11:46:01.308925000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-23 11:46:01.308925000 Z
+    zone: *1
+    time: 2023-02-23 11:46:01.308925000 Z
+- id: 8
+  caption: Poslovno
+  link: poslovno
+  active: true
+  parent_id: 0
+  ar_menu_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-24 13:45:41.942067000 Z
+    zone: *1
+    time: 2023-02-24 13:45:41.942067000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-24 13:45:41.942067000 Z
+    zone: *1
+    time: 2023-02-24 13:45:41.942067000 Z
+- id: 9
+  caption: acbdfrxx
+  link: acbdfrxx
+  active: true
+  parent_id: 1
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-02-25 16:30:30.128953000 Z
+    zone: *1
+    time: 2023-02-25 16:30:30.128953000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-10 15:50:43.277627000 Z
+    zone: *1
+    time: 2023-04-10 15:50:43.277627000 Z
+- id: 10
+  caption: 345fff
+  link: 345fff
+  active: true
+  parent_id: 1
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-20 17:26:26.000206000 Z
+    zone: *1
+    time: 2023-03-20 17:26:26.000206000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-20 17:26:26.000206000 Z
+    zone: *1
+    time: 2023-03-20 17:26:26.000206000 Z
+- id: 11
+  caption: " 444grr"
+  link: 444grr
+  active: true
+  parent_id: 1
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-20 17:28:26.679268000 Z
+    zone: *1
+    time: 2023-03-20 17:28:26.679268000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-03-20 17:28:26.679268000 Z
+    zone: *1
+    time: 2023-03-20 17:28:26.679268000 Z
+- id: 12
+  caption: sadfd
+  link: sadfd
+  picture: dfg
+  active: true
+  parent_id: 9
+  created_by: 2
+  updated_by: 2
+  ar_menu_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-12 13:53:20.682563000 Z
+    zone: *1
+    time: 2023-04-12 13:53:20.682563000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-12 13:53:20.682563000 Z
+    zone: *1
+    time: 2023-04-12 13:53:20.682563000 Z
+- id: 13
+  caption: Home
+  link: home
+  page_id: 1
+  active: true
+  parent_id: 0
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 07:53:04.503523000 Z
+    zone: *1
+    time: 2023-04-21 07:53:04.503523000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-25 11:29:31.468173000 Z
+    zone: *1
+    time: 2023-04-25 11:29:31.468173000 Z
+- id: 14
+  caption: Uredi menu
+  link: prijava
+  page_id: 4
+  link_to: "/agile?table=ar_site"
+  target: iframe_edit
+  active: true
+  parent_id: 13
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:04:20.141433000 Z
+    zone: *1
+    time: 2023-04-21 08:04:20.141433000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-25 12:16:54.130837000 Z
+    zone: *1
+    time: 2023-04-25 12:16:54.130837000 Z
+- id: 15
+  caption: Diary
+  link: diary
+  page_id: 2
+  active: true
+  parent_id: 0
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:04:51.195656000 Z
+    zone: *1
+    time: 2023-04-21 08:04:51.195656000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:04:51.195656000 Z
+    zone: *1
+    time: 2023-04-21 08:04:51.195656000 Z
+- id: 16
+  caption: Opomniki
+  link: opomniki
+  page_id: 5
+  active: true
+  parent_id: 0
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:05:17.569100000 Z
+    zone: *1
+    time: 2023-04-21 08:05:17.569100000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:05:17.569100000 Z
+    zone: *1
+    time: 2023-04-21 08:05:17.569100000 Z
+- id: 17
+  caption: Banka
+  link: banka
+  page_id: 3
+  active: true
+  parent_id: 0
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:05:38.061569000 Z
+    zone: *1
+    time: 2023-04-21 08:05:38.061569000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:05:38.061569000 Z
+    zone: *1
+    time: 2023-04-21 08:05:38.061569000 Z
+- id: 18
+  caption: Banka
+  link: banka
+  page_id: 3
+  active: true
+  parent_id: 13
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:05:51.494208000 Z
+    zone: *1
+    time: 2023-04-21 08:05:51.494208000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-21 08:05:51.494208000 Z
+    zone: *1
+    time: 2023-04-21 08:05:51.494208000 Z
+- id: 19
+  caption: Še en
+  link: še-en
+  page_id: 4
+  active: true
+  parent_id: 13
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-24 11:46:00.304280000 Z
+    zone: *1
+    time: 2023-04-24 11:46:00.304280000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-24 11:46:00.304280000 Z
+    zone: *1
+    time: 2023-04-24 11:46:00.304280000 Z
+- id: 20
+  caption: Kr neki
+  link: kr-neki
+  page_id: 4
+  active: true
+  parent_id: 14
+  created_by: 5
+  updated_by: 5
+  ar_menu_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-24 12:49:02.608443000 Z
+    zone: *1
+    time: 2023-04-24 12:49:02.608443000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-04-24 12:49:57.873736000 Z
+    zone: *1
+    time: 2023-04-24 12:49:57.873736000 Z
+ar_key_value_stores:
+- id: 1
+  key: some
+  value: '10'
+ar_links:
+- id: 1
+  link: home
+  active: true
+  redirect: "/kr-nekam"
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 11:39:09.528837000 Z
+    zone: *1
+    time: 2023-07-06 11:39:09.528837000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-06 11:39:09.528837000 Z
+    zone: *1
+    time: 2023-07-06 11:39:09.528837000 Z
+ar_categories:
+- id: 1
+  name: prva
+  description: prva desc
+  ctype: 0
+  active: true
+  order: 0
+  updated_by: 2
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 10:11:36.032257000 Z
+    zone: *1
+    time: 2023-07-07 10:11:36.032257000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 11:40:03.106647000 Z
+    zone: *1
+    time: 2023-07-07 11:40:03.106647000 Z
+- id: 2
+  name: prva/prva
+  description: sadada
+  ctype: 0
+  parent: 1
+  active: true
+  order: 0
+  updated_by: 2
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 10:12:05.412207000 Z
+    zone: *1
+    time: 2023-07-07 10:12:05.412207000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 11:39:52.467954000 Z
+    zone: *1
+    time: 2023-07-07 11:39:52.467954000 Z
+- id: 3
+  name: 'druga '
+  description: 'še ena '
+  ctype: 0
+  parent: 1
+  active: true
+  order: 0
+  created_by: 2
+  updated_by: 2
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 11:40:31.597625000 Z
+    zone: *1
+    time: 2023-07-07 11:40:31.597625000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 11:40:31.597625000 Z
+    zone: *1
+    time: 2023-07-07 11:40:31.597625000 Z
+- id: 4
+  name: prva/druga/tretja
+  ctype: 0
+  parent: 3
+  active: true
+  order: 0
+  created_by: 2
+  updated_by: 2
+  ar_site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 11:40:59.212964000 Z
+    zone: *1
+    time: 2023-07-07 11:40:59.212964000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-07 11:40:59.212964000 Z
+    zone: *1
+    time: 2023-07-07 11:40:59.212964000 Z
+ar_permission_rules:
+- id: 1
+  ar_permission_id: 1
+  ar_role_id: 2
+  permission: 64
+  active: true
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-22 10:51:18.125728000 Z
+    zone: *1
+    time: 2023-07-22 10:51:18.125728000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-22 10:53:14.450675000 Z
+    zone: *1
+    time: 2023-07-22 10:53:14.450675000 Z
+- id: 2
+  ar_permission_id: 1
+  ar_role_id: 3
+  permission: 32
+  active: true
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 08:11:28.498452000 Z
+    zone: *1
+    time: 2023-07-23 08:11:28.498452000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 09:23:38.043865000 Z
+    zone: *1
+    time: 2023-07-23 09:23:38.043865000 Z
+- id: 3
+  ar_permission_id: 2
+  ar_role_id: 2
+  permission: 64
+  active: true
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 08:26:13.387559000 Z
+    zone: *1
+    time: 2023-07-23 08:26:13.387559000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-23 08:26:13.387559000 Z
+    zone: *1
+    time: 2023-07-23 08:26:13.387559000 Z
+- id: 4
+  ar_permission_id: 3
+  ar_role_id: 1
+  permission: 32
+  active: true
+  created_by: 2
+  updated_by: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-26 18:17:38.784246000 Z
+    zone: *1
+    time: 2023-07-26 18:17:38.784246000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-07-26 18:17:38.784246000 Z
+    zone: *1
+    time: 2023-07-26 18:17:38.784246000 Z
+ar_designs:
+- id: 1
+  description: Home design
+  rails_view: designs/home
+  active: true
+  updated_by: 2
+  site_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2020-07-14 18:35:38.320000000 Z
+    zone: *1
+    time: 2020-07-14 18:35:38.320000000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2023-06-18 14:29:26.359149000 Z
+    zone: *1
+    time: 2023-06-18 14:29:26.359149000 Z

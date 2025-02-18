@@ -1,0 +1,141 @@
+## YAML Template for ar_menu_items
+---
+table: ar_menu_item
+control: ar_menu_item
+
+index:
+  actions:
+    1:
+      type: link
+      action: new
+      caption: agile.new
+      icon: plus
+      table: ar_menu_item
+      params:
+        ids:
+          object: params
+          method: ids
+
+  data_set:
+    actions:
+      1: edit
+      2: delete
+
+    columns:
+      1:
+        name: caption
+        width: 20%
+      2:
+        name: link
+        width: 20%
+
+      3:
+        name: order
+      4:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  title: 
+    field: caption
+    
+  actions: 
+    1: back
+    2: save
+    3: save&back
+    10: 
+      type: window
+      caption: helpers.label.ar_menu.new_page
+      icon: note-add-o
+      table: ar_page
+      controller: agile
+      action: new
+      params:
+        from_menu: 1
+        table: 
+          object: site
+          method: page_class
+      active: not_new_record
+    20: 
+      type: window
+      caption: helpers.label.ar_menu.edit_page
+      icon: note-o
+      table: ar_page
+      controller: agile
+      action: edit
+      params:
+        id:
+          method: page_id
+        table: 
+          object: site
+          method: page_class
+      active:
+        eval: record.page_id.present?
+
+  tabs:
+    tab1:
+      10:
+        name: caption
+        type: text_field
+        size: 30
+      20:
+        name: picture
+        type: file_select
+        size: 50
+        preview: false
+      30:
+        name: link
+        type: text_field
+        size: 30
+      40:
+        name: page_id
+        type: select
+        choices: eval ArMenu.all_pages_for_site(@env.params)
+        include_blank: true
+      50:
+        name: link_to
+        type: text_field
+        size: 60
+      60:
+        name: target
+        type: text_with_select
+        choices: iframe_edit,_blank
+        include_blank: true
+        size: 10
+      70:
+        name: order
+        type: text_field
+        size: 2
+      80:
+        name: clas
+        type: text_field
+        size: 10
+      90:
+        name: policy_id
+        type: select
+        choices: eval agile_choices_for_site_policies
+        include_blank: true
+      100:
+        name: active
+        type: check_box
+      300:
+        name: ar_menu_id
+        type: hidden_field
+      310:
+        name: parent_id
+        type: hidden_field
+
+    tab2:
+      10:
+        name: ar_menu_items
+        type: belongs_to
+        form_name: ar_menu_item
+        load: delay
+
+    tab3:
+      10:
+        name: content
+        caption: false
+        type: html_field
+        options: 'height: 400'
+  

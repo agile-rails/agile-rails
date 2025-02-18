@@ -1,0 +1,43 @@
+## YAML Template
+---
+table: ar_role
+
+index:
+  filter: name, system_name
+  actions:
+    1: new
+
+  data_set:
+    actions:
+      1: edit
+      2: delete
+
+    columns:
+      1:
+        name: name
+
+      2:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  title: 
+    field: name
+    
+  actions: standard
+
+  fields:
+
+    10:
+      name: name
+      type: text_field
+      size: 50
+
+    20:
+      name: system_name
+      type: text_field
+      size: 50
+
+    30:
+      name: active
+      type: check_box

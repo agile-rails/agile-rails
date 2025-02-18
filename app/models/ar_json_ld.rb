@@ -1,0 +1,131 @@
+#--
+# Copyright (c) 2024+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#+
+
+########################################################################
+# == Schema information
+#
+# name: ar_json_ld : JSON_LD data for site optimization
+#
+#  id                   Integer       id
+#  type                 String        Type of structure
+#  data                 String        Structure data in YAML
+#  ar_json_lds          Object        Can embed substructure
+#  created_at           Time          created_at
+#  updated_at           Time          Last updated at
+#  created_by           Integer       created_by
+#  updated_by           Integer       Last updated by
+#
+########################################################################
+
+# Not implemented yet
+class ArJsonLd
+
+field :name,        type: String
+field :type,        type: String
+field :data,        type: String
+field :active,      type: Boolean, default: true
+
+embeds_many :ar_json_lds, cyclic: true
+
+field :created_by,  type: Integer
+field :updated_by,  type: Integer
+
+validates :name, presence: true
+validates :type, presence: true
+
+##########################################################################
+# Returns JSON LD data as YAML
+##########################################################################
+def get_json_ld(env_data)
+  yaml = (YAML.load(self.data) rescue nil) || {}
+  yaml['@type'] = self.type if yaml.size > 0
+  if ar_json_lds.size > 0
+    ar_json_lds.where(active: true).each do |element|
+      yml = element.get_json_ld(env_data)
+      if yml.size > 0
+        yaml[element.name] ||= []
+        yaml[element.name] << yml
+      end
+    end
+  end
+  yaml
+end
+
+########################################################################
+# Find document by ids when document are embedded into main d even if embedded
+# 
+# @param [tables] Tables parameter as send in url. Tables are separated by ;
+# @param [ids] ids as send in url. ids are separated by ;
+# 
+# @return [Document] 
+########################################################################
+def self.find_document_by_ids(tables, ids)
+  collection = tables.split(';').first.classify.constantize
+  ar_ids = ids.split(';')
+  # Find top document
+  document = collection.find(ar_ids.shift)
+  # Search for embedded document
+  ar_ids.each { |id| document = document.ar_json_lds.find(id) }
+  document
+end
+
+#########################################################################
+# Returns possible options for type select field on form.
+#########################################################################
+def self.choices_for_type
+  yaml = YAML.load_file(AgileHelper.form_file_find('json_ld_schema'))
+
+  yaml.map(&:first)
+end
+
+#########################################################################
+# Create menu to add schema element. Called from Agile Form action.
+#########################################################################
+def self.add_schema_menu(env)
+  yaml = YAML.load_file(AgileHelper.form_file_find('json_ld_schema'))
+  if (level = env.params['ids'].split(';').size) == 1
+    # select only top level elements
+    yaml.delete_if { |schema_name, schema_data| schema_data['level'].nil? }
+  else
+    # select only elemets which are subelements of type
+    env_type = self.find_document_by_ids(env.params['table'],env.params['ids']).type
+    _yaml = []
+    yaml[env_type].each_value do |data|
+      next unless data.class == Hash
+
+      _yaml << [data['type'], yaml[data['type']]] if data['type'] && yaml[data['type']]
+    end
+    yaml = _yaml
+  end
+  # create menu code
+  html = '<ul>'
+  yaml.each do |schema_name, schema_data|
+    next if level == 1 && schema_data['level'].nil?
+
+    url = "/agile_common/add_json_ld_schema?table=#{env.params['table']}&ids=#{env.params['ids']}&schema=#{schema_name}&url=#{env.request.url}"
+    html += %(<li class="ar-link-ajax in-menu" data-url="#{url}">#{schema_name}</li>)
+  end
+  "#{html}</ul>"
+end
+
+end

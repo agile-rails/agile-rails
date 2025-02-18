@@ -1,0 +1,33 @@
+table: ar_memory
+title: Test data entry with ajax action call
+
+form:
+  actions:
+    10:
+      type: ajax
+      icon: cog
+      caption: Error ajax call
+      title: Test error ajax call
+      table: ar_memory
+      action: run
+      control: ar_memory_test_ajax.ajax_call_not_exists
+
+    20:
+      type: ajax
+      icon: cog
+      caption: Ajax call
+      title: Test ajax call
+      table: ar_memory
+      action: run
+      control: ar_memory_test_ajax.my_ajax_call
+      method: post
+
+  fields:
+    10:
+      name: info
+      type: text_field
+      size: 10
+    20:
+      name: error
+      type: text_field
+      size: 10

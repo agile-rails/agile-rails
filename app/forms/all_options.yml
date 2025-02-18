@@ -1,0 +1,810 @@
+
+# Click on the option to discover more
+
+# TOP LEVEL
+table: table_name
+## Name of the model which will be used by the form. Rails ORM is using model names as a way to access tables so
+## model name in lowercase must be used.<br>
+extend: form_name
+## Form can extend another form. Extending form will first be loaded and then keys on the same level will be replaced by
+## the options in the current file. Options can also be deleted by specifying / as a option value.<br>
+## example: index: /    will remove index option from resulting form
+include: form_name
+## Similar to extend, but here included form will be added to current form. Options on the same level will be replaced by the Options in the included file.
+title: Dialog title
+## Default dialog title. If omitted title will be acquired from Rails locales.
+title:
+## Alternative way of setting title.
+  text: Same as above
+## same as above
+  eval: SomeClass.title_method
+## Dialog title can also be set dynamically. Preferred in the control file.
+controls: controls_file
+## Controls file name. By default it is the same as table option. If not specified, "_control" will be automatically added
+## to the value of controls option.
+readonly: true|1|Yes
+## This is a readonly form. No fields can be edited on the readonly form and some actions can also be hidden on a readonly
+## form. Same effect can be accomplished by setting readonly parameter in the URL.
+permissions:
+## Only users with specified roles can use the form. Users who don't have specified roles, will be rejected with no access message.<br>
+## So far only can_view option can be set
+  can_view: role_name,another_role_name
+  
+script: 'javascript code'
+## It is not the preferred way, but javascript code can also be defined on a form.
+css: 'css code'
+## It is not the preferred way, but CSS code can also be defined on a form.
+
+# INDEX
+
+index:
+## index option defines actions and fields which will be used for Rails index action usually for browsing table data.
+  filter: name, body as text_field
+## field names which can be used for filtering data. Fields must be defined on data entry definition in the form section. If field is not defined in the form section "as text_field" can be used.
+
+  actions: standard
+## Only standard actions will be used. Standard actions are: "check,new,filter,sort" and can be set in configurations file.
+  actions: standard,sort
+## When single standard action is omitted from default standard actions it can be added like this.
+  actions:
+## If required user defined actions standard actions can also be defined like this.
+    standard: yes
+## Same as actions: standard
+    1: new
+    2: filter
+    3: sort
+
+    1:
+## When you want to change caption of the standard action.
+      type: new
+      caption: Alternative caption
+    20:
+## All actions are numbered and are as all other numbered options sorted before being processed. Numbering options
+## is a hidden feature that allows options to be deleted or updated before the form is processed.<br>
+## Numbers from 0 to 9 are reserved for standard actions.<br><br>
+      type: link
+## Action type link will create an action button with a link.
+      caption: can.be.translated
+## All captions and labels can also be defined in locals. Trick is to use dot "." in the first 10 characters of text.
+      icon: icon-name
+## Name of the icon defined by material icons in drg_material_icons gem. If icon_name contains dot icon file will be specified
+## from assets. It it is preceded by path then it will be loaded from a file system.
+      title: Text for mouse over
+## Title text which will be displayed when button is hovered.
+      controller: controller_name
+## Controller name for the link. Default value is agile.
+      action: action_name
+## Action name for the link. Most common values are new, edit and run. Default value is index.<br>
+## More about run action read below at ajax action description.
+      table: table_name
+## Table name which which will be used by the AgileRails dialog.
+      form_name: form_name
+## Form name which which will be used by AgileRails dialog.
+      params:
+## Additional parameters that will be used by action. Parameters are specified by name and then by the method how they can
+## be retrieved. In the example below additional p_parents_ids parameter will be added to link. The value will be
+## retrieved from Rails internals params object and the metod(value) will be ids. Written as example: link_to(..., p_parent_ids: params['ids'])<br>
+## Parameters starting with p_ are hidden bonus. If loaded form uses field parent_ids its value will initially be filled with p_parent_ids value.
+        p_parent_ids:
+## Name of the parameter, that will be passed to called program.
+          object: params
+## Name of the Rails internals object from where value of the parameter will be obtained.
+## Possible values are: session, params, record, site, page or even class.method. record by default, meaning value will
+## be acquired from current record.
+          method: ids
+## Name of the method that will be used to acquire parameter value. In the case of session or params this is value of the key
+## for the specified parameter.
+
+      url: link_url
+## Instead of specifying controller/action/table/form_name/params direct URL link can be specified.
+      html:
+## Any HTML5 data that will be added to final link.
+        class: ar-link-spinner
+        data-confirm: Confirm dialog text.
+## In this case data confirmation dialog will be opened before action is executed.
+    30:
+      type: popup
+## Popup window will open when action is clicked. Rest of the options are similar to link options
+      icon: view_timeline-o
+## Name of the icon defined by material icons in drg_material_icons gem. If icon_name contains dot (.), icon file will be loaded
+## from assets. If it is preceded by path (/) then it will be loaded from a file system.
+      caption: Events
+## All captions and labels can also be defined in locals. Trick is to use dot "." in the first 10 characters of text.
+      table: ar_memory
+## ar_memory is special rails model, which is used to enter data, which is not saved in the database. It can be used to enter
+## program settings or to specify parameters for programs which will be executed directly or in background etc...
+## Also notice that action must be set to new, otherwise AgileRails will try to read data from database before the dialog is shown.
+## Result of the data entry dialog must be processed in the controls file.
+      form_name: form_name
+## Form name which will be used by AgileRails dialog.
+      action: new
+## In this case must be new. For more read above table option.
+      params:
+## In this case called url will contain parameter id which will be acquired from current record id field.
+        id:
+          method: id
+      html:
+## Any HTML5 data that will be added to final link.
+
+    40:
+      type: window
+## Popup window will open when action is clicked. Rest of the options are similar to link options
+      icon: view_timeline-o
+## Name of the icon defined by material icons in drg_material_icons gem. If icon_name contains dot icon file will be specified
+## from assets. It it is preceded by path then it will be loaded from a file system.
+      caption: Events
+## All captions and labels can also be defined in locals. Trick is to use dot "." in the first 10 characters of text.
+      table: ar_memory
+## ar_memory is special rails model, which is used to enter data, which is not saved in the database. It can be used to enter
+## program settings or to specify parameters for programs which will be executed directly or in background etc...
+## Also notice that action must be set to new, otherwise AgileRails will try to read data from database before the dialog is shown.
+## Result of the data entry dialog must be processed in the controls file.
+      form_name: form_name
+## Form name which which will be used by AgileRails dialog.
+      action: new
+## In this case must be new. For more read above table option.
+      params:
+## In this example called url will contain parameter id which will be acquired from current record id field.
+        id:
+          method: id
+      html:
+## Any HTML5 data that will be added to final link.
+
+    50:
+      type: ajax
+## XMLHttpRequest will be used to call server program and result of the call will be processed by awaiting script.
+## Unfortunately for now the best description for DSL used to control return of ajax call can be found in source code in
+## agile_rails/app/assests/javascripts/agile/agile.js file. Look for process_json_result function.
+      caption: Confirm all selected
+## All captions and labels can also be defined in locals. Trick is to use dot "." in the first 10 characters of text.
+      icon: check
+## Name of the icon defined by material icons in drg_material_icons gem. If icon_name contains dot icon file will be specified
+## from assets. It it is preceded by path then it will be loaded from a file system.
+      action: run
+## run action is the action that will save space in Rails routes file. Agile run action will
+## load control file specified by "control" option and then call method specified after the dot. Which is similar
+## to invoking action in Rails controller.
+      table: table_name
+## By default ar_memory. Table name is not required but if used, called program will check if the user has the rights to view the data in the table.
+## Rights to access can also be specified in control file by specifying can_process callback.
+## If not specified access to ar_memory table defined in "Table access permissions" should block any user which is not logged in.
+      control: SomeControl.method_to_be_called
+## When processing run action, AgileController will first extend itself with control file and then try to call the specified method.
+## If the method is not found it will throw an error.
+      method: get, put, post
+## method defines html method used for the call. Default value is get.
+
+    60:
+      type: menu
+## Action can also provide a drop_down menu which will be shown when user hovers the action button. It was an idea that
+## was abandoned later, but the option is still available.
+      caption: Some caption
+## All captions and labels can also be defined in locals. Trick is to use dot "." in the first 10 characters of text.
+      eval: menu_for_whatever
+## Evaluate helper method to get the menu data. Menu data must be organized within ul/li html tags.
+      eval: ModulClass.menu_for
+## or evaluate method in a class to get the menu data. Menu data must be organized within ul/li html tags.
+
+    70:
+      type: field
+## Actions area can also have data entry fields beside filter entry field. They can be used for quick searching and filtering. They can be processed in controls file by setting javascript trigger on field change.
+      name: field_name
+## If field_name is already defined in the form section, this is all you need
+      position: right,left
+## Position of the field on actions area. By default it is positioned on the right side of actions area.
+
+    80:
+      type: field
+## When field name is not defined in the form section.
+## All options are the same as defining data entry field in the form section except type parameter, which is renamed to field_type for obvious reason.
+      name: start_date
+      field_type: date_picker
+      position: left
+  # DATA SET
+
+  data_set:
+## Data set options define the data and how it will be displayed when browsing table. If "type: method" option is used
+## it can also define use helper method or view partial to display data.
+    type: method
+## Ruby method will be used to get html content for the view.
+    eval: my_helper_method
+## html content will be provided by helper.
+    view: path_to/partial
+## html content will be provided by Rails view partial.
+
+  data_set:
+## Default data_set options define columns data and how it will be displayed in the view.
+    filter: custom_filter_method
+## filter option defines method which will be used to filter data in a view. Method must be specified in a control file.
+## If not specified default_filter method is used. If method is not defined in a control file, filter entered by filter action
+## is applied to table data.
+    footer: custom_footer_method
+## When table in a view must contain footer record it can be provided by method defined in footer option. Default value is
+## default_footer. @footer_record can be specified anywhere in the controls file since it is a class variable. It also need'nt
+## to be of current record class. It can be an array with elements corresponding to view columns.
+    per_page: 10
+## Number of rows displayed per page in a view. Default is 25.
+
+    dblclick:
+## By default when double clicking on a row of a view, show action will be executed, and it will load current form with readonly
+## option. This action can be overwritten by dblclick option. id parameter is automatically added to called url.
+      table: table_name
+## Table name which which will be used by the AgileRails dialog.
+      form_name: form_name
+## Form name which which will be used by AgileRails dialog.
+      action: show
+## Rails action. Default is get.
+      readonly: 1
+## Called dialog will be readonly
+      window_close: 1 (close), 2 (history.back)
+## If specified, this option defines which action will be used for closing called dialog. 1 - will use window.close,  2 - will
+## use history.back and it can depend on how parent dialog is opened.
+
+    table_style: 'color: green; width: 200%;'
+## Additional style can be appended to view's table. Use width option to stretch table beyond the viewport.
+    table_class: t-class
+## Additional class can be appended to view's table.
+    tr_style: 'color: green;'
+## Additional style can be appended to view's table row.
+    tr_style:
+## Style can also be defined dynamically with eval option.
+      eval: "record['result'] < 0 ? 'color: red;' : 'color: #000;'"
+    tr_class: tr-class
+## Specific class can be defined for a view's row.
+
+    actions: standard
+## Standard data_set actions can be check,edit,show,duplicate,delete and can be configured.
+    actions: standard,edit,show,duplicate,delete
+## When standard actions are not part of standard definition
+    actions:
+      standard: yes
+## When you need user defined actions standard actions can also be defined like this.
+      0: check
+## Special check action will add checkbox to every row and enable processing selected records.
+## Check action must be defined with the key 0.
+      1: edit
+      2:
+        type: duplicate
+## Duplicate action will try to duplicate currently selected record. If record has related records in another table they
+## can be processed by dup_record callback in control file. Newly duplicated record can be accessed as @record before it is saved.
+        dup_fields: name,another_field
+## When you duplicate record, fields defined as unique will prevent duplication. dup_fields option will add " dup" value to those fields.
+      3:
+        type: delete
+## In this example standard delete action will have alternative title and icon.
+        title: Delete it
+        icon: trash
+
+      10:
+## All actions are numbered and are as all other numbered options sorted before being processed. Numbering options
+## is a hidden feature that allows options to be deleted or updated before the form is processed.<br>
+## Numbers from 0 to 9 are reserved for standard actions.
+        type: ajax
+## XMLHttpRequest will be used to call server action and result of the call will be processed by awaiting script.
+## For more about specifying options for the action see previous ajax action description.
+        icon: check
+        action: run
+        table: table_name
+        control: SomeControl.some_method
+        params:
+          ids:
+## Value of ids param will be forwarded to called action.
+            object: params
+            method: ids
+          user_id:
+## Value of user_id field will be acquired from current record.
+            method: user_id
+          design_id:
+## Value of design_id field will be acquired from landing page data (@page.design_id).
+            object: page
+            method: design_id
+
+# Look also the above index actions
+
+# COLUMNS
+
+    columns:
+## columns option defines which fields from table will be visible in the view.
+      1:
+## All columns are numbered and are as all other numbered options sorted before being processed. Numbering options
+## is a hidden feature that allows options to be deleted or updated before the form is processed.<br>
+        name: title
+## Name of the field from model. This also includes any method defined in a model.
+        width: 25% (none || hidden)
+## Width of the column. If specified in px strange offsets may occure. Column can also be hidden. Default value is 15%
+        align: left | right | center
+## Align of the column. Default value is left.
+        style: 'color: red;'
+## Additional style added to the column.
+        td_class: class-name
+## Additional class added to the column.
+        td_style:
+## Similar to style just that the return value can accept valid ruby expression
+          eval: "record.value < 0 ? 'color: red;' : 'color: black;'"
+## In the example cell will be painted red if value of the field value is less then 0. Otherwise it will be painted in black.
+      2:
+        name: site_id
+## Name of the field from model. This also includes any method defined in a model.
+        eval: agile_name_for_id,ar_site,name
+## Option eval will evaluate ruby expression to get the value for the cell. Custom method, which must be defined in Rails helpers,
+## will receive two parameters. Current record and value of the current field.<br>
+## Some of the helpers methods, like agile_name_for_id, are predefined and can be written simplified. Method receives two parameters:<br>
+## model_name : Name of the model<br>
+## name : name of the field to be returned<br>
+## agile_name_for_id helper will look into model_name table for record with id = site_id and return the value of the name field.
+      3:
+        name: valid_from
+## Name of the field from model. This also includes any method defined in a model.
+        format: D
+## Format date_time in default date format
+        format: '%d.%m.%Y'
+## Custom date format
+      4:
+        name: number
+## Name of the field from model. This also includes any method defined in a model.
+        format: N2
+## Format number with 2 decimals
+      5:
+        name: active
+        eval: agile_icon_for_boolean
+## Predefined helper for displaying checked or unchecked icon
+      6:
+        name: selected
+        eval: agile_name_for_value
+## Predefined helper for displaying descriptions instead of values for select fields with choices defined in locales.
+
+# FORM
+
+form:
+## Form option defines input fields and actions for create, edit and show action.
+  title:
+## If not specified title defined on the top of the form will be used
+    field: description
+## When editing data value of the field will be displayed in the dialog title. Example: Edit : Pages : My first page
+  title:
+## Title can also be defined for specific action
+    edit: Title for edit
+## Title for edit action
+    show: Title for show
+## Title for show action
+  labels_position: top,left
+## Labels positions can be defined in configuration,  but can be changed in form. Left means labels will be displayed
+## left of the input field, top will put labels on top of input field.
+  actions_position: top,bottom,both
+## Actions panel position can be defined in configuration, but can be changed in form. Personally I like actions on top and bottom
+## of the dialog, especially when data is entered on mobile devices.
+  height: 600
+## Height of the dialog is dynamically changed every time dialog is created or tab is pressed.
+## With height you can specify fixed height of the dialog
+
+  actions: standard,back,save,save&back,refresh,enable,new
+## Forms standard actions are: "back,save,save&back,refresh,enable,new" and can be set in configurations file
+## configuration options are same as for index and data_set actions.
+
+  actions:
+## Most of the actions are created the same so everything written above also stands for form actions. There are some options
+## that make sense only when editing data.
+    10:
+## All form actions are numbered and are as all other numbered options sorted before being processed. Numbering options
+## is a hidden feature that allows options to be deleted or updated before the form is processed.<br>
+## Numbers from 0 to 9 are reserved for standard actions.
+      type: ajax
+      controller: ctrl
+      action: action
+      method: (get),put,post
+      caption: ajax_call
+      control: control_name.method_to_call
+      show: default,always,readonly
+## Some actions don't make sense when editing record and some don't make sense when record is beeing viewed. If the option is omitted
+## or option's value is default then action is display only when record is edited. Readonly means that action is displayed ony when
+## record is show or in readonly mode. Always defines that action is always present.
+
+      active: new_record, not_new_record
+## Action can be active or disabled. Action will be active when new record is created or record is edited  - not_new_record.
+      active:
+## Activity can be determined by evaluating Ruby expression. In the example below depending on user_id field is present.
+        eval: record.user_id.present?
+      active: SomeClass.is_active_method
+## Activity can be determined by evaluating a class method. Rails environment is sent as parameter to the called method.
+      active:
+## Same as above, just different syntax
+        method: SomeClass.is_active_method
+      html:
+## Any valid HTML5 element can be added to action
+        data-validate: no
+## Use when there is HTML5 validation active on form input fields and you want to execute action (ex. close dialog)
+## without data validation.
+
+    20:
+      type: window
+## This action will open dialog in a new window
+      controller: agile
+      form_name: form
+      table: table
+      action: edit
+      method: (get),put,post
+      caption: Edit linked document
+      params:
+        id:
+          object: record (can be omitted)
+          method: page_id
+        user:
+          object: session
+          method: user_id
+      html:
+## Any valid HTML5 element can be added to action<br>
+## In the examples below data-x and data-y options will force new window size to be 800px * 400px
+        data-x: 800
+        data-y: 400
+        data-fields: field1,field2,...
+## Values of the fields on the current dialog will be used as parameters to the action called.
+    30:
+      type: script
+## Script action will execute javascript code defined as js: option
+      caption: Cancel
+      js: parent.location.reload();
+    40:
+      type: submit
+## Submit action will perform form submit.
+      caption: Send
+      value: first_submit
+## Value for submit can be defined. If not defined value has the value of caption and it might be localized.
+
+#FIELDS
+# All input fields defined by agile_rails project can be found in agile_rails/app/models/agile_form_fields folder. You can look
+# how input fields are defined and create your own data input fields if you need.
+
+  fields:
+## Here is where the definition of input fields on a form begins. If form has data distributed on tabs then tabs option
+## is used instead of fields following by first tab name on the next level. From there on definition of input fields on a single tab
+## is the same as defining input fields with fields option.>br><br>
+    10:
+## All data entry fields are numbered and are as all other numbered options sorted before being processed. Numbering options
+## is a hidden feature that allows options to be deleted or updated before the form is processed.<br>
+       # required
+      name: sender_email
+## Name of the field in the record (table). Field must exist in the table otherwise runtime error will be thrown. To debug
+## runtime errors you may look at sessions[:form_processing] value, which holds data of the line in which error occurred.<br>
+## If you want to include fields that are not defined in database table then you must implement two methods to retrieve and assign data
+## in the model. These methods are def field_name and def field_name=(value)<br><br>
+## If you want to include fields that are not defined in a tabel model, then field name must be preceded with underscore.
+## These fields may then be processed in control file in before_save or after_save callbacks like params[:record][:_field_name].
+       # required
+      type: text_field
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormHelper/text_field,text_field input field.
+
+       # Following options apply to most of the fields
+
+      caption: Name of the label text
+       # or
+      text:
+       # or
+      label:
+## Caption, text and label options are interchangeable except for some fields like check_box where label is used for label after
+## the check_box field and caption is used for defining label left from the check_box field.<br><br>
+## It is better practice to define field labels in Rails locales.
+      help: Some help for the name field
+## It is better practice to define help text for the fields in Rails locales. Help text is displayed when you hover
+## the input field label and assembled when you click on help icon.
+      size: 20
+## Size of the input field
+      group: 2, 3
+## Group 2 or 3 fields grouped in a row
+      line: top, bottom
+## Draw a line before or after this field to divide fields into groups. On last implementation lines were replaced visually
+## just by implementing different CSS rules. But the option name stays the same.
+      readonly: yes | true | 1
+## If readonly option is specified the field is displayed on a form, but it will not be saved to the table. If you want a
+## field to be displayed on a form and also to be saved to table then you should use readonly field type.
+      default: 10
+## There are many ways to initialize value of a field when new record is created. It can be defined in database, in controls file
+## or it can be defined with default option on the form.
+      default:
+        eval: session[:user_id]
+## Default value can also be obtained by evaluating any valid ruby expression.
+
+      html:
+## Anything by html5 standards like the two examples below.
+        style: 'color: red'
+        type: email
+
+    20:
+      type: action
+## Action button can also me placed anywhere on the form. Everything written for previous actions is also valid for action buttons on the form.
+      action_type: popup,ajax,window,popup,link,submit
+## Since type option is reserved for type of field, action_type option defines type of the action.
+      caption: Export data
+      icon: icon_name
+      action: new
+      method: get
+      form_name: data_export
+      table: ar_memory
+      params:
+        table_name:
+          object: params
+          method: table
+
+    30:
+      name: ar_parts
+      type: belongs_to
+## It is possible to edit main table record and table which holds related records on the same form. The form for editing
+## related data is loaded into its own iframe on the main form. When primary form is reloaded secondary form is also reloaded. When related
+## table has no need for control file, belongs_to_control can be used, to default_filter only data belonging to parent record and to
+## assign parent's id to parent_id field when record is saved. If not, the logic must be implemented in custom control file.
+      belongs_to: ar_page
+## Name of the model to whom this table is related to.
+      form_name: ar_part
+## Form name that will be used to edit related data.
+      refresh: default,delay,always
+## By default iframe displaying related table will resize itself according to the size of data. But there is a problem with browsers
+## which can't retrieve size of the objects that are hidden on the tabs. Refresh option defines when iframe will be updated.
+## Possible values are: default : on creation, delay : when parent tab is first selected, always : always when tab is clicked.
+
+    40:
+      name: status
+      type: check_box
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormHelper/check_box,check_box input field.
+      choices: yes,no
+## It is preferred to define choices in Rails locales. If the field is boolean type, then choices option can be omitted.
+      checked_value: yes
+## The same as above together with option below. Just a longer version.
+      unchecked_value: no
+      label: label
+## Checkbox field may have a label written right to the check box. If used, set text to blank like in the example below.
+      text: ' '
+      html:
+## Anything by html5 standards that apply to check_box
+
+    50:
+      type: comment
+## Comment type will simply output text into edit form.
+      text: myapp.comment_text
+## Text to be displayed.
+      caption: false
+## If you want the comment to spread from left to right site of the form set caption to false.
+      html:
+## Anything by html5 standards
+        style: 'color: red'
+        class: some_class
+
+    60:
+      name: date_begin
+      type: date_picker
+## Implementation of input field for selecting date. The implementation uses link=https://xdsoft.net/jqplugins/datetimepicker/,DateTimePicker javascript library.
+## Link also shows different options that can be used by date_picker input field.
+      options: 'inline: true'
+
+    70:
+      name: valid_date
+      type: date_select
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/DateHelper/date_select,date_select input field.
+      options:
+        include_blank: true
+      html:
+
+    80:
+      name: start_at
+      type: datetime_picker
+## Implementation of input field for selecting time. The implementation uses link=https://xdsoft.net/jqplugins/datetimepicker/,DateTimePicker javascript library.
+## Link also shows different options that can be used by datetime_picker input field.
+      options: 'step: 60, inline: true'
+       # or
+      options:
+        step: 60
+        inline: true
+      html:
+
+    90:
+      name: end_time
+      type: datetime_select
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/DateHelper/datetime_select,datetime_select input field.
+      options:
+        include_blank: true
+      html:
+
+    100:
+      name: title
+      type: file_field
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormHelper/file_field,file_field input field. The logic for extracting
+## data and process file must be done in control file. Best in before_save callback.
+      size: 30
+      html:
+
+    110:
+      name: picture
+      type: file_select
+## File select input field use file manager to manage files on server. You can read more about how to configure
+## file manager object in agile_rails/app/models/agile_form_fields/file_select.rb file.<br>
+## Agile Rails provides agile_rails_html_editor gem, which includes link=https://github.com/Studio-42/elFinder,elFinder javascript file manager.
+      size: 50
+
+    120:
+      name: im_hidden
+      type: hidden_field
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormHelper/hidden_field,hidden_field input field.
+## Hidden fields are not visible on the dialog, but their value will be saved to the database like any other field.
+
+    130:
+      name: body
+      type: html_field
+## html_field should start ritch text editor for editing data in table field. You can read more about how to configure
+## html_field object in agile_rails/app/models/agile_form_fields/html_field.rb file.<br>
+## Agile Rails provides agile_rails_html_editor gem, which includes link=https://ckeditor.com,CKEditor javascript rich text editor.
+      options: "height: 500, width: 550, toolbar: 'basic'"
+
+    140:
+      type: link_to
+## Same as type: action, action_type: link. It was created so it can be used on poll forms.
+      caption: Some action
+      icon: cogs
+      controller: my_controller
+      action: my_action
+      id: id # will be replaced by record.id
+      # or
+      url: /some/url
+
+    150:
+      name: galery
+      type: method
+## Type Method will call method defined in helpers or in Class and paint it's return. Useful when you want to display some complex data
+## or create a custom input field, without creating agile_form_fields object.
+      eval: show_gallery
+## Method defined in a helper
+      eval: MyClass.show_gallery
+## Method defined in a class
+
+    160:
+      name: kategories
+      type: multitext_autocomplete
+## Multitext autocomplete is complex input field which uses autocomplete function to add values to the list of values. It
+## can be used where select with multiple option or tree_select have too many options. It receives and returns data as Array object.
+      search:
+        table: ar_site
+        field: name
+## Data for autocomplete function will be searched in ar_site model and field name will be returned as description.
+      table: ar_site
+      search: name
+## Same as above just shorter
+      search: ar_site.name
+## Same as above in single line
+      search: ModelClass..method_name
+## Autocomplete can also call custom method defined in a model class. It is important that the method is defined in a Model Class
+## since autocomplete checks if the user has view rights to the table. Method will receive currently typed characters into
+## input field and must return array of possible choices [[text, id], [text, id], ....]
+      with_new: ar_site
+## If a record is not found in searched table, dialog for entering new record into table can be invoked in a new window.
+## It is assumed that table and form_name are the same.
+      size: 30
+
+    170:
+      name: value
+      type: number_field
+## Implementation of field for entering numbers or values. Entering whole numbers can be done with text_field, but for
+## entering decimal numbers or to display thousands delimiters number_field should be used.
+      size: 10
+      format:
+## Which characters are used for formating is defined in Rails locales. Here we define number of decimals and if thousands
+## delimiter will be present or not.
+        decimals: 2
+        delimiter: false
+      format: N2
+## Short version. Thousand delimiter will be present.
+
+    180:
+      name: password
+      type: pasword_field
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormHelper/password_field,password_field input field.
+      size: 10
+
+    200:
+      name: hifi
+      type: radio_button
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormHelper/radio_button,radio_button input field.
+      choices: 'Marantz:1,Sony:2,Bose:3,Pioneer:4'
+## It is preferred to define choices in Rails locales. For variations of defining choices see select input field.
+      inline: true
+## By default choices are displayed stacked. If inline option is set to true, they are displayed inline.
+
+    210:
+      name: user
+      type: readonly
+## Readonly input field is displayed on the form but it's value will not be saved to database on save action.
+      name: user_id
+## In this example readonly field will display user's name instead of the value of user_id field.
+      eval: agile_name_for_id,ar_user,name
+
+    220:
+      name: type
+      type: select
+## Implementation of link=https://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/select,select input field.
+      choices: helpers.label.model.choices_for_field
+## It is preferred to define choices for select in Rails locales. When choices option is omitted choices will be obtained
+## from helpers.label.model.choices_for_field_name Rails locale. But can also be defined in any locale like in this example.
+      choices: Audi,BMW,Mercedes
+## Choices for select defined in a form
+      selected: BMW
+## BMW choice will be selected
+      choices: Audi:1,BMW:2,Mercedes:3
+      selected: 2
+## In this case text will bi shown to user but value will be written to database.
+      choices:
+## Choices for select will be acquired by evaluating valid ruby expression. Return of the expression can be array with single elements
+## or array containing arrays with two elements. [[text1, value1], [text2, value2], ...]
+        eval: ArCategory.values_for_env
+      depend: company,another_field
+## Value of the select field may depend on the value of other fields on a form. When the value of depend field changes
+## the choices for select field will also change. In the background autocomplete function is used so choices for the
+## select must be obtained by evaluating ruby expression. Called method will receive value of the depend field. If field depends
+## on more then one fields then parameter will bi divided with the comma.
+      include_blank: Select car
+## Select input field can have a blank choice available.
+
+    230:
+      type: submit_tag
+## Like link_to, submit_tag can also be putted anywhere on the form. This is implementation of
+## Rails link=https://apidock.com/rails/ActionView/Helpers/FormBuilder/submit,submit field.
+      caption: translate.this
+      icon: check
+
+    240:
+      name: css
+      type: text_area
+      size: 100x30
+      html:
+        # anything by html5 standards
+
+    250:
+      name: user_id
+      type: text_autocomplete
+      search: ar_user.name
+      search: Class..some_method
+      search:
+        table: ar_user
+        field: name
+        method: some_method
+      is_id: false
+      size: 30
+      with_new: ar_user
+      with_edit: ar_user
+
+    260:
+      name: title
+      type: text_field
+      size: 30
+      html:
+        required: yes
+        # and anything by html5 standards
+
+    270:
+      name: link
+      type: text_with_select
+      choices: eval @env.agile_page_class.all_pages_for_site(@env.agile_get_site)
+      size: 50
+
+    280:
+      name: categories
+      type: tree_select
+      choices: eval Categories.all_categories
+      multiple: true
+      parent_disabled: false
+      parent_opened: false
+      size: 50x10
+
+# tabbed input form
+
+  tabs:
+    tab1:
+      caption: my_caption
+      caption: helpers.label.table.tab1
+
+      10:
+        name: name
+        type: text_field
+        size: 50
+
+    # any AgileRails form field definition same as with fields
+
+    tab2:
+    # any AgileRails form field definition same as with fields
+    tab3:
+##

@@ -1,0 +1,29 @@
+<%= agile_page_top %>
+
+<% if false %>
+<%= session.inspect %>
+<div id="site-frame">
+ <div id="site-top">
+    <div style="float: left;">
+      <span id="app-title">Agile rails test</span>
+    </div>
+
+    <div style="float: left;"> 
+      <%= agile_render :ar_menu, name: agile_get_site.menu_name %>
+    </div>
+
+    <div style="float: right;">
+      <%#= agile_render(:home, method: 'login') %>
+    </div>
+
+    <div style="clear: both;"></div>
+  </div>
+  
+  <div id="page">
+    Some data
+  </div>
+</div>
+<% end %>
+
+<%= agile_flash_messages() %>
+<%= agile_page_bottom %>

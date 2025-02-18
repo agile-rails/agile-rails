@@ -1,0 +1,52 @@
+## YAML Template for Polls
+---
+#title: Big table values
+table: ar_big_table_value
+control: belongs_to
+
+index:
+#filter: name, site  
+  actions: standard
+
+  data_set:
+    actions:
+      1: edit
+      2:
+        type: duplicate
+        dup_fields: value
+
+      3: delete
+
+    columns:
+      1:
+        name: value
+        width: 20%
+      2:
+        name: description
+        width: 20%
+      3:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  title: 
+    field: value
+  actions:
+    standard: true
+    2: save
+
+  fields:
+    10:
+      name: value
+      type: text_field
+      size: 50
+
+    20:
+      name: description
+      type: text_field
+      size: 50
+
+    30:
+      name: locales
+      type: text_area
+      size: 50x20

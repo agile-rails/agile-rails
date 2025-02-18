@@ -1,0 +1,163 @@
+#--
+# Copyright (c) 2023+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+# AgileRails slovenska (sl) lokalizacija
+sl:
+  agile:
+    "true": "da"
+    "false": "ne"    
+    record_deleted: Dokument izbrisan!
+    confirm_delete: Potrdite izbris dokumenta!
+    confirm_dup: Potrdite podvajanja dokumenta!
+    not_authorized: Uporabnik nima pravic za to operacijo!
+    record_disabled: Dokument onemogočen!
+    record_enabled:  Dokument omogočen!
+    record_saved: Dokument zapisan!
+    record_info: Info
+    record_no_delete: Dokumenta ni možno izbrisati!
+    record_no_update: Dokumenta ni možno spremeniti!
+    copy_clipboard: Kopija vsebine dokumenta v novem oknu.
+    paste_clipboard: Obdelaj podatke
+    paste_title: Ustvari (spremeni) dokumente iz JSON zapisa
+    paste_update: Spremeni obstoječ dokument, če dokument._id obstaja
+    edit_content: Urejanje vsebine
+    edit_advanced: Napredno urejanje
+    edit_new_page: Ustvarite novo stran
+    edit_new_part: Ustvarite nov element na strani
+    edit_design: 'Uredi: Dizajn'
+    edit_site: 'Uredi: Spletišče'
+    edit_page: 'Uredi: Stran'
+    file_manager: Organizator datotek
+    edit_selected: 'Uredi: Izbrano tabelo'
+    invalid_username: Napaka uporabnik ali geslo!
+    menu_plus: Malo drugačen menu
+    not_email: ni veljaven e-naslov!
+    not_valid: ni veljaven!
+    updated_by_other: Dokument je spremenil drug uporabnik. Prosimo ponovite vpis podatkov.
+    dfs: Dvojno shranjevanje. Vračanje v zgodovino brskalnika ni dovoljeno.
+    not_id: Vsebina polja ni ključ ID!
+    cms_main: CMS tabele
+    cms_advanced: CMS napredne opcije   
+    search_placeholder: Vpišite pojem za iskanje
+    login: Prijava v CMS
+    username: Uporabnik
+    password: Geslo
+    form_error: Napaka pri branju forme %{form_name}
+    img_large: Klik za večjo sliko
+    no_class: Razred (class) [%{class}] ni definiran!
+    no_method: Metoda (helper) [%{method}] ne obstaja!
+    img_alt_not_present: Vse slike v vsebini morajo imeti vpisano nadomestno besedilo
+    already_defined: je že definiran!
+    search: Išči
+
+    toggle_cms: Preklopi med CMS urejanjem in prikazom
+    edit: Urejanje
+    show: Prikaz
+    new: Dodaj
+    duplicate: Podvoji
+    sort: Razvrsti
+    filter: Filter
+    refresh: Osveži
+    back: Nazaj
+    next: Naprej
+    steps: Koraki
+    finish: Zaključek
+    close: Zapri
+    cancel: Preklic
+    delete: Izbris
+    enable: Omogoči
+    disable: Onemogoči
+    disabled: 'Neaktivna '
+    save: Shrani
+    save&back: Shrani in nazaj
+    save&close: Shrani in zapri
+    filter_on: Vklopi filter
+    filter_off: Izklopi filter
+    filter_set: Nastavi filter
+    maximize: Povečaj
+    minimize: Pomanjšaj
+    reload: Osveži    
+    error: Napaka!
+    errors_no: 'Število napak:'
+    runtime_error: Napaka med izvajanjem programa!
+    two_chars: vpišite vsaj dva znaka
+    print: Tiskanje
+    export: Izvoz
+    result: Rezultat
+
+    created_by: Ustvaril
+    updated_by: Spremenil
+    created_at: Ustvarjeno
+    updated_at: Spremenjeno
+    active: Aktiven
+    new_record: Nov zapis
+    
+    filter_poll: Filter
+    filter_poll_title: Filtriraj podatke
+    export_poll: Izvoz
+    export_poll_title: Izvoz in prenos rezultatov ankete v datoteko
+
+    choices_for_filter_operators: 'Je enak:eq,Vsebuje:like,Je večji od:gt,Je manjši od:lt,Je prazen:empty'
+    
+    browse_collections: Brskanje po definicijah zbirk
+    category_has_subs: Kategorije ni mogoče izbrisati, ker vsebuje podrejene elemente.
+    category_as_tree: Uredi v drevesnem pogledu
+
+    iframe_save_to_view: Za prikaz vsebine je potrebno predhodno shraniti podatke.
+
+    ar_journal:
+      zero_selected: Ni izbranih podatkov!
+      restored: Podatki so restavrirani.
+      restore: Restavriraj      
+      
+    filters:
+      this_site_only: Samo dokumenti trenutne spletne strani
+
+    ar_help:
+      help: POMOČ
+      fields_button: Opis podatkov
+      comments_button: Opombe
+      title: Urejanje dokumentov pomoči
+      project: Projekt
+      lang: Jezik
+      project_refresh: Osveži
+      project_refresh_title: Osveži seznam že pripravljenih dokumentov
+      form_name: Forma
+      updated_at: Spremenjeno
+      1basic: Osnovno
+      2index: Index
+      3form: Forma
+
+    ar_image:
+      wrong_type: Nedovoljena vrsta slike. Dovoljene so vrste (jpg jpeg png gif svg webp).
+      no_file: Nisem našel originalne slike. Predlagam, da sliko ponovno naložite.
+      invoke: Zagon iskalnika slik.
+      search: Poiščite in izberite sliko
+      select: Kliknite za izbiro
+      preview: Kliknite za ogled slike
+      image: Slika
+      available: Velikosti na voljo
+      offset_error: Vpišite samo X ali Y zamik.
+
+
+

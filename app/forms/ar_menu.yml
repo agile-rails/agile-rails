@@ -1,0 +1,67 @@
+## YAML Template for ar_menu
+---
+table: ar_menu
+
+index:
+  filter: name, description
+  actions: standard
+
+  data_set:
+    actions:
+      5: edit
+      10:
+        type: duplicate
+        dup_fields: name
+      20: delete
+
+    columns:
+      10:
+        name: name
+
+      20:
+        name: description
+        width: 50%
+
+form:
+  title: 
+    field: name
+    
+  actions: back,save,save&back
+  tabs:
+    tab1:
+      10:
+        name: name
+        type: text_field
+        size: 20
+
+      20:
+        name: description
+        type: text_field
+        size: 50
+
+      30:
+        name: link_name
+        type: check_box
+      40:
+        name: div_name
+        type: text_field
+        size: 20
+      50:
+        name: ar_site_id
+        type: select
+        choices: eval ArSite.choices_for_sites
+        include_blank: true
+
+    tab2:
+      10:
+        name: ar_menu_items
+        type: belongs_to
+        form_name: ar_menu_item
+        load: delay
+
+    tab3:
+      20:
+        name: css
+        type: text_area
+        html:
+          size: 100x50

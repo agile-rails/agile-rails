@@ -1,0 +1,76 @@
+## 
+---
+table: ar_journal
+
+index:
+  filter: tables as text_field, user_id, site_id
+  actions:
+    1: filter
+
+  data_set:
+    actions:
+      1: edit
+
+    columns:
+      10:
+        name: operation
+        width: 10%
+      15:
+        name: time
+        width: 12%
+      20:
+        name: user_id
+        eval: agile_name_for_id,ar_user,name
+      30:
+        name: site_id
+        eval: agile_name_for_id,ar_site,name
+      40:
+        name: tables
+
+form:
+  actions:
+    10: back
+
+    20: 
+      type: ajax
+      caption:  agile.ar_journal.restore
+      controller: agile_common
+      action: restore_from_journal 
+      request: post
+  tabs:
+    1ids:
+      5:
+        name: operation
+        type: readonly
+      10:
+        name: time
+        type: readonly
+
+      20:
+        name: site_id
+        type: select
+        choices: eval ArSite.choices_for_sites
+        readonly: yes
+      30:
+        name: user_id
+        type: text_autocomplete
+        search: ar_user.name
+        readonly: yes
+      40:
+        name: tables
+        type: readonly
+      50:
+        name: record_id
+        type: readonly
+      60:
+        name: ids
+        type: readonly
+      70:
+        name: ip
+        type: readonly
+
+    2diff:
+      10:
+        name: diff
+        type: journal_diff
+        caption: false

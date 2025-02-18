@@ -1,0 +1,138 @@
+de:
+  agile:
+    "true": "ja"
+    "false": "nein"
+    record_deleted: Datensatz gelöscht!
+    confirm_delete: Löschung des Datensatzes bestätigen!
+    confirm_dup: Duplizierung des Datensatzes bestätigen!
+    not_authorized: Benutzer ist für diese Operation nicht autorisiert!
+    record_disabled: Datensatz deaktiviert!
+    record_enabled: Datensatz aktiviert!
+    record_saved: Datensatz gespeichert!
+    record_info: Info
+    record_no_delete: Datensatz kann nicht gelöscht werden!
+    record_no_update: Datensatz kann nicht aktualisiert werden!
+    copy_clipboard: Datensatzdaten in neues Fenster kopieren
+    paste_clipboard: Datensatz aktualisieren oder erstellen
+    paste_title: Datensätze aus JSON-Daten einfügen (aktualisieren)
+    paste_update: Vorhandenen Datensatz aktualisieren, wenn record._id vorhanden ist
+    edit_content: Inhalt bearbeiten
+    edit_advanced: Erweiterte Bearbeitung
+    edit_new_page: Neue Seite erstellen
+    edit_new_part: Neuen Teil erstellen
+    edit_design: 'Bearbeiten: Design'
+    edit_site: 'Bearbeiten: Website'
+    edit_page: 'Bearbeiten: Seite'
+    file_manager: Dateimanager
+    edit_selected: Datensätze in der ausgewählten Sammlung bearbeiten
+    invalid_username: Ungültiger Benutzername oder Passwort!
+    menu_plus: Alternatives Menü anzeigen
+    not_email: ist keine gültige E-Mail-Adresse!
+    not_valid: ist nicht gültig!
+    updated_by_other: Datensatz wurde von einem anderen Benutzer aktualisiert. Bitte geben Sie Ihre Daten erneut ein.
+    dfs: Doppelter Übermittlungsfehler! Das Zurückgehen in der Historie ist verboten.
+    not_id: Der eingegebene Wert ist keine ID!
+    cms_main: Haupttabellen
+    cms_advanced: Erweiterte Tabellen
+    search_placeholder: Zum Suchen tippen beginnen
+    login: Anmeldung im Agile-System
+    username: Benutzername
+    password: Passwort
+    form_error: Fehler beim Laden des Formulars %{form_name}
+    img_large: Klicken für größeres Bild
+    no_class: Klasse [%{class}] nicht definiert!
+    no_method: Methode (Helfer) [%{method}] nicht definiert!
+    img_alt_not_present: Alle Bilder im Text müssen einen Alternativtext haben
+    already_defined: bereits definiert!
+    search: Suchen
+
+    toggle_cms: System-Bearbeiten/Ansehen-Modus umschalten
+    edit: Bearbeiten
+    show: Anzeigen
+    duplicate: Duplizieren
+    new: Neu
+    sort: Sortieren
+    filter: Filtern
+    refresh: Aktualisieren
+    back: Zurück
+    next: Weiter
+    finish: Beenden
+    steps: Schritte
+    close: Schließen
+    cancel: Abbrechen
+    delete: Löschen
+    enable: Aktivieren
+    disable: Deaktivieren
+    disabled: 'Deaktiviert '
+    save: Speichern
+    save&back: Speichern & zurück
+    save&close: Speichern & schließen
+    filter_on: Filter EIN
+    filter_off: Filter AUS
+    filter_set: Filter setzen
+    maximize: Maximieren
+    minimize: Minimieren
+    reload: Neu laden
+    error: Fehler!
+    errors_no: 'Anzahl der Fehler:'
+    runtime_error: Laufzeitfehler!
+    two_chars: mindestens zwei Zeichen eingeben
+    print: Drucken
+    export: Exportieren
+    result: Ergebnis
+
+    created_by: Erstellt von
+    updated_by: Aktualisiert von
+    created_at: Erstellt am
+    updated_at: Aktualisiert am
+    active: Aktiv
+    new_record: Neuer Datensatz
+
+    filter_poll: Filter
+    filter_poll_title: Umfragedaten filtern
+    export_poll: Export
+    export_poll_title: Umfragedaten in einer Datei hochladen
+
+    choices_for_filter_operators: 'Gleich:eq,Beinhaltet:like,Größer als:gt, Kleiner als:lt, Ist leer:empty'
+
+    browse_collections: Alle Sammlungen durchsuchen
+    category_has_subs: Kategorie kann nicht gelöscht werden, da sie Unterelemente enthält.
+    category_as_tree: Im Baumansicht bearbeiten
+
+    iframe_save_to_view: Um Inhalte hinzuzufügen, müssen Sie zuerst die Daten speichern!
+
+    ar_journal:
+      zero_selected: Keine Daten ausgewählt!
+      restored: Daten wurden wiederhergestellt.
+      restore: Wiederherstellen
+
+    ar_captcha:
+      simple_message: Bitte geben Sie den Namen des Monats Nummer %{number} im Jahr ein.
+
+    filters:
+      this_site_only: Nur Datensätze der aktuell ausgewählten Website
+
+    ar_help:
+      help: HILFE
+      fields_button: Datenbeschreibung
+      comments_button: Kommentare
+      title: Hilfsdatensätze verwalten
+      project: Projekt
+      lang: Lokalisierung
+      project_refresh: Aktualisieren
+      project_refresh_title: Liste der verfügbaren Datensätze aktualisieren
+      form_name: Formular
+      updated_at: Aktualisiert am
+      1basic: Grundlegend
+      2index: Index
+      3form: Formular
+
+    ar_image:
+      wrong_type: Bildtyp nicht erlaubt! Erlaubte Typen sind (jpg jpeg png gif svg webp).
+      no_file: Originalbilddatei nicht vorhanden. Versuchen Sie erneut, die Bilddatei hochzuladen.
+      invoke: Bildmanager aufrufen.
+      search: Bild suchen und auswählen
+      select: Zum Auswählen klicken
+      preview: Zum Anzeigen des Bildes klicken
+      available: Verfügbare Bildgrößen
+      offset_error: Geben Sie entweder den X- oder Y-Versatz ein.

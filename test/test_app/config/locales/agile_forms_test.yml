@@ -1,0 +1,49 @@
+#--
+# Copyright (c) 2024+ Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+en:
+  helpers:
+    label:
+      ar_memory:
+        table_title: Demonstration of different Agile Forms fields
+        1-TextInput: TEXT INPUT
+        2-Select: SELECT FIELDS
+        3-Select: SELECT CONTINUES
+        4-DateTime: Date&Time
+        5-Content: Content
+        9-Result: RESULT
+# choices        
+        choices_for_field21: 'Yes,No'
+        choices_for_field22: 'Waiting:1,Sending:2,Sent:3,Error:4'
+        
+        field11: Enter data
+        field20: check_box
+        field21: select
+        field22: select with blank
+
+        
+# help pomoč na obrazcih ####################################################
+
+    help:
+      ar_memory:
+        number: Some number

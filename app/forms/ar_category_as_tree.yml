@@ -1,0 +1,31 @@
+## YAML Template for page
+---
+extend: ar_category
+
+index:
+  actions:
+    10: /
+
+  data_set:
+    type: method
+    eval: categories_as_tree
+
+  form:
+    actions:
+      standard: /
+      1:
+        type: link
+        caption:  agile.back
+        icon: arrow-back
+        form_name: ar_category_as_tree
+        table: ar_category
+        params:
+          ids:
+            object: params
+            method: ids
+
+      10:
+        type: submit
+        caption: 'agile.save&back'
+        form_name: ar_category_as_tree
+        table: ar_category

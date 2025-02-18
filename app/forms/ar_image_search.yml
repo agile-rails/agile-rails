@@ -1,0 +1,83 @@
+# Form for ar_image search
+table: ar_image
+title: agile.ar_image.search
+
+index:
+  actions:
+    1: close
+    2:
+      type: window
+      action: new
+      icon: plus
+      caption: agile.new
+      table: ar_image
+      params:
+        window_close: 0
+    3:
+      type: ajax
+      action: run
+      icon: search
+      caption: agile.search
+      method: post
+      control: ar_image.images_search
+      params:
+        field_name:
+          object: params
+          method: field_name
+
+    10:
+      type: field
+      name: short
+      field_type: text_field
+      size: 20
+
+    20:
+      type: field
+      name: keyword
+      field_type: text_field
+      size: 40
+
+    30:
+      type: field
+      caption: user
+      name: created_by
+      field_type: select
+      eval: ArImage.all_users
+      html:
+        include_blank: true
+
+  data_set:
+    filter: search_filter
+    actions:
+      1:
+        type: window
+        action: edit
+        icon: edit-o
+        caption: false
+        table: ar_image
+        form_name: ar_image
+        params:
+          window_close: 0
+        html:
+          title: agile.edit
+
+    # Choose from
+    # _id,created_at,updated_at,name,text,size_l,size_m,size_s,categories,created_by,ar_user_id
+    columns:
+      10:
+        name: preview
+        eval: first_ar_image
+        caption: agile.ar_image.image
+        width: 20%
+      20:
+        name: short
+      30:
+        name: links
+        eval: select_links_for_ar_image
+        caption: agile.ar_image.available
+
+css: "
+.img-link {padding: 2px 4px; margin-right: 1rem; background-color: #ddd; border-bottom: 3px solid #222;}
+.ar-image-preview img {max-height: 3rem;}
+.img-link i:hover {color: #2C8EFF; cursor: pointer;}
+"

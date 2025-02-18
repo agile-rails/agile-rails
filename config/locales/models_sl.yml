@@ -1,0 +1,1065 @@
+#--
+# Copyright (c) 2012-2013 Damjan Rems
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#++
+
+# AgileRails slovenska (sl) lokalizacija podatkovnih modelov
+
+sl:
+  helpers:
+# labels komentarji na obrazcih #############################################
+    label:
+      ar_site:
+        table_title: Spletišča
+        1basic: Osnovno
+        2parameters: Parametri
+        3advanced: Napredno
+        4design: Dizajn
+        5permissions: Dostop
+        6parts: Elementi
+
+        name: Spletišče
+        description: Opis
+        homepage_link: Povezava domov
+        error_link: Povezava napake
+        css: CSS
+        header: Glava strani
+        route_name: Privzeta povezava
+        page_title: Naslov
+        favicon: Favicon slikica
+        page_table: Tabela strani
+        page_class: Razred strani
+        menu_class: Razred menija
+        site_layout: Rails layout
+        files_directory: Mapa z datotekami
+        request_processor: Metoda zahtevka
+        logo: Logotip
+        ar_policies: Politike za dostop
+        active: Aktivna
+        menu_name: Menu
+        ck_config: CK config
+        ck_css: CK css  
+        alias_for: Alias za
+        settings: Nastavitve
+        rails_view: Rails view
+        design: Standard dizajn
+        ar_parts: Sestavni elementi
+        inherit_policy: Uporabi od strani
+
+      ar_design:
+        table_title: Dizajni
+        tab1: Osnovno
+        tab2: Elementi
+
+        name: Ime
+        description: Opis
+        body: Vsebina
+        code: Koda
+        params: Parametri
+        css: CSS
+        author: Avtor
+        updated_by: Spremenil
+        active: Aktiven
+        ar_parts: Elementi 
+        rails_view: Rails view datoteka
+        site_id: Spletišče
+        updated_at: Spremenjeno
+
+      ar_user:
+        table_title: Uporabniki
+        1base: Osnova
+
+        id: Id
+        username: Uporabnik
+        title: Titula
+        first_name: Ime
+        middle_name: Srednje ime
+        last_name: Priimek
+        name: Naziv
+        address: Naslov
+        post: Pošta
+        country: Država 
+        phone: Telefon
+        email: e-Naslov
+        picture: Slika
+        birthdate: Datum rojstva
+        about: Več o
+        last_visit: Zadnji obisk
+        active: Aktiven
+        valid_from: Velja od         
+        valid_to: Velja do
+        updated_by: Spremenil
+        group: Je skupina
+        member: Član v skupinah
+        ar_user_roles: Uporabniške vloge 
+        password: Geslo
+        password_confirmation: Potrdi geslo
+        signature: podpis
+
+      ar_user_role:
+        table_title: Uporabnikove vloge
+
+        ar_role_id: Vloga
+        has_cms_menu: CMS menu
+        valid_from: Velja od
+        valid_to: Velja do
+        updated_by: Spremenil
+        active: Aktivna
+
+      ar_poll:
+        table_title: Ankete
+        choices_for_operation: 'Poženi program:poll_submit,Povezava:link'
+        choices_for_display: 'Zgoraj:td,Levo:lr,Znotraj:in'
+        tab1: Podatki
+        tab2: Skriptna koda
+        tab3: Vsebina
+        tab4: Vsebina - napredno
+
+        name: Ime
+        title: Naslov
+        sub_text: Kratek opis
+        operation: Operacija
+        parameters: Parametri
+        display: Napis
+        css: CSS
+        js: Skriptna koda
+        pre_display: Pred prikazom zaženi
+        valid_from: Velja od
+        valid_to: Velja do
+        ar_poll_items: Vrstice
+        captcha_type: Catpcha
+        active: Aktivna
+        form: Forma
+
+      ar_poll_item:
+        table_title: Vnosne vrstice
+        choices_for_type: Podatek:text_field,Tekst:text_area,Izbirno:select,Izbirni gumb:check_box,Zaključek:submit_tag,Povezava:link_to,Geslo:password_field,Komentar:comment,Radio:radio
+        choices_for_separator: Presledek:&nbsp;,Prazna vrstica:<br />,Ravnilo:<hr>
+
+        name: Naziv
+        text: Napis
+        type: Vrsta
+        size: Velikost
+        mandatory: Obvezen
+        separator: Ločilo
+        options: Opcije
+        order: Zaporedje
+        active: Aktivna
+        
+      ar_poll_result:
+        table_title: Rezultati anket
+
+        ar_poll_id: Anketa
+        created_at: Nastalo
+        data: Podatki
+        confirmed: Potrjen
+
+      ar_policy:
+        table_title: Politike za dostop
+
+        name: Naziv
+        description: Opis
+        is_default: Je privzeta
+        active: Aktivna
+        ar_policy_rules: Pravila
+        message: Sporočilo
+
+      ar_policy_rule:
+        table_title: Pravila politike za dostop
+        choices_for_permission: BREZ DOSTOPA:0,LAHKO GLEDA:1,LAHKO DODAJA:2,LAHKO UREJA:4,LAHKO UREJA VSE:8,LAHKO BRIŠE:16,LAHKO BRIŠE VSE:32,ADMINISTRATOR:64,SUPERADMIN:128
+        choices_for_site_permission: BREZ DOSTOPA:0,LAHKO GLEDA:1,LAHKO UREJA
+
+        ar_role_id: Vloga za dostop
+        permission: Dovoljenja
+        active: Aktiven
+        updated_by: Spremenil
+
+      ar_role:
+        table_title: Vloge za dostop
+
+        name: Naziv vloge 
+        system_name: Sistemska vloga
+        active: Aktiven        
+
+      ar_simple_menu:
+        table_title: Meniji enostavni
+        tab1: Osnovno
+        tab2: Točke menija
+        tab3: CSS
+
+        name: Ime
+        description: Opis
+        div_name: Div id
+        link_prepend: Predpona povezave
+        css: CSS
+        active: Aktiven
+        ar_simple_menu_items: Točke menija
+        ar_site_id: Spletišče
+
+        
+      ar_simple_menu_item:
+        table_title: Točke menujev
+
+        caption: Napis
+        picture: Slika
+        target: Ciljno okno
+        link: Povezava
+        link_prepend: Predpona povezave
+        order: Zaporedje
+        submenu: Podmenu
+        css: CSS  
+        active: Aktiven
+        policy_id: Politika za prikaz
+
+      ar_menu:
+        table_title: Meniji
+        tab1: Osnovno
+        tab2: Točke menija
+        tab3: CSS
+
+        name: Ime
+        description: Opis
+        link_prepend: Predpona povezave
+        div_name: Div id
+        css: CSS
+        active: Aktiven
+        ar_menu_items: Točke menija
+        new_page: Nova stran
+        edit_page: Uredi stran
+
+      ar_menu_item:
+        table_title: Točke menujev
+        tab1: Osnovno
+        tab2: Točke menija
+        tab3: Kot HTML
+
+        caption: Napis
+        picture: Slika
+        target: Ciljno okno
+        link: Povezava
+        link_prepend: Predpona povezave
+        order: Zaporedje
+        css: CSS  
+        active: Aktiven
+        policy_id: Politika za prikaz
+        ar_menu_items: Podmeniji
+        page_id: Dokument
+        hidden: Je skrit
+        clas: Class
+        content: Vsebina menija
+
+      ar_ad:
+        table_title: Oglasi
+        choices_for_type: Sličica:1,Flash:2,Skripta:3      
+        choices_for_link_target: Istem oknu:_self,Novem oknu:_blank
+
+        position: Področje
+        description: Kratek opis
+        type: Vrsta
+        script: Skripta
+        link: Povezava
+        file: Datoteka
+        height: Višina
+        width: Širina
+        valid_from: Velja od
+        valid_to: Velja do
+        displays: Prikazov
+        clicks: Klikov
+        priority: Prioriteta
+        displayed: Prikazano
+        clicked: Poklikano
+        active: Aktiven
+        updated_by: Urejal   
+        ar_site_id: Spletišče
+        link_target: Povezavo odpri
+
+      ar_page:
+        table_title: Strani
+        choices_for_comments: 'Dovoljeno:1,Ni dovoljeno:0'
+        choices_for_if_scroll: 'Avto:Auto,Da:Yes,Ne:No'
+        1base: Osnovno
+        2advanced: Napredno
+        3content: Vsebina
+        4parts: Elementi
+        5iframe: IFrame
+
+        subject: Zadeva
+        link: Povezava
+        sub_subject: Povzetek
+        picture: Slika
+        alt_link: Alt povezava
+        css: CSS
+        script: Skript
+        params: Parametri
+        menu_id: Meni
+        author_id: Avtor
+        author_name: Avtor
+        body: Vsebina
+        ar_user_id: Naredil uporabnik
+        user_name: Naredil uporabnik
+        publish_date: Datum objave
+        valid_from: Velja od
+        valid_to: Velja do
+        comments: Komentarji
+        active: Aktiven
+        ar_parts: Elementi
+        ar_design_id: Dizajn
+        policy_id: Politika za dostop
+        ar_site_id: Spletišče
+        kats: Kategorije
+        gallery: Slikovna galerija
+        updated_at: Spremenjeno
+        picture: Slika
+        ar_poll_id: Anketa
+        if_url: URL naslov
+        if_width:  Širina
+        if_height: Višina
+        if_scroll: Pomikanje
+        if_border: Okvir
+        if_params: Parametri
+        if_id: CSS id
+        if_class: CSS class 
+        _update_menu: Spremeni meni
+        div_class: DIV class
+
+      ar_seo:
+        seo: SEO
+        title: Naslov za brskalnik
+        meta_description: Meta opis
+        canonical_link: Canonical link
+        ar_json_lds: Strukturni podatki
+        
+      ar_part:
+        table_title: Elementi strani
+        1base: Osnovno
+        2content: Vsebina
+        3advanced: Napredno
+
+        name: Naziv
+        description: Opis
+        link: Povezava
+        picture: Slika
+        thumbnail: Mala slika
+        body: Vsebina
+        css: CSS
+        script: Skripte
+        script_type: Vrsta skripte
+        piece_id: Sestavni element
+        div_id: Lokacija (div)
+        order: Zaporedje
+        params: Parametri
+        updated_by: Spremenil
+        updated_at: Spremenjeno
+        active: Aktiven
+        valid_from: Velja od
+        valid_to: Velja do
+        policy_id: Politika za dostop
+
+
+      ar_piece:
+        table_title: Sestavni elementi strani
+        tab1: Osnovno
+        tab2: Napredno
+        tab3: Vsebina
+
+        name: Naziv
+        description: Opis
+        link: Povezava
+        picture: Slika
+        thumbnail: Mala slika
+        body: Vsebina
+        css: CSS
+        script: Skripte
+        script_type: Vrsta skripte
+        site_id: Spletišče
+        div_id: Lokacija (div)
+        order: Zaporedje
+        params: Parametri
+        updated_by: Spremenil
+        updated_at: Spremenjeno
+        active: Aktiven
+        valid_from: Velja od
+        valid_to: Velja do
+
+      ar_permission:
+        table_title: Pravila za dostop do tabel s podatki
+
+        table_name: Ime tabele
+        is_default: Privzeto za vse
+        active: Je aktivno
+        ar_permission_rules: Vloge in pravila
+
+        ar_permission_rule:
+          table_title: Pravila za posamezno uporabniško vlogo
+
+          active: Aktiven
+          ar_role_id: Uporabniška vloga
+          permission: Dovoljenje
+
+      ar_folder_permission:
+        table_title: Pravila za dostop do map s podatki
+
+        folder_name: Ime mape
+        is_default: Privzeto za vse
+        inherited: Podedovano
+        active: Je aktivno
+        ar_policy_rules: Vloge in pravila
+
+      ar_link:
+        table_title: Povezave in bližnjice
+
+        link: Povezava
+        params: Parametri
+        redirect: Prevezava
+        page_id: Pokaži stran
+        ar_site_id: Spletišče
+        active: Aktiven
+
+      ar_category:
+        table_title: Kategorije
+        choices_for_ctype: 'Revija:1,Predstavitev številke:2,Splet:3,Oglasi:4'        
+
+        name: Naziv
+        description: Opis
+        ctype: Vrsta
+        order: Zaporedje
+        parent: Nadrejeni
+        active: Aktiven
+        ar_site_id: Spletišče
+        updated_at: Spremenjen
+
+      ar_mail:
+        table_title: Poštna sporočila
+        tab1: Sporočilo
+        tab2: Prejemniki
+        tab3: Ostalo
+        choices_for_status: 'V pripravi:0,Pripravljeno:1,Pošilja:2,Napaka:3,Zaključeno:10' 
+
+        subject: Zadeva
+        body: Sporočilo
+        from: Pošilja
+        to_test: Naslov za test
+        to_list: Seznami naslovov
+        to_address: Posamezni naslovi
+        schedule: Pošlji ob
+        send_time: Poslano
+        status: Stanje
+        css: CSS
+
+      ar_mail_list:
+        table_title: Seznami e-poštnih naslovov
+
+        name: Naziv
+        description: Opis seznama
+        params: Parametri
+        active: Aktiven
+
+      ar_mail_address:
+        table_title: e-Poštni naslovi
+
+        email: e-Pošta
+        ar_user_id: Uporabnik
+        active: Je aktiven        
+        reason: Razlog
+        ar_mail_list_members: Seznami  
+
+      ar_mail_list_member:
+        table_title: Seznami naslovov
+
+        ar_mail_list_id: Seznam
+        active: Je aktiven       
+        reason: Razlog        
+
+      ar_big_table:
+        table_title: Velika tabela 
+
+        key: Ključ
+        description: Opis
+        active: Aktiven
+        site_id: Spletišče
+        ar_big_table_values: Vrednosti
+
+      ar_big_table_value:
+        table_title: Velika tabela - vrednosti
+
+        value: Vrednost
+        active: Aktiven
+        description: Opis
+        ar_big_table_locales: Prevodi
+
+      ar_big_table_locale:
+        table_title: Velika tabela - prevodi
+
+        locale: Šifra države
+        description: Opis vrednosti
+
+      ar_journal:
+        table_title: Dnevnik sprememb
+        1ids: Identifikacija
+        2diff: Razlike
+
+        operation: Operacija
+        ip: IP naslov
+        time: Čas
+        site_id: Spletišče
+        user_id: Uporabnik
+        tables: Tabela
+        id: ID zapisa
+        ids: Nadrejeni id-ji
+        diff: Razlike
+
+      ar_ident:
+        table_title: Dodatne identifikacije
+
+        key: Ključ
+        value: Vrednost
+        
+      ar_key_value_store:
+        table_title: Shramba za razna številčenja
+
+        key: Ključ
+        value: Vrednost
+
+      ar_filter:
+        table_title: Shramba za podatkovne filtre
+        
+        ar_user_id: Uporabnik
+        table: Tabela
+        description: Opis
+        filter: Vsebina filtra
+        public: Je javen
+        sort: Privzeto razvrsti
+        
+
+      ar_memory:
+        fields: Splošno
+        ztab: Napredno
+        ar_element: Ime elementa
+        
+      ar_removed_url:
+        table_title: Nektivni URL naslovi
+
+        url: URL naslov
+        description: Razlog umika
+        ar_site_id: Spletišče
+        updated_at: Spremenjeno
+        
+      ar_gallery:
+        table_title: Tabela slikovne galerije
+
+        title: Naslov
+        description: Opis
+        picture: Velika slika
+        thumbnail: Mala slika
+        doc_id: Dokument
+        order: Zaporedje
+        active: Aktiven
+        created_at: Ustvarjeno
+
+      ar_json_ld:
+        table_title: Struktirirani podatki za spletno stran
+        choices_for_type: Organizacija:Organization,Kontakt:ContactPoint
+
+        name: Ime
+        type: Tip
+        data: Podatki
+        created_at: Narejeno
+        updated_at: Spremenjeno
+        active: Aktiven
+        ar_json_lds: Podelement strukture
+
+      ar_image:
+        table_title: Organizator slik
+
+        upload_file: Naloži datoteko
+        name: Originalno ime
+        short: Kratek opis
+        text: Daljši opis
+        keep_original: Ohrani original
+        size_o: Prvotna dimenzija
+        size_l: Velika dimenzija
+        size_m: Srednja dimenzija
+        size_s: Mala dimenzija
+        size_ls: Velika dimenzija
+        size_ms: Srednja dimenzija
+        size_ss: Mala dimenzija
+        offset_lx: Zamik X
+        offset_ly: Zamik Y
+        offset_mx: Zamik X
+        offset_my: Zamik Y
+        offset_sx: Zamik X
+        offset_sy: Zamik Y
+        preview_s: Slika
+        preview_m: Slika
+        preview_l: Slika
+
+        categories: Kategorije
+        cats_input: Kategorije
+        categories_line: Kategorije
+        created_by: Naložil
+
+      ar_setup:
+        table_title: Tabela nastavitev aplikacij
+        tab0: Nastavitve
+        tab00: Form
+
+        name: Naziv nastavitev
+        form: Obrazec za zajem
+        data: Vsebina
+        editors: Urejevalci
+
+
+# help pomoč na obrazcih ####################################################
+
+    help:
+      ar_site:
+        name: Ime strani npr. www.mysite.com
+        description: Kratek opis strani
+        homepage_link: Povezava do strani, ki bo prikazana ob izbiri domov
+        error_link: Povezava do strani z napako 
+        header: Dodatne definicije, ki se uporabijo v glavi spletnega dokumenta
+        css: CSS veljaven za to stran
+        route_name: Privzeta predpona za povezavo do vsebine. Pri nas bi uporabili stran ali clanek. Privzeta vrednost je page.
+        page_title: Naslov, ki ga prikaže brskalnik v naslovni vrstici, ko le tega ni mogoče pridobiti iz dokumenta
+        favicon: Favicon slikica. Relativno na public direktorij.
+        page_table: Ime tabele (mongo collection), ki vsebuje podatke o straneh
+        page_class: Ime Rails razreda modela, ki določa tabelo s podatki o straneh. Običajno DcPage.
+        menu_class: Ime Rails razreda modela, ki določa tabelo s podatki o meniju. Običajno DcMenu.
+        site_layout: Rails layout, ki se bo uporabil za izris strani. Privzet je application.
+        files_directory: Ime direktorija, kjer se nahajajo dokumenti, slike, priponke
+        logo: Slika logotip podjetja
+        ar_policies: Privzete politike za dostop do podatkov spletišča
+        active: Ali je stran aktivna
+        menu_name: Ime menija za to spletišče
+        ck_config: CK editor javascript configuracijska datoteka
+        ck_css: CK editor CSS configuracijska datoteka
+        alias_for: Alias (nadomestno), ki kaže na pravo spletno stran
+        settings: Nastavitve veljavne za to spletišče
+        rails_view: Rails view datoteka uporabljena za standard dizajn
+        design: Standard dizajn lahko definirate tudi pri spletišču
+        ar_parts: Sestavni elementi strani
+        request_processor: Ime ruby metode, ki bo klicana namesto ar_process_default_request 
+        inherit_policy: Uporabi politiko od druge strani
+
+      ar_design:
+        name: Unikatno ime za dizajn. Pomembno za iskanje
+        description: Kratek opis dizajna
+        body: Vsebina dizajna, ki se bo izvedla kot vsaka Rails view datoteka
+        css: CSS za dizajn
+        author: Ime avtorja
+        params: Parametri povezani z dizajnom strani
+        code: Ruby koda, ki se bo izvedla ob nalaganju strani
+        updated_by: Zadnji spreminjal
+        active: Ali je dizajn aktiven
+        ar_parts: Elementi, sestavni deli dizajna
+        rails_view: Ime Rails view datoteke, ki bo uporabljena za izris strani
+        site_id: Izberite spletišče, če dizajn pripada samo enemu spletišču
+
+      ar_user:
+        username: Uporabniško ime
+        title: Titula (dr, mag)
+        first_name: Ime
+        middle_name: Dodatno ime
+        last_name: Priimek
+        name: Naziv
+        address: Naslov
+        post: Pošta in kraj
+        country: Država 
+        phone: Telefonska številka
+        email: e-Pošta
+        picture: Slika
+        birthdate: Datum rojstva
+        about: Krajši upis uporabnika
+        last_visit: Zadnji obisk
+        active: Aktiven
+        valid_from: Začetni datum veljavnosti         
+        valid_to: Končni datum veljavnosti
+        updated_by: Spremenil
+        group: Račun predstavlja uporabniško skupino
+        member: Seznam skupin za uporabnika
+        ar_user_roles: Vloge, ki pripadajo temu uporabniku 
+        password: Geslo
+        password_confirmation: Še enkrat vpišite geslo
+        signature: Podpis, ki se doda k vsakemu sporočilu tega uporabnika
+
+      ar_user_role:
+        ar_role_id: Uporabnikova vloga
+        has_cms_menu: Vloga dovoljuje prikaz opcije za CMS menu
+        valid_from: Začetni datum veljavnosti vloge
+        valid_to: Končni datum veljavnosti vloge
+        updated_by: Zadnji je vlogo spremenil
+        active: Vlogaje aktivna
+
+      ar_poll:
+        name: Unikatno ime za anketo
+        title: Naslov ankete
+        sub_text: Kratek opis ankete
+        operation: Operacija, ki se izvede ob kliku na izbiro
+        parameters: Dodatni parametri za operacijo
+        display: Postavitev napisa glede na vpisno polje
+        css: CSS samo za to anketo
+        js: Javascript koda samo za to anketo
+        pre_display: Metoda. ki se zažene pred prikazom obrazca. Običajno za privzeto polnjenje podatkov obrazca
+        valid_from: Anketa je veljavna od
+        valid_to: Anketa je veljavna do
+        ar_poll_items: Posamezni podatki ankete
+        captcha_type: Vrsta Catpcha preverjanja, če je capctcha v uporabi
+        form: Posamezne podatke za vnos lahko vpišete tudi v obliki pravil AgileRails forme
+
+      ar_poll_item:
+        name: Naziv podatka na rezultatih
+        text: Napis pred podatkom
+        type: Vrsta vpisnega polja
+        size: Velikost vhodnega polja
+        mandatory: Vpis polja je obvezno
+        separator: Ločilo med posameznimi polji
+        options: Opcije, odvisne od vrste vpisnega polja
+        order: Zaporedje prikaza na anketi
+        active: Vrstica je aktivna
+        
+      ar_poll_result:
+        ar_poll_id: Naziv ankete
+        created_at: Čas nastanka zapisa
+        data: Podatki v YAML formatu
+        confirmed: Podatki potrjeni. Npr. Uporabnik mora klikniti povezavo v e-pošti.
+
+      ar_policy:
+        name: Naziv politike
+        description: Opis politike
+        ar_policy_rules: Pravila določena s to politiko
+        is_default: To je privzeta politiko za to spletišče
+        active: Politika je aktivna
+        message: Sporočilo ki se izpiše ob blokadi prikaza
+
+      ar_policy_rule:
+        active: Pravilo aktivno
+        updated_by: Spremenil
+        ar_role_id: Vloga za dostop, ki jo določa pravilo
+        permission: Dovoljenje za dostop
+        has_cms_menu: Ali imajo uporabniki dostop do CMS menija
+
+      ar_role:
+        name: Naziv vloge
+        system_name: Naziv sistemske vloge, če jo zahteva sistem
+        active: Vloga je aktivna
+
+      ar_simple_menu:
+        name: Unikatno ime za meni
+        description: Kratek opis menija
+        div_name: Ime div, ki bo uporabljena kot podlaga za meni
+        css: CSS samo za ta meni
+        active: Je aktiven
+        ar_simple_menu_items: Seznam točk menija
+        link_prepend: Končna povezava se sestoji iz predpone in povezave do dokumenta
+        ar_site_id: Spletišče kateremu pripada meni       
+
+      ar_simple_menu_item:
+        caption: Napis točke menija
+        picture: Ime slike, če je na mestu menija uporabljena slika
+        target: Ciljno okno, kjer naj se odpre povezava. Pustite prazno za isto okno.
+        link: Povezava, ki se kliče ob izbiri menija
+        link_prepend: Končna povezava se sestoji iz predpone in povezave do dokumenta
+        order: Vrstni red. Manjša številka je prikazana prej
+        submenu: Posamezne točke podmenija v obliki (napis\povezava).
+        css: CSS samo za to točko menija  
+        active: Je aktiven        
+        policy_id: Politika za prikaz elementa menija.
+
+      ar_menu:
+        name: Unikatno ime za meni
+        description: Kratek opis menija
+        div_name: Ime div, ki bo uporabljena kot podlaga za meni
+        link_prepend: Končna povezava se sestoji iz predpone in povezave do dokumenta
+        css: CSS samo za ta meni
+        active: Je aktiven
+        ar_menu_items: Seznam točk menija
+        ar_site_id: Spletišče kateremu pripada meni       
+
+      ar_menu_item:
+        caption: Napis točke menija
+        picture: Ime slike, če je na mestu menija uporabljena slika
+        target: Ciljno okno, kjer naj se odpre povezava. Pustite prazno za isto okno.
+        link: Povezava, ki se kliče ob izbiri menija
+        link_prepend: Končna povezava se sestoji iz predpone in povezave do dokumenta
+        order: Vrstni red. Manjša številka je prikazana prej
+        css: CSS samo za to točko menija  
+        page_id: Dokument do katerega naj kaže točka menija
+        ar_menu_items: Seznam točk podmenija
+        active: Je aktiven        
+        policy_id: Politika za prikaz elementa menija.
+        hidden: Meni se ne prikaže, vendar je aktiven
+        clas: HTML class, ki bo dodan izrisanemu meniju
+        content: Vsebina menuja, če je meni kot HTML koda
+
+      ar_ad:
+        position: Območje (div id) kjer bo reklama prikazana
+        description: Kratek opis (po želji)
+        type: Vrsta reklame, ki je lahko flash, slika ali skript
+        script: JavaScriptkoda, ki se izvede, ko je vrsta oglasa "skript"
+        file: Ime datoteke ko je izbrana sličica ali flash
+        link: Povezava do strani (dokumenta) kamor kaže reklama
+        height: Wišina oglasa
+        width: Širina oglasa
+        valid_from: Oglas je veljavna od
+        valid_to: Oglas je veljavna do
+        displays: Maksimalno število prikazov oglasa. Ko je število doseženo, se oglas ne prikazuje več.
+        clicks: Maksimalno število zabeleženih klikov oglasa. Ko je število doseženo, se oglas ne prikazuje več.
+        priority: Prioriteta prikazovanja. Večja prioriteta pomeni večjo verjetnost prikaza. Prioriteta se računa samo med kandidati za prikaz.
+        displayed: Število prikazov oglasa.
+        clicked: Število zabeleženih klikov na ta oglas.
+        active: Oglas je aktiven 
+        updated_by: Oglas je zadnji urejal.
+        ar_site_id: Oglas je veljaven samo za določeno spletišče ali vsa
+        link_target: Odpri povezavo v novem oknu ali v istem oknu
+
+      ar_page:
+        subject: Zadeva (kratek naslov) sestavka
+        link: Povezava (link) do sestavka
+        sub_subject: Povzetek, kratek opis vsebine
+        alt_link: Alternativna povezava do sestavka
+        gallery: Dokument vsebuje slikovno galerijo.
+        css: CSS
+        script: Skript
+        params: Dodatni parametri za prikaz strani.
+        body: Vsebina za prikaz
+        menu_id: Meni ki mu pripada sestavek
+        author_id: Avtor sestavka
+        author_name: Avtor sestavka
+        ar_user_id: Sestavek je naredil uporabnik
+        user_name: Sestavek je naredil uporabnik
+        publish_date: Datum objave sestavka
+        valid_from: Sestavek je veljave od
+        valid_to: Sestavek je veljave do
+        comments: Komentarji
+        active: Sestavek je aktiven
+        ar_parts: Delčki, ki sestavka
+        policy_id: Politika za dostop do strani
+        ar_design_id: Dizajn, mu pripada sestavek
+        ar_site_id: Spletišče. ki mu pripada stran
+        kats: Kategorije, ki jim pripada članek
+        picture: Slika uporabljena v zvezi s sestavkom
+        ar_poll_id: Anketa, če sestavek vsebuje tudi anketo
+        if_url: URL naslov od koder bo naložena vsebina IFrame-a
+        if_width:  Širina IFrame področja
+        if_height: Višina IFrame področja
+        if_scroll: Prikaz drsnikov za pomikanje okna
+        if_border: Debelina okvira IFrame okna. 0 je brez okvirja.
+        if_params: Pramateri posredovani v URL naslovu
+        if_id: CSS id IFrame objekta
+        if_class: CSS class IFrame objekta
+        _update_menu: Popravi tudi povezavo do dokumenta v menuju
+        div_class: Class, ki bo določen na vrhnem razdelku (DIV)
+        
+      ar_seo:
+        title: Naslov, ki se izpiše v gornji vrstici brskalnika. Optimiziraj za SEO.
+        meta_description: SEO optimiziran opis strani
+        canonical_link: Canonical link, kadar je stran uporabljena z različnimi parametri
+        ar_json_lds: Schema strukturni podatki, ki dodatno opisujejo spletno stran
+
+      ar_part:
+        name: Naziv elementa
+        description: Kratek opis elementa
+        link: Povezava, kadar povezava tudi kaj pove
+        picture: Slika za prikaz
+        thumbnail: Pomanjšana slika, če je ta na voljo
+        body: Vsebina za prikaz
+        css: CSS
+        script: Skripta, če element potrebuje tudi skripto
+        script_type: Vrsta skripte
+        piece_id: Sestavni element, če ga ta element uporablja
+        div_id: Lokacija ali ime DIV razdelka na strani, kjer bo element prikazan
+        order: Zaporedje prikaza posameznih elementov
+        updated_by: Zadnjič je element spremenil
+        updated_at: Čas, ko je bil element spremenjen
+        params: Dodatni parametri za prikaz elementa
+        active: Element je aktiven
+        valid_from: Veljavnost prikaza elementa od
+        valid_to: Veljavnost prikaza elementa do
+        policy_id: Politika za dostop do elementa
+
+      ar_piece:
+        name: Enoznačen naziv elementa
+        description: Kratek opis elementa
+        link: Povezava, kadar povezava tudi kaj pove
+        picture: Slika za prikaz
+        thumbnail: Pomanjšana slika, če je ta na voljo
+        body: Vsebina za prikaz
+        css: CSS
+        script: Skripta, če element potrebuje tudi skripto
+        script_type: Vrsta skripte
+        site_id: Spletišče, kateremu pripada element
+        div_id: Lokacija ali ime DIV razdelka na strani, kjer bo element prikazan
+        order: Zaporedje prikaza posameznih elementov
+        params: Dodatni parametri za prikaz elementa
+        updated_by: Zadnjič je element spremenil
+        updated_at: Čas, ko je bil element spremenjen
+        active: Element je aktiven
+        valid_from: Veljavnost prikaza elementa od
+        valid_to: Veljavnost prikaza elementa do
+
+      ar_permission:
+        table_name: Dostop velja za tabelo
+        is_default: To so privzeta pravila za vse tabele v bazi podatkov
+        active: Dostop je aktiven
+        ar_permission_rules: Pravila za dostop do posamezne tabele
+
+      ar_permission_rule:
+        ar_role_id: Izberite uporabniško vlogo
+        permission: Uporabnikovo dovoljenje za dostop
+
+      ar_folder_permission:
+        folder_name: Ime mape z datotekami
+        is_default: To je privzeto pravilo
+        inherited: Deduje pravice od nadrejene mape
+        active: Pravilo je aktivno
+        ar_policy_rules: Pravice za dostop do mape
+
+      ar_link:
+        link: Ime povezave ali bližnjice, ki bo prevezana
+        params: Dodatni parametri za program
+        redirect: Prevezava na drugo povezavo
+        ar_site_id: Velja za spletno stran
+        page_id: Stran na katero se bo preusmerila povezava
+        active: Povezava je aktivna
+
+      ar_category:
+        name: Naziv kategorije
+        description: Dodaten opis
+        ctype: Vrsta kategorije. Pomembno za izbiro podatkov na sumarnih menijih. 
+        order: Zaporedje, ki se lahko uporabi pri grupiranju člankov.
+        parent: Nadrejena kategorija. Pustite prazno če je to najvišja kategorija.
+        active: Aktivna
+        ar_site_id: Kategorija velja za stran
+        updated_at: Podatki so bili zadnjič spremenjeni
+
+      ar_mail:
+        subject: Zadeva sporočila
+        body: Vsebina sporočila
+        from: Pošiljatelj sporočila
+        to_test: Naslov, kamor se bo poslalo sporočilo za test
+        to_list: Seznami naslovov, na katere se bo poslalo sporočilo
+        to_address: Posamezni naslovi, na katere se bo poslalo sporočilo
+        schedule: Pošiljanje sporočila se bo pričelo po tej uri
+        send_time: Čas zaključka pošiljanja
+        status: Stanje sporočila.
+        css: CSS za pravilen prikaz sporočila
+
+      ar_mail_list:
+        name: Seznam naslovov
+        description: Dodaten opis seznama naslovov
+        params: Dodatni parametri za seznam
+        active: Seznam je aktiven
+
+      ar_mail_address:
+        email: e-Poštni naslov
+        ar_user_id: Uporabnik, če je naslov povezan z bazo uporabnikov
+        active: Naslov je aktiven
+        reason: Opis razloga za deaktivacijo e-naslova
+        ar_mail_list_members: Seznami, kjer je udeležen e-poštni naslov
+
+      ar_mail_list_member:
+        ar_mail_list_id: Seznam naslovov v katerega se uvršča ta e-naslov
+        active: Vpis je aktiven       
+        reason: Razlog za deaktivacijo e-naslova na seznamu
+
+      ar_big_table:
+        key: Ključ za iskanje vrednosti v Veliki tabeli
+        active: Opis ključa
+        site_id: Spletišče. Vrednosti bodo veljale samo za to spletišče.
+        ar_big_table_values: Posamezne vrednosti, ki pripadajo temu ključu
+
+      ar_big_table_value:
+        value: Vrednost
+        description: Kratek opis vrednosti
+        ar_big_table_locales: Prevodi vrednosti za ciljne jezike
+
+      ar_big_table_locale:
+        locale: Šifra države za katero velja prevod vrednosti
+        description: Opis vrednosti v jeziku te države
+
+      ar_journal:
+        operation: Operacija
+        ip: IP naslov od koder je bila storjena operacija
+        time: Čas operacije
+        site_id: Spletišče
+        user_id: Uporabnik
+        tables: Tabela
+        id: ID zapisa
+        ids: Nadrejeni id-ji
+        diff: Razlike
+
+      ar_ident:
+        key: Ključ identifikacije (npr. DDV)
+        value: Vrednost (SI12345678)
+
+      ar_key_value_store:
+        key: Ključ do shranjene vrednosti
+        value: Shranjena vrednost
+
+      ar_filter:
+        ar_user_id: Uporabnik, ko je filter samo za uporabnika
+        table: Naziv tabele za katero velja filter
+        description: Opis, ki bo prikazan na meniju
+        filter: Vsebina filtra
+        public: Filter je na voljo vsem uporabnikom
+        sort: Privzeto sortiranje ob izbiri filtra
+        
+      ar_removed_url:
+        url: URL naslov, ki je bil umaknjen iz spletišča
+        description: OPis razloga umika
+        ar_site_id: Spletišče, ki mu URL pripada
+
+      ar_gallery:
+        title: Naslov slike
+        description: Kratek opis slike
+        picture: Datoteka uporabljena za veliko sliko
+        thumbnail: Datozeka uporabljena za malo sliko
+        doc_id: Dokument povezan z galerijo
+        order: Vrstni red slike v galeriji
+        active: Dokument je aktiven
+
+      ar_json_ld:
+        name: Naziv elementa podatkovne strukture
+        type: Tip podatkovne strukture
+        data: Podatki v YAML formatu
+        active: Podatki so aktivni
+        add_schema: Dodaj strukturo
+        add_error: Element %{schema} že obstaja!
+
+      ar_image:
+        upload_file: Naloži datotekov obdelavo
+        name: Originalno ime datoteke
+        short: Kratek opis slike
+        text: Daljši opis slike
+        keep_original: Ohrani originalno sliko
+        size_o: Dimenzije originalne slike
+        size_l: Dimenzije velike slike
+        size_m: Dimenzije srednje velike slike
+        size_s: Dimenzije male slike
+        categories: Kategorije za poznejše lažje iskanje slike
+        created_by: Uporabnik, ki je naložil sliko
+        offset: Offset image before resizing. Offset origin is the top left corner.
+
+      ar_setup:
+        name: Naziv nastavitev (tipično ime aplikacije, modula)
+        form: Definicija posamezne nastavitve in obrazec za zajem
+        data: Vsebina nastavitev (kot je shranjena v bazi podatkov)
+        editors: Seznam zaposlenih, ki lahko poleg administratorjev urejajo zapis

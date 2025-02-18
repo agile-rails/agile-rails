@@ -1,0 +1,52 @@
+## AgileRails Form for ar_filter
+---
+table: ar_filter
+
+index:
+  filter: description,table,ar_user_id
+  actions: standard
+
+  data_set:
+    actions: standard
+
+    columns:
+      10:
+        name: ar_user_id
+        eval: agile_name_for_id,ar_user,name
+      20:
+        name: table
+      30:
+        name: description
+      40:
+        name: public
+        eval: agile_icon_for_boolean
+
+form: 
+  actions: standard
+
+  fields:
+
+    10:
+      name: description
+      type: text_field
+      size: 50
+   
+    20:
+      name: table
+      type: text_with_select
+      choices: eval agile_choices_for_all_tables
+      size: 30
+
+    30:
+      name: ar_user_id
+      type: select
+      choices: eval agile_choices_for('ar_user','name')
+      include_blank: true
+    40:
+      name: public
+      type: check_box
+
+    50:
+      name: filter
+      type: text_area
+      size: 80x20

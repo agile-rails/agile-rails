@@ -1,0 +1,35 @@
+## Form for retrieveng poll results
+---
+table: ar_memory
+
+form:
+  actions: 
+    1: 
+      type: script
+      caption:  agile.back
+      js: 'history.back();'
+      icon: arrow_back
+
+    3: 
+      type: ajax
+      caption:  agile.export_poll
+      title:  agile.export_poll_title
+      icon: cog
+      controller: agile
+      action: run
+      method: post
+      control: poll.export
+ 
+  fields:
+    10:
+      name: ar_poll_id
+      type: select
+      choices: eval agile_choices_for('ar_poll','name','id')
+    20:
+      name: date_start
+      type: date_picker
+      size: 8
+    30:
+      name: date_end
+      type: date_picker
+      size: 8

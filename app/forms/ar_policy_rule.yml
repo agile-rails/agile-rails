@@ -1,0 +1,42 @@
+## YAML Template for
+---
+table: ar_policy_rule
+control: belongs_to
+
+index:
+  actions:
+    1: new
+
+  data_set:
+    actions:
+      1: edit
+      2: delete
+
+    columns:
+      1:
+        name: ar_role_id
+        eval: agile_name_for_id,ar_role,name
+        width: 30%
+
+      2:
+        name: permission
+        eval: ArPermission.site_permission_name_for_value
+
+form:
+  actions: standard
+  title:
+    field: name
+    
+#  actions: none
+
+  fields:
+
+    10:
+      name: ar_role_id
+      type: select
+      choices: eval ArRole.choices_for_roles
+
+    20:
+      name: permission
+      type: select
+      choices: eval ArPermission.choices_for_site_permissions

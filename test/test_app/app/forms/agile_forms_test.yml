@@ -1,0 +1,374 @@
+---
+table: ar_memory
+title: Agile edit test form
+controls: agile_edit
+
+form:
+  actions:
+    1: 
+      type: submit
+      caption: Process
+      
+    10:
+      type: ajax
+      method: post
+      controller: demo_form
+      action: show_result
+      caption: Demo ajax call 
+      icon: cog
+
+  tabs:
+    1-TextInput:
+      5:
+        type: comment
+        comment: 'Simple text input field.<br><listing>
+10:<br>
+&nbsp;&nbsp;name: field11<br>
+&nbsp;&nbsp;type: text_field<br>
+&nbsp;&nbsp;size: 20</listing>'
+      10:
+        name: field11
+        type: text_field
+        size: 20
+
+      15:
+        top-line: 1
+        type: comment
+        comment: 'Text input field with html5 required option and some custom field styling.<br><listing>
+20:<br>
+&nbsp;&nbsp;name: field2<br>
+&nbsp;&nbsp;type: text_field<br>
+&nbsp;&nbsp;text: my.own.localization<br>
+&nbsp;&nbsp;size: 5<br>
+&nbsp;&nbsp;html:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;required: yes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style: "background-color: rgba(255,0,0,0.1);"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class: "my-class"</listing>'
+      20:
+        name: field2
+        text: my.own.localization
+        type: text_field
+        size: 5
+        html:
+          required: yes
+          style: "background-color: rgba(255,0,0,0.1);"
+          class: "my-class"
+          
+      25:
+        top-line: 1
+        type: comment
+        comment: 'Readonly type field is displayed on form but can not be edited. 
+ Its value will be saved to database on save action.<br><listing>
+30:<br>
+&nbsp;&nbsp;name: field3<br>
+&nbsp;&nbsp;type: readonly</listing>'
+      30:
+        name: field3
+        type: readonly
+
+      31:
+        name: field3r
+        label: Readonly with initial value
+        type: readonly
+        html:
+          value: ReadOnly field 3r
+
+      35:
+        top-line: 1
+        type: comment
+        comment: 'Other way for defining readonly field is with readonly option. 
+ This field can be initialized, displayed on form but its value will not be 
+ saved to database on save action..<br><listing>
+40:<br>
+&nbsp;&nbsp;name: field4<br>
+&nbsp;&nbsp;type: text_field<br>
+&nbsp;&nbsp;readonly: yes</listing>'
+      40:
+        name: field4
+        type: text_field
+        readonly: yes
+
+      55:
+        top-line: 1
+        type: comment
+        comment: 'Text area field type.<br><listing>
+60:<br>
+&nbsp;&nbsp;name: field6<br>
+&nbsp;&nbsp;type: text_area<br>
+&nbsp;&nbsp;size: 80x5</listing>'
+      60:
+        name: field6
+        type: text_area
+        size: 80x5
+      65:
+        top-line: 1
+        type: comment
+        comment: 'Text with select is normal text_field with select option added.
+Value can be selected from list of available options or entered manualy.<br><listing>
+70:<br>
+&nbsp;&nbsp;name: field7<br>
+&nbsp;&nbsp;type: text_with_select<br>
+&nbsp;&nbsp;size: 40<br>
+&nbsp;&nbsp;choices: one,two,three</listing>'
+      70:
+        name: field7
+        type: text_with_select
+        size: 40
+        choices: one,two,three
+      75:
+        top-line: 1
+        type: comment
+        comment: 'Password field for entering hidden text.<br><listing>
+80:<br>
+&nbsp;&nbsp;name: password<br>
+&nbsp;&nbsp;type: password_field<br>
+&nbsp;&nbsp;size: 10</listing>'
+      80:
+        name: password
+        type: password_field
+        size: 10
+        
+####          
+    2-Select:
+      5:
+        type: comment
+        comment: 'First check_box field which shares most of choices options with select field.<br><listing>
+10:<br>
+&nbsp;&nbsp;name: field20<br>
+&nbsp;&nbsp;type: check_box<br>
+&nbsp;&nbsp;choices: helpers.label.ar_memory.choices_for_field21</listing>'
+      10:
+        name: field20
+        type: check_box
+        choices: helpers.label.ar_memory.choices_for_field21
+        
+      
+      15:
+        type: comment
+        top-line: 1
+        comment: 'Simple select field. If choices option is not specified values should
+be provided in localization files.<br><listing>
+20:<br>
+&nbsp;&nbsp;name: field21<br>
+&nbsp;&nbsp;type: select</listing>'
+      20:
+        name: field21
+        type: select
+
+      25:
+        type: comment
+        top-line: 1
+        comment: 'Similar but with blank allowed<br><listing>
+30:<br>
+&nbsp;&nbsp;name: field22<br>
+&nbsp;&nbsp;type: select<br>
+&nbsp;&nbsp;include_blank: true</listing>'
+      30:
+        name: field22
+        type: select
+        include_blank: true
+
+      35:
+        type: comment
+        top-line: 1
+        comment: 'Choices provided in form<br><listing>
+40:<br>
+&nbsp;&nbsp;name: field23<br>
+&nbsp;&nbsp;type: select<br>
+&nbsp;&nbsp;choices: "One:1,Two:2,Three:3,Four:4<br>"
+&nbsp;&nbsp;selected: 2</listing>'
+      40:
+        name: field23
+        type: select
+        choices: "One:1,Two:2,Three:3,Four:4"
+        selected: 2
+
+      45:
+        type: comment
+        top-line: 1
+        comment: 'Choices provided from any database data. ar_choices_for helper will 
+except collection name, description field and key name and provide values for choices.<br><listing>
+50:<br>
+&nbsp;&nbsp;name: field24<br>
+&nbsp;&nbsp;type: select<br>
+&nbsp;&nbsp;choices: eval "agile_choices_for("ar_site","name","id")"<br>
+&nbsp;&nbsp;include_blank: true</listing>'
+      50:
+        name: field24
+        type: select
+        choices: eval agile_choices_for("ar_site","name","id")
+        include_blank: true
+         
+      55:
+        type: comment
+        top-line: 1
+        comment: 'Choices provided from code defined in any Class.method.<br><listing>
+60:<br>
+&nbsp;&nbsp;name: field25<br>
+&nbsp;&nbsp;type: select<br>
+&nbsp;&nbsp;choices: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;eval: AgileEditControl.choices_for_field25<br>
+&nbsp;&nbsp;include_blank: true</listing>'
+      60:
+        name: field25
+        type: select
+        choices:
+          eval: AgileFormsControl.choices_for_field25
+        include_blank: true
+####
+    3-Select:
+      5:
+        type: comment
+        top-line: 1
+        comment: 'Select multiple choices. Be aware that you should use Array type field to store data to MongoDB.<br><listing>
+10:<br>
+&nbsp;&nbsp;name: field31<br>
+&nbsp;&nbsp;type: select<br>
+&nbsp;&nbsp;choices: eval agile_choices_for("ar_site","name","id")<br>
+&nbsp;&nbsp;multiple: true</listing>'
+      10:
+        name: field31
+        type: select
+        choices: eval agile_choices_for("ar_site","name","id")
+        multiple: true
+        
+      15:
+        type: comment
+        top-line: 1
+        comment: 'Select field with autocomplete. With option to invoke form for adding new document into related collection.<br><listing>
+20:<br>
+&nbsp;&nbsp;name: field32<br>
+&nbsp;&nbsp;type: text_autocomplete<br>
+&nbsp;&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table:ar_site<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field: name<br>
+&nbsp;&nbsp;with_new: ar_site</listing>'
+      20:
+        name: field32
+        type: text_autocomplete
+        search: 
+          table: ar_site
+          field: name
+        with_new: ar_site
+        
+      25:
+        type: comment
+        top-line: 1
+        comment: 'When there is too much items for select field with multiple options, multitext_autocomplete field can be used.<br><listing>
+30:<br>
+&nbsp;&nbsp;name: field33<br>
+&nbsp;&nbsp;type: multi_text_autocomplete<br>
+&nbsp;&nbsp;search:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;table: ar_site<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field: name</listing>'
+      30:
+        name: field33
+        type: multitext_autocomplete
+        search: 
+          table: ar_site
+          field: name
+      35:
+        type: comment
+        top-line: 1
+        comment: 'When items are organized as a tree, tree_select field can be used. 
+The example shows how menu is selected when editing ar_page document.<br><listing>
+30:<br>
+&nbsp;&nbsp;name: menu_id<br>
+&nbsp;&nbsp;type: tree_select<br>
+&nbsp;&nbsp;choices: eval @env.agile_menu_class.choices_for_menu_as_tree(@record.ar_site_id)<br>
+&nbsp;&nbsp;style: "max-height: 300px"<br>
+&nbsp;&nbsp;multiple: true</listing>'
+      40:
+        name: menu_id
+        type: tree_select
+        choices: eval @env.agile_menu_class.choices_for_menu_as_tree(@record.ar_site_id)
+        style: "max-height: 300px"
+        multiple: true
+
+####
+    4-DateTime:
+      5:
+        type: comment
+        top-line: 1
+        comment: 'Clasical Rails Date and DateTime field types.<br><listing>
+10:<br>
+&nbsp;&nbsp;name: field41<br>
+&nbsp;&nbsp;type: date_select<br>
+<br>
+20:<br>
+&nbsp;&nbsp;name: field42<br>
+&nbsp;&nbsp;type: datetime_select<br>
+&nbsp;&nbsp;options:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;include_blank: true</listing>'
+      10:
+        name: field41
+        type: date_select
+
+      20:
+        name: field42
+        type: datetime_select
+        options:
+          include_blank: true
+          
+      25:
+        type: comment
+        top-line: 1 
+        comment: 'Date picker field types.<br><listing>
+30:<br>
+&nbsp;&nbsp;name: field43<br>
+&nbsp;&nbsp;type: date_picker</listing>'
+      30:
+        name: field43
+        type: date_picker
+          
+      35:
+        type: comment
+        top-line: 1
+        comment: 'DateTime picker field types with some additional options.<br><listing>
+40:<br>
+&nbsp;&nbsp;name: field44<br>
+&nbsp;&nbsp;type: datetime_picker<br>
+&nbsp;&nbsp;options:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;step: 60<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inline: true</listing>'
+      40:
+        name: field44
+        type: datetime_picker
+        options: 
+          step: 60
+          inline: true
+
+####
+    5-Content:
+      5:
+        type: comment
+        comment: 'Select (upload, delete, manage) file from server file system. 
+ Double click on input field to activate file manager.<br><listing>
+10:<br>
+&nbsp;&nbsp;name: file_name<br>
+&nbsp;&nbsp;type: file_select<br>
+&nbsp;&nbsp;size: 40</listing>'
+      10:
+        name: file_name
+        type: file_select
+        size: 40
+        
+      15:
+        type: comment
+        comment: 'html_field field is used to enter HTML formated text data.<br><listing>
+20:<br>
+&nbsp;&nbsp;name: body<br>
+&nbsp;&nbsp;type: html_field
+&nbsp;&nbsp;options: "height: 500"
+</listing>'
+      20:
+        name: body
+        type: html_field
+        options: "height: 500"
+####
+    9-Result:
+      5: 
+        name: result
+        type: text_field
+        readonly: yes
+        

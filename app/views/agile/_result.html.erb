@@ -1,0 +1,28 @@
+
+<div class="ar-table-frame">
+
+  <% if @form['index']['data_set']['type'] == 'method' %>
+    <%= agile_process_data_set_method %>
+  <% elsif @records %>
+    <%= agile_background_for_dataset(:start) %>
+    <%= agile_header_for_dataset %>
+
+    <% @records.each do |record| %>
+      <%= agile_row_for_dataset(record) %>
+      <%= agile_actions_for_dataset(record) %>
+      <%= agile_columns_for_dataset(record) %>
+      </div>
+    <% end %>
+
+    <% if @footer_record %>
+      <div class="ar-result-data footer">
+      <%= agile_dataset_actions_for_footer() %>
+      <%= agile_columns_for_dataset(@footer_record) %>
+      </div>
+    <% end %>
+
+    <%= agile_background_for_dataset(:end) %>
+  <% end %>
+  <%= agile_filter_popup() %>
+  
+</div>

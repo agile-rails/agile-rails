@@ -1,0 +1,112 @@
+## Form for creating help files
+---
+table: ar_temp
+title:  agile.ar_help.title
+control: ar_help
+
+index:
+  actions:
+
+    10:
+      type: field
+      name: select_project
+      field_type: select
+      caption: agile.ar_help.project
+      choices: eval ArHelpControl.choices_for_project
+      default:
+        eval: 'session[:help_project]'
+      position: left
+
+    20:
+      type: field
+      name: lang_1
+      caption:  agile.ar_help.lang
+      field_type: text_with_select
+      size: 5
+      choices: eval ArBigTable.choices_for('application_locales')
+      default:
+        eval: 'session[:help_lang]'
+      html:
+        placeholder:  agile.ar_help.lang
+      position: left
+
+    50:
+      type: ajax
+      caption:  agile.ar_help.project_refresh
+      title:  agile.ar_help.project_refresh_title
+      icon: refresh
+      action: run
+      method: post
+      control: ar_help.project_refresh
+
+    60: new
+
+  data_set:
+    filter: data_filter
+    actions:
+      1: edit
+    columns:
+      10:
+        name: form_name
+        caption:  agile.ar_help.form_name
+        width: 20%
+      20:
+        name: lang
+        caption:  agile.ar_help.lang
+        width: 10%
+      30:
+        name: updated_at
+        caption:  agile.ar_help.updated_at
+        width: 10%
+        format: T
+
+form:
+  actions:
+    1: back
+    2: save
+
+  title:
+    edit: agile.ar_help.edit_title
+    show: agile.ar_help.show_title
+
+  tabs:
+    1basic:
+      caption:  agile.ar_help.1basic
+      10:
+        name: project
+        type: readonly
+        size: 20
+      20:
+        name: form_name
+        caption:  agile.ar_help.form_name
+        type: text_with_select
+        choices: eval ArHelpControl.choices_for_form_name(@env.session)
+        size: 20
+        html:
+          minlength: 4
+      30:
+        name: lang
+        caption:  agile.ar_help.lang
+        type: text_field
+        size: 2
+        html:
+          minlength: 2
+          maxlength: 2
+
+    2index:
+      caption:  agile.ar_help.2index
+      10:
+        name: index
+        caption: false
+        line: top
+        type: html_field
+        options: "height: 600"
+
+    3form:
+      caption:  agile.ar_help.3form
+      10:
+        name: form
+        caption: false
+        line: top
+        type: html_field
+        options: "height: 600"

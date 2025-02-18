@@ -1,0 +1,12 @@
+<% agile_update_form %>
+
+<div <%= agile_form_id %>>
+  <%= agile_dialog_title agile_new_title %>
+
+  <%= form_tag(@form_params, method: :post, id: AgileHelper.form_param(params) || AgileHelper.table_param(params),
+               class: 'agile_form', multipart: @form['form']['multipart']) do %>
+    <%= render partial: 'form' %>
+  <% end %>
+</div>
+
+<div id="popup" style="display: none;"></div>

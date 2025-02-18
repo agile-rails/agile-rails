@@ -1,0 +1,56 @@
+## YAML Template for ar_folder_permission
+---
+table: ar_folder_permission
+
+index:
+  filter: folder_name
+  actions: new
+
+  data_set:
+    actions:
+      10: edit
+      20:
+        type: duplicate
+        dup_fields: folder_name
+      30: delete
+
+    columns:
+      10:
+        name: folder_name
+      20:
+        name: created_by
+        eval: agile_name_for_id,ar_user,name
+
+      30:
+        name: updated_at
+        format: D
+
+      40:
+        name: active
+        eval: agile_icon_for_boolean
+
+form:
+  title: 
+    field: folder_name
+    
+  actions: standard
+
+  fields:
+    10:
+      name: folder_name
+      type: text_with_select
+      choices: eval agile_choices_for_folders
+      size: 30
+     
+    20:
+      name: inherited
+      type: check_box
+
+    30:
+      name: ar_folder_rules
+      type: belongs_to
+      table: ar_folder_rule
+
+    100:
+      name: active
+      type: check_box
