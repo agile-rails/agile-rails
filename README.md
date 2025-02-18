@@ -3,8 +3,9 @@
 [![Gem Version](http://img.shields.io/gem/v/agile_rails.svg)](https://rubygems.org/gems/agile_rails)
 [![Gem Downloads](https://img.shields.io/gem/dt/agile_rails.svg)](https://rubygems.org/gems/agile_rails)
 
+You can find introduction videos on YouTube: https://www.youtube.com/playlist?list=PLM66pztpUC0DVAqZvIAqH3Khb_RzJdD3W
 
-Agile Rails simplifies the programming of corporate Intranet applications. 
+Agile Rails simplifies the programming of business Intranet applications. 
 Minimal database experience and only basic programming skills are needed 
 to create a data entry program. You can do it in 6 simple steps.
 
@@ -15,9 +16,9 @@ Step 4: Define Labels and Help Text<br>
 Step 5: Create additional logic in Controls File (if required)<br>
 Step 6: Include in application menu<br>
 
-Most of the time, you will end up with 3 source files.
+Most of the time, you will end up with just 3 source files.
 
-<b>Migration:</b>Rails uses migrations to make changes to the database 
+<b>1. Migration file:</b> Rails uses migrations to make changes to the database 
 schema, such as creating tables or altering columns. 
 
 An example of migration file.
@@ -41,7 +42,7 @@ class Diary < ActiveRecord::Migration[7.0]
 end
 ```
 
-<b>Model:</b> Model's primary purposes is to represent the data and logic 
+<b>2 Model file:</b> Model's primary purposes is to represent the data and logic 
 of the application. It contains business logic, relations between data, validations
 
 An example of a typical model file:
@@ -72,7 +73,7 @@ end
 end
 ```
 
-<b>Form:</b> Agile Rails Form's purpose is to define data entry fields and actions which can be taken on data.
+<b>3. Form file:</b> AgileRails Form's purpose is to define data entry fields and actions which can be taken on data.
 It contains two main sections.
 
 <b>index:</b> Defines view on table data (data_set) and actions that can be performed on 
@@ -159,7 +160,7 @@ en:
         search: Body text striped of html code for text searching 
         ar_user_id: Owner of the note
   ```
-Combination of two source files and localisation data makes application
+Combination of three source files and localisation data makes application
 data entry program. Application data entry program implements all data
 entry operations on a database:<br>
 <li>add new document<br>
@@ -167,7 +168,7 @@ entry operations on a database:<br>
 <li>delete document<br>
 <li>view document
 
-<br><br>Add data entry application into your application menu:
+<br>Add data entry application into your application menu:
 
 ```ruby
 agile_link_to('Diary', 'book', { table: 'diary' }, target: 'iframe_edit')
@@ -186,6 +187,7 @@ implementing callback methods.
 - after_save
 - *before_delete
 - after_delete
+
 Methods marked with asterisk can also effect flow of the application. If method return false 
 (not nil but FalseClass) normal flow of the program is interrupted and last operation is canceled 
 
