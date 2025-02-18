@@ -3,23 +3,27 @@
 [![Gem Version](http://img.shields.io/gem/v/agile_rails.svg)](https://rubygems.org/gems/agile_rails)
 [![Gem Downloads](https://img.shields.io/gem/dt/agile_rails.svg)](https://rubygems.org/gems/agile_rails)
 
-You can find introduction videos on YouTube: https://www.youtube.com/playlist?list=PLM66pztpUC0DVAqZvIAqH3Khb_RzJdD3W
+Watch introduction videos on YouTube: https://www.youtube.com/playlist?list=PLM66pztpUC0DVAqZvIAqH3Khb_RzJdD3W
 
-Agile Rails simplifies the programming of business Intranet applications. 
+## What is AgileRails
+
+AgileRails simplifies the programming of business Intranet applications with Ruby on Rails. 
 Minimal database experience and only basic programming skills are needed 
 to create a data entry program. You can do it in 6 simple steps.
 
 Step 1: Know your data and create Rails migration and model<br>
-Step 2: Generate Agile Rails form<br>
+Step 2: Generate AgileRails form<br>
 Step 3: Edit form to your requirements<br>
 Step 4: Define Labels and Help Text<br>
 Step 5: Create additional logic in Controls File (if required)<br>
 Step 6: Include in application menu<br>
 
-Most of the time, you will end up with just 3 source files.
+Most of the time, you will end up with 3 source files.
 
-<b>1. Migration file:</b> Rails uses migrations to make changes to the database 
-schema, such as creating tables or altering columns. 
+#### 1. Migration file
+
+Rails uses migrations to make changes to the database 
+schema, such as creating tables or altering table attributes. 
 
 An example of migration file.
 ```ruby
@@ -42,7 +46,10 @@ class Diary < ActiveRecord::Migration[7.0]
 end
 ```
 
-<b>2 Model file:</b> Model's primary purposes is to represent the data and logic 
+
+#### 2. Model file
+
+Model's primary purposes is to represent the data and logic 
 of the application. It contains business logic, relations between data, validations
 
 An example of a typical model file:
@@ -73,7 +80,10 @@ end
 end
 ```
 
-<b>3. Form file:</b> AgileRails Form's purpose is to define data entry fields and actions which can be taken on data.
+
+#### 3. Form file 
+
+AgileRails Form's purpose is to define data entry fields and actions which can be taken on data.
 It contains two main sections.
 
 <b>index:</b> Defines view on table data (data_set) and actions that can be performed on 
@@ -229,31 +239,28 @@ On the first level administrator defines roles and roles rights as web site poli
 if user can view content or not or if user can edit content. Roles are then assigned to users 
 and policies are assigned to documents (web content), parts of content, menus ...
 <br>
-Second level defines roles which can access database data. Each database table can have defined which 
-user roles can read, edit, create or delete records in a table.
+Second level defines roles to access database tables. Each table can have defined which 
+user roles can read, edit, create or delete records.
 <br><br>
 Integrates journal with options to undo single field
 <br><br>
 Integrates CK Editor as HTML editor and ElFinder file manager with with drag & drop support through 
 agile_rails_html_editor gem.
 
-## Installation
-
-Go and [jumpstart](https://github.com/agile-rails/agile-rails-jumpstart)
-internal portal application with AgileRails in just few minutes.
+Installation
+------------
+Go and [jumpstart](https://github.com/agile-rails/startup/README.md)
+Intranet portal application with AgileRails in just few minutes.
 
 Compatibility
 -------------
-
 Technology behind AgileRails is being actively developed since 2012 and has been live tested in production 
-since early days. It runs against latest technology Ruby (3.3), Rails (7.1) 
+since early days. It runs against latest technology Ruby (>= 3.2), Rails (>= 7.2) 
 and had so far little or no problems advancing to latest versions of Ruby or Ruby on Rails.
 
 Documentation
 -------------
-
-Please see the agile-rails.com website for more information:
-[agilerails.zop.si](http://agilerails.zop.si)
+Visit the [agile-rails.com](https://agile-rails.com) website for more information:
 
 License (MIT LICENCE)
 ---------------------
