@@ -23,5 +23,5 @@
 
 # Agile gem version
 module Agile # :nodoc:
-  VERSION = '0.0.0.1'.freeze
+  VERSION = '0.0.0.2'.freeze
 end
