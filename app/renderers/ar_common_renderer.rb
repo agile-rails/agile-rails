@@ -24,19 +24,19 @@
 ########################################################################
 # Renderer methods which may be useful on any site.
 ########################################################################
-class AgileCommonRenderer <  AgileRenderer
+class ArCommonRenderer < AgileRenderer
 
 include AgileApplicationHelper
 
 ########################################################################
 # Renderer for printer friendly layout. Will call another renderer which
 # should provide html code for printer friendly output.
-# 
-# Parameters are passed through link. There are currently two parameters, 
+#
+# Parameters are passed through link. There are currently two parameters,
 # which define renderer and method to be used for creating output.
-# 
+#
 # renderer::
-#  Defines renderer's class 
+#  Defines renderer's class
 # method::
 #  Defines renderer's class method
 ########################################################################
@@ -55,16 +55,16 @@ end
 
 ########################################################################
 # Renderer for Google analytics code.
-# 
+#
 # Parameters:
-# Are passed through @opts hash and can therefore be set on site  
-# or page document parameters field as ga_acc key. You may also disable sending 
-# 
-# 
+# Are passed through @opts hash and can therefore be set on site
+# or page document parameters field as ga_acc key. You may also disable sending
+#
+#
 # If eu_cookies_allowed function is defined in javascript libraries it will be
-# called and if false is returned GA code will not be executed. This is in 
+# called and if false is returned GA code will not be executed. This is in
 # order with European cookie law.
-# 
+#
 # Example:
 #    agile_render(:agile_common_renderer, method: 'google_analytics', code4: 'UA-12345678-9')
 ########################################################################
