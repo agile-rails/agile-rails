@@ -173,6 +173,7 @@ def new
   # not authorized
   unless agile_user_can(ArPermission::CAN_CREATE)
     flash[:error] = t('agile.not_authorized')
+    logger.error("*******  #{t('agile.not_authorized')} #{session[:user_name]} #{AgileHelper.table_param(params)}")
     return index
   end
   create_new_empty_record()
