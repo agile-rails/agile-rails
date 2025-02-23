@@ -52,10 +52,8 @@ def agile_actions_for_index
 
   html_left, html_right = '', ''
   # Remove actions settings and sort
-  only_actions = []
-  actions.each { |key, value| only_actions << [key, value] if key.instance_of?(Integer) }
-  only_actions.sort_by!(&:first)
-  only_actions.each do |key, options|
+  only_actions = actions.select{ |k, v| k.instance_of?(Integer) }.sort_by(&:first).map(&:last)
+  only_actions.each do |options|
     next if options.nil? # must be
 
     url    = @form_params.clone
@@ -74,45 +72,48 @@ def agile_actions_for_index
     # html link options
     html_options = yaml['html'] || {}
     html_options['title'] = yaml['title'] if yaml['title']
-    case action
-    # new
-    when 'new'
-      caption = yaml['caption'] || 'agile.new'
-      html_options['class'] = 'ar-link'
-      html_left += "<li>#{agile_link_to(caption, 'add', url, html_options)}</li>"
-    # filter
-    when 'filter'
-      # filter off is not present
-      no_off = session.dig(:filters, @form['table'], :filter, :no_off)
-      next if no_off
+    html = case action
+           # new
+           when 'new'
+             caption = yaml['caption'] || 'agile.new'
+             html_options['class'] = 'ar-link'
+             "<li>#{agile_link_to(caption, 'add', url, html_options)}</li>"
 
-      url = ''
-      if session.dig(:filters, @form['table'], :filter)
-        url = url_for(controller: :agile, action: :run, control: 'agile.filter_off', t: @form['table'], f: AgileHelper.form_param(params))
-      end
-      html_right += %(
+           # filter
+           when 'filter'
+             # filter off is not present
+             no_off = session.dig(:filters, @form['table'], :filter, :no_off)
+             next if no_off
+
+             url = ''
+             if session.dig(:filters, @form['table'], :filter)
+               url = url_for(controller: :agile, action: :run, control: 'agile.filter_off', t: @form['table'], f: AgileHelper.form_param(params))
+             end
+             yaml['position'] ||= 'right'
+             %(
 <li>
   <div class="ar-filter" title="#{ArFilter.title_for_filter_off(session.dig(:filters, @form['table']))}" data-url="#{url.html_safe}">
     #{mi_icon(url.blank? ? 'search' : 'filter_alt_off') }#{ArFilter.filter_menu(self).html_safe}
   </div>
 </li>#{ArFilter.get_filter_input_field(self)}).html_safe
 
-    when 'close'
-      html_left += %(<li><div class="ar-link" onclick="window.close();"'>#{mi_icon('close')} #{t('agile.close')}</div></li>)
+           # close
+           when 'close'
+             %(<li><div class="ar-link" onclick="window.close();"'>#{mi_icon('close')} #{t('agile.close')}</div></li>)
 
-    when 'back'
-      html_left += %(<li><div class="ar-link" onclick="history.back();"'>#{mi_icon('arrow_back')} #{t('agile.back')}</div></li>)
+           # back
+           when 'back'
+             %(<li><div class="ar-link" onclick="history.back();"'>#{mi_icon('arrow_back')} #{t('agile.back')}</div></li>)
 
-    # menu
-    when 'menu'
-      code = if options['caption']
-               caption = "#{t(options['caption'], options['caption'])}&nbsp;#{mi_icon('caret-down')}"
-               caption + agile_process_eval(options['eval'], self)
-             else # when caption is false, provide own actions
-               agile_process_eval(options['eval'], self)
-             end
-      html_left += %(<li><div class="ar-link">#{code}</div></li>)
-
+           # menu
+           when 'menu'
+             code = if options['caption']
+                      caption = "#{t(options['caption'], options['caption'])}&nbsp;#{mi_icon('caret-down')}"
+                      caption + agile_process_eval(options['eval'], self)
+                    else # when caption is false, provide own actions
+                      agile_process_eval(options['eval'], self)
+                    end
+             %(<li><div class="ar-link">#{code}</div></li>)
 =begin
 # reorder      
     when action == 'reorder' then  
@@ -124,35 +125,43 @@ def agile_actions_for_index
       agile_link_to( caption, 'reorder', parms, method: :delete )              
 =end
 
-    when 'script'
-      html_left += agile_script_action(options)
+           when 'script'
+             agile_script_action(options)
 
-    when 'field'
-      if yaml['position'] == 'left'
-        html_left += agile_field_action(yaml)
-      else
-        html_right += agile_field_action(yaml)
-      end
+           when 'field'
+             yaml['position'] ||= 'right'
+             agile_field_action(yaml)
 
-    when 'ajax', 'link', 'window', 'popup', 'submit'
-      html_left += agile_link_ajax_window_submit_action(options, nil)
+           when 'ajax', 'link', 'window', 'popup', 'submit'
+             agile_link_ajax_window_submit_action(options, nil)
 
-    # sort
-    when 'sort'
-      choices = [%w[id id]]
-      @form['index']['sort']&.split(',')&.each do |e|
-          e.strip!
-          choices << [ t("helpers.label.#{@form['table']}.#{e}"), e ]
-        end
-      data = mi_icon('sort') + select('sort', 'sort', choices, { include_blank: true },
-                                      { class: 'ar-sort-select', 'data-table' => @form['table'], 'data-form' => AgileHelper.form_param(params)} )
-      html_right += %(<li title="#{t('agile.sort')}"><div class="ar-sort">#{data}</li>)
+           # sort
+           when 'sort'
+             yaml['position'] ||= 'right'
+             choices = [%w[id id]]
+             @form['index']['sort']&.split(',')&.each do |e|
+               e.strip!
+               choices << [t("helpers.label.#{@form['table']}.#{e}"), e]
+             end
+             data = mi_icon('sort') + select('sort', 'sort', choices, { include_blank: true },
+                                             { class: 'ar-sort-select', 'data-table' => @form['table'],
+                                               'data-form' => AgileHelper.form_param(params)})
+             %(<li title="#{t('agile.sort')}"><div class="ar-sort">#{data}</li>)
+
+           # link
+           else
+             caption = agile_get_caption(yaml) || t("agile.#{action}")
+             icon    = yaml['icon'] || action
+             html_options['class'] = 'ar-link'
+             code = agile_link_to(caption, icon, url, html_options)
+             html_left += %(<li>#{code}</li>)
+           end
+    puts yaml['position']
+    yaml['position'] ||= 'left'
+    if yaml['position'] == 'left'
+      html_left += html
     else
-      caption = agile_get_caption(yaml) || t("agile.#{action}")
-      icon    = yaml['icon'] || action
-      html_options['class'] = 'ar-link'
-      code = agile_link_to(caption, icon, url, html_options)
-      html_left += %(<li>#{code}</li>)
+      html_right += html
     end
   end
 
@@ -166,7 +175,7 @@ def agile_actions_for_index
   </div>
 <div style="clear: both;"></div>
 </form>
-).html_safe
+  ).html_safe
 end
 
 ############################################################################
