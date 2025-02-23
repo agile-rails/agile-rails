@@ -61,7 +61,7 @@ attr_reader :json_ld
 
 ############################################################################
 # When @env is present then helper methods are called from @env object otherwise
-# from self. 
+# from self.
 ############################################################################
 def _origin #:nodoc:
   @env || self
@@ -77,17 +77,17 @@ end
 
 ############################################################################
 # This is main method used for render parts of design into final HTML document.
-# 
+#
 # Parameters:
-# [renderer] String or Symbol. Class name (in lowercase) that will be used to render final HTML code. 
+# [renderer] String or Symbol. Class name (in lowercase) that will be used to render final HTML code.
 # If class name is provided without '_renderer' suffix it will be added automatically.
-# 
+#
 # When renderer has value :part, it is a shortcut for agile_render_part method which
 # is used to draw parts of layout on design.
-# 
+#
 # [opts] Hash. Additional options that are passed to method. Options are merged with
 # options set on site, design, page and passed to renderer object.
-# 
+#
 # Example:
 #    <%= agile_render(:ar_page, method: 'view', category: 'news') %>
 ############################################################################
@@ -123,7 +123,7 @@ end
 # Point is to define design once and replace some parts of design dynamically.
 # Design may be defined in site and design doc defines only parts that vary
 # from page to page.
-# 
+#
 # Example: As used in design.
 #    <%= agile_render_part(@main) %>
 #
@@ -140,8 +140,8 @@ def agile_render_part(part)
   # called. That is what is defined in second part of array.
   when part.instance_of?(Array)
     if @options.dig(:settings, part.first)
-      #TODO to be defined 
-    else  
+      #TODO to be defined
+    else
       result = part.last.call
       result.instance_of?(Array) ? result.first : result
     end
@@ -176,9 +176,9 @@ def agile_page_bottom
 end
 
 ############################################################################
-# Creates title div for AgileRails dialogs. Title may also contain pagination section on right side if 
+# Creates title div for AgileRails dialogs. Title may also contain pagination section on right side if
 # data_set is provided as parameter.
-# 
+#
 # Parameters:
 # [text] String. Title caption.
 # [data_set=nil] Document collection. If data_set is passed pagination links will be created.
@@ -224,7 +224,7 @@ end
 
 ############################################################################
 # Creates title for AgileRails new dialog
-# 
+#
 # Returns:
 # String. HTML code for title.
 ############################################################################
@@ -328,7 +328,7 @@ end
 
 ####################################################################
 # Returns flash messages formatted for display on message div.
-# 
+#
 # Returns:
 # String. HTML code formatted for display.
 ####################################################################
@@ -363,10 +363,10 @@ end
 ########################################################################
 # Decamelizes string. This probably doesn't work very good with non ascii chars.
 # Therefore it is very unwise to use non ascii chars for table (table) names.
-# 
-# Parameters: 
+#
+# Parameters:
 # [Object] model_string. String or model to be converted into decamelized string.
-# 
+#
 # Returns:
 # String. Decamelized string.
 ########################################################################
@@ -375,12 +375,12 @@ def decamelize_type(model_string)
 end
 
 ####################################################################
-# Returns validation error messages for the document (record) formatted for 
+# Returns validation error messages for the document (record) formatted for
 # display on message div.
-# 
-# Parameters: 
+#
+# Parameters:
 # [doc] Document. Document record which will be checked for errors.
-# 
+#
 # Returns:
 # String. HTML code formatted for display.
 ####################################################################
@@ -389,11 +389,11 @@ def agile_error_messages_for(doc)
 
   msgs = doc.errors.inject('') do |r, error|
     label = t("helpers.label.#{decamelize_type(doc.class)}.#{error.attribute}", error.attribute)
-    r + "<li>#{label} : #{error.message}</li>"
+    "#{r}<li>#{label} : #{error.message}</li>"
   end
 
   %(
-<div class="ar-form-error"> 
+<div class="ar-form-error">
   <h2>#{t('agile.errors_no')} #{doc.errors.size}</h2>
   <ul>#{msgs}</ul>
 </div>).html_safe
@@ -416,11 +416,11 @@ def agile_warning_messages_for(doc)
 
   msgs = doc.warnings.inject('') do |r, error|
     label = t("helpers.label.#{decamelize_type(doc.class)}.#{error.attribute}", error.attribute)
-    r + "<li>#{label} : #{error.message}</li>"
+    "#{r}<li>#{label} : #{error.message}</li>"
   end
 
   %(
-<div class="ar-form-warning"> 
+<div class="ar-form-warning">
   <h2>#{t('agile.warnings_no')} #{doc.warnings.size}</h2>
   <ul>#{msgs}</ul>
 </div>).html_safe
@@ -438,39 +438,39 @@ end
 
 ####################################################################
 # Will create HTML code required to create new document.
-# 
-# Parameters: 
+#
+# Parameters:
 # [opts] Hash. Optional parameters for url_for helper. These options must provide at least table and form_name
-# parameters. 
-# 
+# parameters.
+#
 # Example:
 #    if @opts[:edit_mode] > 1
 #      opts = {table: 'agile_page;agile_part', form_name: 'agile_part', ids: @doc.id }
 #      html += agile_link_for_create( opts.merge!({title: 'Add new part', 'agile_part.name' => 'initial name', 'agile_part.order' => 10}) )
 #    end
-# 
+#
 # Returns:
 # String. HTML code which includes add image and javascript to invoke new document create action.
 ####################################################################
 def agile_link_for_create(opts)
-  opts.stringify_keys!  
+  opts.stringify_keys!
   title = opts.delete('title') #
   title = t(title, title) if title
-  target = opts.delete('target')  || 'iframe_cms'
+  target = opts.delete('target') || 'iframe_cms'
   opts['form_name']  ||= opts['table'].to_s.split(';').last
   opts['action']       = :new
   opts['controller'] ||= :agile
   url_forward_params(opts)
   js = "$('##{target}').attr('src', '#{_origin.url_for(opts)}'); return false;"
   agile_link_to(nil, _origin.mi_icon('plus-circle'), '#',
-             { onclick: js, title: title, alt: 'Create', class: 'ar-inline-link'}).html_safe
+                { onclick: js, title: title, alt: 'Create', class: 'ar-inline-link'}).html_safe
 end
 
 ####################################################################
 # Will create HTML code required to edit document.
-# 
-# Parameters: 
-# [opts] Hash. Optional parameters for url_for helper. These options must provide 
+#
+# Parameters:
+# [opts] Hash. Optional parameters for url_for helper. These options must provide
 # at least table, form_name and id parameters. Optional title, target and icon parameters
 # can be set.
 #
@@ -481,7 +481,7 @@ end
 # String. HTML code which includes edit image and javascript to invoke edit document action.
 ####################################################################
 def agile_link_for_edit(opts)
-  opts.stringify_keys!  
+  opts.stringify_keys!
   title  = opts.delete('title') #
   title  = t(title)
   target = opts.delete('target') || 'iframe_cms'
@@ -490,9 +490,9 @@ def agile_link_for_edit(opts)
   opts['action']     ||= 'edit'
   opts['form_name']  ||= opts['table'].to_s.split(';').last
 
-  js  = "$('##{target}').attr('src', '#{_origin.url_for(opts)}'); return false;"
+  js = "$('##{target}').attr('src', '#{_origin.url_for(opts)}'); return false;"
   agile_link_to(nil, _origin.mi_icon(icon), '#',
-             { onclick: js, title: title, class: 'ar-inline-link', alt: 'Edit'})
+                { onclick: js, title: title, class: 'ar-inline-link', alt: 'Edit'})
 end
 
 ####################################################################
@@ -509,7 +509,7 @@ def agile_link_menu_tag(title) #:nodoc:
 )
 
   yield html
-  html + '</ul></dd></dl>'
+  "#{html}</ul></dd></dl>"
 end
 
 ####################################################################
@@ -529,15 +529,15 @@ end
 # * Edit advanced. Will create edit form for editing all document fields.
 # * New page. Will create new document and pass some initial data to it. Initial data is saved to cookie.
 # * New part. Will create new part of document.
-# 
+#
 # Parameters:
 # [opts] Hash. Optional parameters for url_for helper. These options must provide at least table and form_name
-# and id parameters. 
-# 
+# and id parameters.
+#
 # Example:
 #    html += agile_page_edit_menu() if @opts[:edit_mode] > 1
-# 
-# Returns: 
+#
+# Returns:
 # String. HTML code required for manipulation of currently processed document.
 ########################################################################
 def agile_page_edit_menu(opts = @opts)
@@ -550,8 +550,8 @@ def agile_page_edit_menu(opts = @opts)
   kukis = { "#{table}.ar_design_id" => page.ar_design_id,
             #            "#{table}.menu_id"      => page.menu_id,
             #            "#{table}.kats"         => page.kats,
-            "#{table}.page_id"      => page.id,
-            "#{table}.ar_site_id"   => _origin.site.id
+            "#{table}.page_id" => page.id,
+            "#{table}.ar_site_id" => _origin.site.id
   }
   _origin.cookies[:record] = Marshal.dump(kukis)
   title = "#{t('agile.edit')}: #{page.subject}"
@@ -568,17 +568,17 @@ def agile_page_edit_menu(opts = @opts)
     html += agile_link_for_edit1( opts[:edit_params], t('agile.edit_new_page') )
 
     opts[:edit_params].merge!(ids: page.id, form_name: 'agile_part', 'icon' => 'plus',
-                             table: "#{_origin.site.page_class.underscore};agile_part"  )
+                              table: "#{_origin.site.page_class.underscore};agile_part" )
     html + agile_link_for_edit1( opts[:edit_params], t('agile.edit_new_part') )
   end.html_safe
 end
 
 ########################################################################
-# Return page class model defined in site document page_class field. 
-# 
-# Used in forms, when method must be called from page model and model is overwritten by 
+# Return page class model defined in site document page_class field.
+#
+# Used in forms, when method must be called from page model and model is overwritten by
 # user's own model.
-# 
+#
 # Example as used on form:
 #    30:
 #      name: link
@@ -590,10 +590,10 @@ def agile_page_class
 end
 
 ########################################################################
-# Return menu class model defined in site document menu_class field. 
-# 
+# Return menu class model defined in site document menu_class field.
+#
 # Used in forms for providing menus class to the forms object.
-# 
+#
 # Example as used on form:
 #    30:
 #      name: menu_id
@@ -607,10 +607,10 @@ end
 ####################################################################
 # Parse site name from url and return ar_site document. Site document will be cached in
 # @site variable.
-# 
+#
 # If not in production environment and site document is not found
 # method will search for 'test' document and return ar_site document found in alias_for field.
-# 
+#
 # Returns:
 # ArSite. Site document.
 ####################################################################
@@ -635,7 +635,7 @@ end
 # Return array of policies defined in a site document formated to be used
 # as choices for select field. Method is used for selecting site policy where
 # policy for displaying data is required.
-# 
+#
 # Example (as used in forms):
 #    name: policy_id
 #    type: select
@@ -649,8 +649,8 @@ end
 ############################################################################
 # Returns list of all collections (tables) as array of choices for usage in select fields.
 # List is collected from agile_menu.yml files and may not include all collections used in application.
-# Currently list is only used for helping defining collection names on agile_permission form. 
-# 
+# Currently list is only used for helping defining collection names on agile_permission form.
+#
 # Example (as used in forms):
 #    form:
 #      fields:
@@ -714,14 +714,14 @@ def agile_application_menu
                        }
                 "<li>#{agile_link_to(t(option['caption']), option['icon'], opts)}</li>"
               end
-    end   
+    end
     html += '</ul></li>'
   end
   html.html_safe
 end
 
 ############################################################################
-# Returns list of directories as array of choices for use in select field 
+# Returns list of directories as array of choices for use in select field
 # on folder permission form. Directory root is determined from ar_site.files_directory field.
 ############################################################################
 def agile_choices_for_folders
@@ -735,15 +735,15 @@ end
 ############################################################################
 # Returns choices for select input field when choices are generated from
 # all documents in collection.
-# 
-# Parameters:  
+#
+# Parameters:
 # [model] String. Collection (table) name in lowercase format.
 # [name] String. Field name containing description text.
 # [id] String. Field name containing id field. Default is '_id'
 # [options] Hash. Various options. Currently site: (:only, :with_nil, :all) is used.
 # Will return only documents belonging to current site, also with site not defined,
 # or all documents.
-# 
+#
 # Example (as used in forms):
 #    50:
 #      name: agile_poll_id
@@ -755,7 +755,7 @@ def agile_choices_for(model, name, id = 'id', options = {})
   qry   = model.select(id, name)
   if (param = options[:site])
     sites = [agile_get_site.id] unless param == :all
-    sites << nil if param == :with_nil 
+    sites << nil if param == :with_nil
     qry   = qry.where(ar_site_id: sites) if sites
   end
   qry = qry.where(active: true) if model.has_attribute?(:active)
@@ -763,9 +763,9 @@ def agile_choices_for(model, name, id = 'id', options = {})
 end
 
 ############################################################################
-# Returns list of choices for selection top level menu on agile_page form. Used for defining which 
+# Returns list of choices for selection top level menu on agile_page form. Used for defining which
 # top level menu will be highlited when page is displayed.
-# 
+#
 # Example (as used in forms):
 #    20:
 #      name: menu_id
@@ -775,15 +775,15 @@ end
 def agile_choices_for_menu
   menu_class = agile_get_site.menu_class
   menu_class = 'ArMenu' if menu_class.blank?
-  klass  = menu_class.classify.constantize
+  klass = menu_class.classify.constantize
   klass.choices_for_menu(agile_get_site)
 end
 
 ############################################################################
-# Will add data to record cookie. Record cookie is used to preload some 
-# data on next create action. Create action will look for cookies[:record] and 
+# Will add data to record cookie. Record cookie is used to preload some
+# data on next create action. Create action will look for cookies[:record] and
 # if found initialize fields on form with matching name to value found in cookie data.
-# 
+#
 # Example:
 #    kukis = {'agile_page.ar_design_id' => @page.ar_design_id,
 #             'agile_page.agile_menu_id' => @page.menu_id)
@@ -801,21 +801,21 @@ end
 
 ############################################################################
 # Will check if user roles allow user to view data in document with defined access_policy.
-# 
+#
 # Parameters:
 # [ctrl] Controller object or object which holds methods to access environment. For example @env
 # when called from renderer.
-# [policy_id] Document or documents policy_id field value required to view data. Method will automatically 
+# [policy_id] Document or documents policy_id field value required to view data. Method will automatically
 # check if parameter send has policy_id field defined and use value of that field.
 #
 # Example:
-#    can_view, message = agile_user_can_view(@env, @page) 
+#    can_view, message = agile_user_can_view(@env, @page)
 #    # or
 #    can_view, message = agile_user_can_view(@env, @page.policy_id)
 #    return message unless can_view
 #
 # Returns:
-# True if access_policy allows user to view data. 
+# True if access_policy allows user to view data.
 # False and message from policy that is blocking view if access is not allowed.
 ############################################################################
 def agile_user_can_view(ctrl, policy_id)
@@ -870,12 +870,12 @@ end
 # [roles] Array of roles that will be searched. Default session[:user_roles].
 #
 # Example:
-#    if agile_user_has_role?('decision_maker', session[:user_id), session[:user_roles]) 
+#    if agile_user_has_role?('decision_maker', session[:user_id), session[:user_roles])
 #      do_something_important
 #    end
 #
 # Returns:
-# Boolean. True if user has required role.    
+# Boolean. True if user has required role.
 ####################################################################
 def agile_user_has_role?( role, user = nil, roles = nil )
   roles = _origin.session[:user_roles] if roles.nil?
@@ -892,11 +892,11 @@ end
 ####################################################################
 # Returns true if parameter has value of 0, false, no, none or -.
 # Returns value of default if parameter has nil value.
-# 
+#
 # Parameters:
-# [what] String/boolean/Integer. 
+# [what] String/boolean/Integer.
 # [default] Default value when what has value of nil. False by default.
-# 
+#
 # Example:
 #    agile_dont?('none')    # => true
 #    agile_dont?('-')       # => true
@@ -910,10 +910,10 @@ end
 ############################################################################
 # Truncates string length maximal to the size required and takes care, that words are not broken in middle.
 # Used for output text summary with texts that can be longer then allowed space.
-# 
+#
 # Parameters:
 # [string] String of any size.
-# [size] Maximal size of the string to be returned. 
+# [size] Maximal size of the string to be returned.
 #
 # Example:
 #    agile_limit_string(description, 100)
@@ -933,16 +933,16 @@ end
 # Returns key defined in ArBigTable as array of choices for use in select fields.
 # ArBigTable can be used like a key/value store for all kind of predefined values
 # which can be linked to site and or locale.
-# 
+#
 # Parameters:
 # [key] String. Key name to be searched in agile_big_tables documents.
-# 
+#
 # Example:
 #    10:
 #      name: category
 #      type: select
 #      eval: agile_big_table_choices 'categories_for_page'  # as used on form
-# 
+#
 # Returns:
 # Array of choices ready for select field.
 ############################################################################
@@ -965,12 +965,12 @@ end
 # Will return html code required for load AgileRails form into iframe. If parameters
 # are passed to method iframe url will have initial value and thus enabling automatic form
 # load on page display.
-# 
+#
 # Parameters:
 # [table] String: Collection (table) name used to load initial form.
 # [opts] Hash: Optional parameters which define url for loading AgileRails form.
 # These parameters are :action, :oper, :table, :form_name, :id, :readonly
-# 
+#
 # Example:
 #    # just iframe code
 #    <%= agile_edit_frame(nil) %>
@@ -978,13 +978,13 @@ end
 #    <%= agile_edit_frame('note', iframe: 'iframe_name') %>
 #    # on register collection use reg_adresses form_name to display data with id @register.id
 #    <%= agile_edit_frame('register', action: :show, form_name: 'reg_adresses', readonly: 1, id: @register.id ) %>
-# 
+#
 # Returns:
 # Html code for edit iframe
 ########################################################################
 def agile_edit_frame(table, opts = {})
   iframe_name = opts[:iframe] || 'iframe_edit'
-  if params.to_unsafe_h.size > 2 && table  # controller, action, path is minimal
+  if params.to_unsafe_h.size > 2 && table # controller, action, path is minimal
     params[:controller] = :agile
     params[:action]     = params[:oper] == 'edit' ? 'edit' : 'index'
     params[:action]     = opts[:action] unless params[:oper]
@@ -1035,19 +1035,20 @@ def agile_internal_var(object, var_name, current_record = nil)
       klas = clas.classify.constantize
       # call method. Error will be caught below.
       klas.send(method_name)
+    when 'eval' then eval("_origin.#{var_name}")
     else
       'VARIABLE: UNKNOWN OBJECT'
     end
   rescue Exception => e
-    Rails.logger.debug "\nagile_internal_var. Runtime error. #{e.message}\n"
-    Rails.logger.debug(e.backtrace.join($/)) if Rails.env.development?
+    Rails.logger.error "\nagile_internal_var. Runtime error. #{e.message}\n"
+    Rails.logger.error(e.backtrace.join($/)) if Rails.env.development?
     'VARIABLE: ERROR'
   end
 end
 
 ########################################################################
 # Will return formated code for embedding json+ld data into page
-# 
+#
 # Returns:
 # HTML data to be embedded into page header
 #######################################################################
@@ -1078,7 +1079,7 @@ end
 
 ########################################################################
 # Will return meta data for SEO optimizations
-# 
+#
 # Returns:
 # HTML data to be embedded into page header
 #######################################################################
@@ -1096,7 +1097,7 @@ end
 ########################################################################
 # Will add a meta tag to internal hash structure. If meta tag already exists it
 # will be overwritten.
-# 
+#
 # Parameters:
 # [name] String: meta name
 # [content] String: meta content
@@ -1127,9 +1128,9 @@ end
 
 #######################################################################
 # Will return alt image option when text is provided. When text is blank
-# it will extract alt name from picture file_name. This method returns just 
+# it will extract alt name from picture file_name. This method returns just
 # alt name.
-# 
+#
 # Parameters:
 # [file_name] String: Filename of a picture
 # [text] String: Alt text name
