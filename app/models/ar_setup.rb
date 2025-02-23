@@ -38,8 +38,7 @@
 ##############################################################################
 class ArSetup < ApplicationRecord
 
-attr_reader :my_data
-attr_reader :my_fields
+attr_reader :my_data, :my_fields
 
 validates_length_of :name, minimum: 3
 
@@ -97,12 +96,10 @@ def [](*keys)
 end
 
 ##############################################################################
-# Will return true if setting is defined on the form
+# Should always respond as true
 ##############################################################################
 def respond_to?(field_name)
-  return true #if my_fields[field_name.to_s]
-
-  super.respond_to?(field_name)
+  true
 end
 
 ##############################################################################

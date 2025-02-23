@@ -38,7 +38,6 @@ def update_form
       save_filter_value(filter, 'ar_setup', :filter)
     end
   end
-
   return unless params[:id]
 
   record = if params[:id].to_i.to_s == params[:id]
@@ -48,11 +47,11 @@ def update_form
            end
 
   unless agile_user_has_role?('admin')
-    @form['form'].delete('tabs')
+    @form['form']['tabs'] = {}
     @form['readonly'] = true unless record.editors.include?(session[:user_id])
   end
 
-  form = YAML.load(record.form) #rescue nil
+  form = YAML.load(record.form)
   if form.present?
     @form['form']['tabs'] ||= {}
     @form['form']['tabs'].merge!(form)
