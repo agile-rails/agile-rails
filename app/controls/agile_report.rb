@@ -35,6 +35,15 @@ def new_record
 end
 
 ######################################################################
+# Return url for report iframe with additional parameters. Use when you need
+# to send additional parameters to resulting iframe.
+######################################################################
+def report_url_for(params = {})
+  url = "if_ar_temp;/agile?field_name=ar_temp&iframe=if_ar_temp&table=ar_temp&form_name=#{@report_id}"
+  params.inject(url) { |r, v| "#{r}&#{v[0]}=#{v[1]}" }
+end
+
+######################################################################
 # Will replace @form with @form['report'] if table=ar_temp.
 # Will load agile_report_defaults if table=ar_memory and actions are not present.
 ######################################################################
