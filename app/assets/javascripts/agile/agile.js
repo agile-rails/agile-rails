@@ -348,6 +348,10 @@ process_json_result = function(json) {
     case 'parenturl':
       parent.location.href = value;
       break;
+    case 'iframeurl':
+        let [iframe, url] = value.split(";");
+         document.getElementById(iframe).src = url
+        break;
     case 'alert':
       alert(value);
       break;
