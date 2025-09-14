@@ -242,18 +242,17 @@ end
 # if value is found in values. If not it will report error and set value to default.
 # Subroutine of agile_fields_for_tab.
 ############################################################################
-def agile_check_and_default(value, default, values = nil) #:nodoc:
+def agile_check_and_default(value, default, values = nil) # :nodoc:
   return default if value.nil?
+
   # check if value is within allowed values
-  if values
-    if !values.index(value) 
-      # parameters should be in downcase. Check downcase version.
-      if n = values.index(value.downcase)
-        return values[n]
-      else
-        logger.error("AgileRails Forms: Value #{value} not within values [#{values.join(',')}]. Default #{default} used!")
-        return default
-      end
+  if values && !values.index(value)
+    # parameters should be in downcase
+    if n = values.index(value.downcase)
+      return values[n]
+    else
+      logger.error("AgileRails Forms: Value #{value} not within values [#{values.join(',')}]. Default #{default} used!")
+      return default
     end
   end
   value
@@ -263,12 +262,12 @@ end
 # Creates input fields defined in form options
 ############################################################################
 def agile_fields_for_form
-  html = "<div id='data_fields' " + (@form['form']['height'] ? "style=\"height: #{@form['form']['height']}px;\">" : '>')
+  html = '<div id="data_fields" ' + (@form['form']['height'] ? "style=\"height: #{@form['form']['height']}px;\">" : '>')
   @js  ||= ''
   @css ||= ''
   # fields
   if (form_fields = @form['form']['fields'])
-    html += agile_input_form(form_fields) + '</div>'
+    html += "#{agile_input_form(form_fields)}</div>"
   elsif @form['form']['tabs'] #tabs
     html = agile_tabs_form()
   end
@@ -277,7 +276,7 @@ def agile_fields_for_form
   # add form time stamp to prevent double form submit
   html += hidden_field(nil, :form_time_stamp, value: Time.now.to_i)
   # add javascript code if defined by form
-  @js += "\n#{@form['script']} #{@form['js']}"
+  @js  += "\n#{@form['script']} #{@form['js']}"
   @css += "\n#{@form['css']}\n#{@form['form']['css']}"
   html.html_safe
 end
@@ -307,7 +306,7 @@ def agile_head_for_form
     elsif options['name'] == caption
       t_label_for_field(options['name'], options['name'].capitalize.gsub('_',' ') )
     else
-      t(caption, caption) 
+      t(caption, caption)
     end
     # Field value
     begin
@@ -468,6 +467,7 @@ def agile_input_form(fields_on_tab) #:nodoc:
     end
     # label
     field_html, label, help = agile_field_label_help(options)
+    no_help = help.blank? ? ' no-help' : ''
     label = nil if agile_dont?(options['caption'])
     # Line separator
     html += agile_top_bottom_line(:top, options)
@@ -485,7 +485,7 @@ def agile_input_form(fields_on_tab) #:nodoc:
                            end
               label = label.nil? ? '' : %(<label for="record_#{options['name']}">#{label} </label>)
               %(
-<div class="ar-form-label-top ar-align-left ar-width-#{data_width}" title="#{help}">
+<div class="ar-form-label-top ar-align-left ar-width-#{data_width}#{no_help}" title="#{help}">
   #{label}
   <div id="td_record_#{options['name']}">#{field_html}</div>
 </div> )
@@ -504,7 +504,7 @@ def agile_input_form(fields_on_tab) #:nodoc:
               end
               help.gsub!('<br>',"\n") if help.present?
               %(
-<div class="ar-form-label ar-align-right ar-width-#{label_width}" title="#{help}">
+<div class="ar-form-label ar-align-right ar-width-#{label_width}#{no_help}" title="#{help}">
   <label for="record_#{options['name']}">#{label} </label>
 </div>
 <div id="td_record_#{options['name']}" class="ar-form-field ar-width-#{data_width}">#{field_html}</div>

@@ -536,6 +536,7 @@ function handleIframeFocus(){
 
 var active_iframe = null;
  */
+let timeoutId = null;
 
 /*******************************************************************
  * Events start here
@@ -1012,7 +1013,33 @@ $(document).ready( function() {
     } 
   });
 
-/*******************************************************************
+  /*******************************************************************
+   * Help text is displayed as title when mouse hovered over label.
+   * This was not wery obvious so, help icon was added to label
+   * and help text is also displayed if user clicks on label text.
+   *******************************************************************/
+  $('.ar-form-label').on('click', function(e) {
+    let titleText = $(this).attr('title');
+    if (!titleText || titleText == ' ' ) return;
+
+    $('#popup')
+      .text(titleText)
+      .css({
+        left: e.pageX + 10 + 'px',
+        top: e.pageY + 10 + 'px',
+        display: 'block'
+      });
+    $('#popup').addClass('tooltip');
+
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(function () {
+      $('#popup').css({display: 'none'});
+      $('#popup').removeClass('tooltip');
+      timeoutId = null;
+    }, 3000);
+  });
+
+  /*******************************************************************
  * It is not possible to attach any data to submit button except the text
  * that is written on a button and it is therefore very hard to distinguish
  * which button was pressed when more than one button is present on a form.

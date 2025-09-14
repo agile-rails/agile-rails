@@ -26,8 +26,8 @@
 # is required in browser.
 ########################################################################
 class ArPollRenderer
-  
-include  AgileCommonHelper
+
+include AgileCommonHelper
 include AgileApplicationHelper
 include ActionView::Helpers::FormHelper # for form helpers
 include ActionView::Helpers::FormOptionsHelper # for select helper
@@ -64,13 +64,13 @@ def do_one_item(poll, yaml)
     yaml['html'] ||= {}
     yaml['html']['required'] = true
   else
-    text += " &nbsp;" if poll.display == 'lr' and !yaml['type'].match(/submit_tag|link_to/)
+    text += ' &nbsp;' if poll.display == 'lr' and !yaml['type'].match(/submit_tag|link_to/)
   end
 
   # Just add text if comment and go to next one
   if yaml['type'] == 'comment'
     html += if poll.display == 'lr'
-      "<div class='row-div'><div class='ar-form-label poll-data-text comment'>#{text}</div></div>"
+      "<div class='row-div'><div class='ar-form-label poll-data-text comment no_help'>#{text}</div></div>"
     else
       "<div class='poll-data-text comment'>#{text}</div>"
     end
@@ -97,17 +97,17 @@ def do_one_item(poll, yaml)
   # create form_field object and retrieve html code
   clas_string = yaml['type'].camelize
   field_html = if AgileFormFields.const_defined?(clas_string)
-    clas = AgileFormFields.const_get(clas_string)
-    field = clas.new(@env, @record, yaml).render
-    @part_js += field.js
-    field.html
-  else # error string
-    "Error: Code for field type #{yaml['type']} not defined!"
-  end
+                 clas  = AgileFormFields.const_get(clas_string)
+                 field = clas.new(@env, @record, yaml).render
+                 @part_js += field.js
+                 field.html
+               else # error string
+                 "Error: Code for field type #{yaml['type']} not defined!"
+               end
 
   if yaml['type'].match(/submit_tag|link_to/)
     # There can be more than one links on form. End the data at first link or submit.
-    if !@end_of_data
+    unless @end_of_data
       html += (poll.display == 'lr' ? "</div><br>\n" : "</div>\n")
       # captcha
       if poll.captcha_type.to_s.size > 1
@@ -124,12 +124,14 @@ def do_one_item(poll, yaml)
   # other fields
   else
     html += case
-      when poll.display == 'lr' then
-      "<div class='row-div'><div class='ar-form-label poll-data-text lr #{yaml['class']}'>#{text}</div><div class='poll-data-field td #{yaml['class']}'>#{field_html}</div></div>\n"
+      when poll.display == 'lr'
+        "<div class='row-div'><div class='ar-form-label poll-data-text lr #{yaml['class']} no_help'>#{text}</div>
+         <div class='poll-data-field td #{yaml['class']}'>#{field_html}</div></div>\n"
       when poll.display == 'td' then
-      "<div class='poll-data-text td #{yaml['class']}'>#{text}</div><div class='poll-data-field td #{yaml['class']}'>#{field_html}#{yaml['separator']}</div>\n"
+        "<div class='poll-data-text td #{yaml['class']}'>#{text}</div>
+         <div class='poll-data-field td #{yaml['class']}'>#{field_html}#{yaml['separator']}</div>\n"
       else
-      "<div class='poll-data-field in #{yaml['class']}'>#{field_html}#{yaml['separator']}</div>\n"
+        "<div class='poll-data-field in #{yaml['class']}'>#{field_html}#{yaml['separator']}</div>\n"
     end
   end
 end
@@ -216,6 +218,7 @@ def default
   if poll.form.to_s.size < 10
     poll.ar_poll_items.order(order: 'asc').each do |item|
       next unless item.active # disabled items
+
       # convert options to yaml
       begin
         yaml = YAML.load(item.options) || {}
@@ -242,14 +245,14 @@ def default
   end
   # hide some fields usefull as parameters
   html += @env.hidden_field_tag('return_to', @opts[:return_to] || @env.params[:return_to] || @env.request.url)
-  html += @env.hidden_field_tag('return_to_error', @env.request.url )
+  html += @env.hidden_field_tag('return_to_error', @env.request.url)
   html += @env.hidden_field_tag('poll_id', poll_id )
-  html += @env.hidden_field_tag('page_id', @env.page.id )
+  html += @env.hidden_field_tag('page_id', @env.page.id)
   # Add javascript code
   html += @env.javascript_tag(@part_js + poll.js.to_s)
-  html += "</form></div>"
+  html += '</form></div>'
   html += '</div>' if @opts[:div]
-  
+
   @part_css = poll.css
   html
 end
