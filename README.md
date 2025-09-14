@@ -249,7 +249,7 @@ agile_rails_html_editor gem.
 
 Installation
 ------------
-Go and [jumpstart](https://github.com/agile-rails/startup/README.md)
+Go and [jumpstart](https://github.com/agile-rails/startup)
 Intranet portal application with AgileRails in just few minutes.
 
 Compatibility
