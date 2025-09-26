@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2023+ Damjan Rems
+# Copyright (c) 2025+ Damjan Rems
 #
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
@@ -23,5 +23,5 @@
 
 # Agile gem version
 module Agile # :nodoc:
-  VERSION = '0.0.0.2'.freeze
+  VERSION = '0.0.0.3'.freeze
 end

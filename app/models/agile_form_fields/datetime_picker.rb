@@ -79,7 +79,6 @@ end
 # DateTimePicker get_data method.
 ###########################################################################
 def self.get_data(params, name)
-  p params,'----------------------------------------------------'
   t = params['record'][name] ? params['record'][name].to_datetime : nil
   t ? Time.new(t.year, t.month, t.day, t.hour, t.min) : nil
 end

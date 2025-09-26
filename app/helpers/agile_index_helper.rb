@@ -156,7 +156,6 @@ def agile_actions_for_index
              code = agile_link_to(caption, icon, url, html_options)
              html_left += %(<li>#{code}</li>)
            end
-    puts yaml['position']
     yaml['position'] ||= 'left'
     if yaml['position'] == 'left'
       html_left += html
@@ -551,7 +550,6 @@ def agile_process_eval(evaluate, parameters)
 
   if method
     klass = clas.camelize.constantize rescue nil
-    p klass, clas
     return klass.send(method, *parameters) if klass&.respond_to?(method)
   end
   agile_log_exception(nil, "#{evaluate} not defined!")
