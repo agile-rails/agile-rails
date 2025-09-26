@@ -3,8 +3,7 @@
 extend: ar_category
 
 index:
-  actions:
-    10: /
+  actions: /
 
   data_set:
     type: method

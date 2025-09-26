@@ -83,15 +83,9 @@ def validate_image_values
   end
 end
 
-#########################################################################
-# Will return first available image starting from small up
-#########################################################################
 def first_available_image
-  image = %w[o s m l].each do |size|
-    field = "size_#{size}"
-    value = send(field)
-    return "#{id}-#{size}.#{img_type}" if value.present?
-  end
+  image = %w[o s m l].find { send("size_#{_1}").present? }
+  image ? "#{id}-#{image}.#{img_type}" : nil
 end
 
 #########################################################################

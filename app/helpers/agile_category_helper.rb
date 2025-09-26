@@ -33,7 +33,7 @@ module AgileCategoryHelper
 def categories_as_tree
   head = '<div id="catagories-as-tree"><ul><li data-id="nil"><span class="mi-o mi-home"></span>'
   data = ArCategory.where(parent: nil).order(order: :asc).to_a
-  (head + html_for_category_tree(data) + '</li></ul></div>' + js_for_category_tree).html_safe
+  "#{head}#{html_for_category_tree(data)}</li></ul></div>#{js_for_category_tree}".html_safe
 end
 
 private
@@ -51,7 +51,7 @@ def html_for_category_tree(data)
     html += html_for_category_tree(children) if children.size > 0
     html += '</li>'
   end
-  html + '</ul>'
+  "#{html}</ul>"
 end
 
 ####################################################################
