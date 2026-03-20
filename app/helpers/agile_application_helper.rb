@@ -187,14 +187,13 @@ end
 # String. HTML code for title.
 ############################################################################
 def agile_dialog_title(text, data_set = nil)
-  c = %(<div class="ar-title">#{text})
+  c = %(<div class="ar-title"><div class="title">#{text}</div>)
+  if data_set&.respond_to?(:current_page)
+    c += %(<div class="ar-paginate">#{paginate(data_set, params: { action: 'index', clear: 'no', filter: nil }, views_prefix: "paginator_with_input" )}</div>)
+  end
   c += agile_help_button(data_set)
 
-  if data_set&.respond_to?(:current_page)
-    c += %(<div class="ar-paginate">#{paginate(data_set, params: { action: 'index', clear: 'no', filter: nil })}</div>)
-  end
-  c += '<div style="clear: both;"></div></div>'
-  c.html_safe
+  (c + '</div>').html_safe
 end
 
 ############################################################################
