@@ -82,8 +82,7 @@ def agile_actions_for_index
            # filter
            when 'filter'
              # filter off is not present
-             no_off = session.dig(:filters, @form['table'], :filter, :no_off)
-             next if no_off
+             next if session.dig(:filters, @form['table'], :filter, :no_off)
 
              url = ''
              if session.dig(:filters, @form['table'], :filter)
@@ -93,7 +92,7 @@ def agile_actions_for_index
              %(
 <li>
   <div class="ar-filter" title="#{ArFilter.title_for_filter_off(session.dig(:filters, @form['table']))}" data-url="#{url.html_safe}">
-    #{mi_icon(url.blank? ? 'search' : 'filter_alt_off') }#{ArFilter.filter_menu(self).html_safe}
+    #{mi_icon(url.blank? ? 'search-o' : 'filter_alt_off-o') }#{ArFilter.filter_menu(self).html_safe}
   </div>
 </li>#{ArFilter.get_filter_input_field(self)}).html_safe
 
@@ -374,38 +373,33 @@ def agile_header_for_dataset
     check_all = mi_icon('check-box-o', class: 'ar-check-all') if has_check
     html += %(<div class="ar-result-actions" style="width:#{width}px;">#{check_all}</div>)
   end
-  # preparation for sort icon  
+  # preparation for sort icon
   sort_data = session.dig(:filters, @form['table'], :sort)
   sort_field, sort_direction = sort_data.to_s.split(' ')
-  filter_fields = (@form.dig('index', 'filter') || '').split(',').map(&:strip)
   if (columns = @form['index']['data_set']['columns'])
     columns.sort.each do |key, options|
       session[:form_processing] = "data_set:columns: #{key}=#{options}"
       next if options['width'].to_s.match(/hidden|none/i)
 
-      th = %(<div class="th" style="width:#{options['width'] || '15%'};text-align:#{options['align'] || 'left'};" data-name="#{options['name']}")
+      is_sorted = sort_field == options['name'] ? ' is-sorted' : ''
+      style = "width:#{options['width'] || '15%'};text-align:#{options['align'] || 'left'}"
+      th = %(<div class="th#{is_sorted}" style="#{style}"};" data-name="#{options['name']}")
       label = t_label_for_column(options)
+
+      filter_description = get_filter_description(options['name'])
+      icon = 'sort_unset md-18' if filter_description
+      icon = nil if session.dig(:filters, @form['table'], :filter, :no_off)
+      icon = mi_icon(icon, 'data-filter' => filter_description) if icon
       # no sorting when embedded records or custom filter is active
       sort_ok = !agile_dont?(@form['index']['data_set']['sort'], false)
       sort_ok ||= @form['index'] && @form['index']['sort']
       sort_ok &&= !agile_dont?(options['sort'], false)
       if sort_ok
-        icon = 'sort_unset md-18'
-        # add filter helper only if field name exists in filter option and field is defined in form
-        filter_class =  can_include_filter_shortcut?(options['name']) ? nil : 'no-filter'
-        if options['name'] == sort_field
-          icon = sort_direction == 'desc' ? 'sort_down md-18' : 'sort_up md-18'
-        else
-          # no icon if filter can not be set
-          icon = nil if filter_class || session.dig(:filters, @form['table'], :filter, :no_off)
-        end
-        # sort and filter icon
-        icon = mi_icon(icon, class: filter_class) if icon
         url = url_for(controller: :agile, action: :run, control: 'agile.sort', sort: options['name'],
                       t: AgileHelper.table_param(params), f: AgileHelper.form_param(params))
         th += %(><span data-url="#{url}">#{label}</span>#{icon}</div>)
       else
-        th += ">#{label}</div>"
+        th += ">#{label}#{icon}</div>"
       end
       html += "<div class=\"spacer\"></div>#{th}"
     end
@@ -440,7 +434,7 @@ def dblclick_on_dataset_action(record)
              table: AgileHelper.table_param(params),
              form_name: AgileHelper.form_param(params) }
     url_forward_params(opts)
-     html += " data-dblclick=#{url_for(opts)}" if @form['form']
+    html += " data-dblclick=#{url_for(opts)}" if @form['form']
   end
   html
 end
@@ -485,6 +479,8 @@ def agile_columns_for_dataset(record)
   data_set = @form['index']['data_set']
   return '' unless data_set['columns']
 
+  sort_data = session.dig(:filters, @form['table'], :sort)
+  sort_field, sort_direction = sort_data.to_s.split(' ')
   html, index = '', 0
   data_set['columns'].sort.each do |k, v|
     session[:form_processing] = "data_set:columns: #{k}=#{v}"
@@ -515,9 +511,10 @@ def agile_columns_for_dataset(record)
     html += '<div class="spacer"></div>'
     # set column class
     class_ = agile_style_or_class(nil, v['td_class'], value, record)
+    class_ += ' is-sorted' if sort_field == v['name']
     # set width and align an additional style
     style = agile_style_or_class(nil, v['td_style'] || v['style'], value, record)
-    flex_align  = v['align'].to_s == 'right' ? 'flex-direction:row-reverse;' : ''
+    flex_align  = v['align'].to_s == 'right' ? 'text-align: right;' : ''
     width_align = "width:#{v['width'] || '15%'};#{flex_align}"
     style = %(style="#{width_align}#{style}" )
 
@@ -669,16 +666,17 @@ def agile_process_data_set_method
 end
 
 ############################################################################
-# Check if form has defined input field for field_name and that is not redefined as as
+# Return filter description of field if field is defined as filter form
 ############################################################################
-def can_include_filter_shortcut?(field_name)
+def get_filter_description(field_name)
   field = AgileHelper.get_field_form_definition(field_name, @form)
-  return unless field
+  return if field.nil?
 
   filters = @form.dig('index', 'filter')
   return if filters.nil?
 
-  filters.split(',').map(&:strip).find { _1 == field_name }
+  #filters.dup.split(',').map{ _1.split('as').first }.map(&:strip).find { _1 == field_name }
+  filters.dup.split(',').map(&:strip).find { _1[0, field_name.size] == field_name }
 end
 
 end

@@ -43,8 +43,11 @@ end
 ######################################################################
 def filter_on
   table_name = AgileHelper.table_param(params).strip.split(';').first.underscore
-  save_filter_value(1, table_name, :page)
-  set_session_filter(table_name)
+  # field_name should exist on set filter condition
+  unless params[:filter_oper] && params[:filter_field].blank? && params[:filter_value].blank?
+    save_filter_value(1, table_name, :page)
+    set_session_filter(table_name)
+  end
   url = url_for(controller: :agile, table: table_name, form_name: AgileHelper.form_param(params))
   respond_to do |format|
     format.json { render json: { url: url } }
@@ -82,8 +85,6 @@ private
 def set_session_filter(table_name)
   # models that can not be filtered (for now)
   return if table_name.in?(%w[(ar_temp ar_memory])
-  # field_name should exist on set filter condition
-  return if params[:filter_oper] && params[:filter_field].blank? && params[:filter_value].blank?
 
   filter_value = if params[:filter_value].blank?
                    '#NIL' # #NIL indicates that no filtering is needed

@@ -137,7 +137,7 @@ def self.get_filter_input_field(env)
       js = agile_field.js.blank? ? '' : env.javascript_tag(agile_field.js)
       html = %(<li class="no-background">
 <span class="filter_field" data-url="#{url}">#{agile_field.html}
-#{env.mi_icon('search', class: 'record_filter_field_icon')}
+#{env.mi_icon('search-o', class: 'record_filter_field_icon')}
 #{js}</span></li>)
     else
       # Error. Forget filter

@@ -53,14 +53,14 @@ def self.get_field_form_definition(name, form) #:nodoc:
 
   found = nil
   if form['form']['tabs']
-    form['form']['tabs'].each do |tab, data|
-      found = data.find{ |k, v| k.is_a?(Integer) && v['name'] == name }
+    form['form']['tabs'].each_value do |data|
+      found = data.find { |k, v| k.is_a?(Integer) && v['name'] == name }
       break if found
     end
   elsif form['form']['fields']
-    found = form['form']['fields'].find{ |k, v| k.is_a?(Integer) && v['name'] == name }
+    found = form['form']['fields'].find { |k, v| k.is_a?(Integer) && v['name'] == name }
   end
-  found ? found.last : nil
+  found&.last
 end
 
 ############################################################################
@@ -80,16 +80,16 @@ def agile_field_label_help(options)
   if options['type'].present?
     klass_string = options['type'].camelize
     field_html = if AgileFormFields.const_defined?(klass_string) # when field type defined
-      klass = AgileFormFields.const_get(klass_string)
-      field = klass.new(self, @record, options).render
-      @js  += field.js
-      @css += field.css
-      field.html
-    else
-      "Error: Field type #{options['type']} not defined!"
-    end
+                   klass = AgileFormFields.const_get(klass_string)
+                   field = klass.new(self, @record, options).render
+                   @js  += field.js
+                   @css += field.css
+                   field.html
+                 else
+                   "Error: Field type #{options['type']} not defined!"
+                 end
   else
-    "Error: Field type missing!"
+    'Error: Field type missing!'
   end
   [field_html, label, help]
 end
@@ -237,7 +237,7 @@ def agile_link_ajax_window_submit_action(yaml, record = nil, action_active = tru
   # add current id to parameters
   parms['id'] = record.id if record
   # overwrite with or add additional parameters from environment or record
-  yaml['params'].each { |k, v| parms[k] = agile_value_for_parameter(v, record) } if yaml['params']
+  yaml['params']&.each { |k, v| parms[k] = agile_value_for_parameter(v, record) }
 
   parms['table'] = parms['table'].underscore if parms['table'] # might be CamelCase
   # error if controller parameter is missing
