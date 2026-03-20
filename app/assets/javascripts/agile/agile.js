@@ -1411,10 +1411,8 @@ $(document).ready( function() {
       $('.filter-popup').hide();
       return;
     }
-    // retrieve name of current field and set it in popup
-    let header = $(this).closest('.th');
-    let field_name = header.attr("data-name");
-    $('.filter-popup').attr('data-name', field_name);
+    let field_name = $(this).attr("data-filter")
+    $('.filter-popup').attr('data-filter', field_name);
     // change popup position and show
     $('.filter-popup').css({'top': e.pageY + 5, 'left': e.pageX, 'position': 'absolute'});
     $('.filter-popup').show();    
@@ -1428,7 +1426,7 @@ $(document).ready( function() {
     let url = $(this).data('url');
     let operator = $(this).data('operator');
     let parent = $(this).closest('.filter-popup');
-    let field_name = parent.data("name");
+    let field_name = parent.data("filter");
     
     url = url + '&filter_field=' + field_name + '&filter_oper=' + operator;
     simple_ajax_call(url);
@@ -1451,26 +1449,49 @@ $(document).ready( function() {
   });
 
   /*******************************************************************
-   * Iframe lost focus. Save data
+   * On firefox number input field does not get focus, when up-down arrows are clicked. Ensure focus.
    *******************************************************************/
+  $('#kaminari-jump #topage').on('input', function(e) {
+    const field = $('#kaminari-jump #topage');
+    if (document.activeElement !== field) {
+      console.log(field);
+      field.focus();
+    }
+  });
+
+  /*******************************************************************
+   * Loosing focus in kaminari page input field will trigger jump to the page
+   *******************************************************************/
+  $('#kaminari-jump #topage').on('focusout', function(e) {
+    const field = $('#kaminari-jump #topage');
+    const val = Number(field.val())
+    const max = Number(field.attr('max'))
+
+    if (val > max) field.val(max);
+    document.getElementById('kaminari-jump').submit();
+  });
+
+  /*******************************************************************
+   * Iframe lost focus. Save data
+   ******************************************************************
   $('.iframe_embedded').on('focusout', function(e) {
     console.log('focus out');
   });
 
   /*******************************************************************
    * Iframe lost focus. Save data
-   *******************************************************************/
+   ******************************************************************
   $('.iframe_embedded').on('focus', function(e) {
     console.log('focus');
   });
 
   /*******************************************************************
    * Iframe lost focus. Save data
-   *******************************************************************/
+   ******************************************************************
   $('.iframe_embedded').on('blur', function(e) {
     console.log('blur');
   });
-
+   */
 });
 
 /*******************************************************************

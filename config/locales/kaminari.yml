@@ -6,6 +6,8 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "..."
+      page: Page
+      from: from
       
 sl:
   views:
@@ -14,8 +16,21 @@ sl:
       last: "&raquo;"
       previous: "&lsaquo;"
       next: "&rsaquo;"
-      truncate: "..."      
-      
+      truncate: "..."
+      page: Stran
+      from: od
+
+de:
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
+      page: Seite
+      from: von
+
 sx:
   views:
     pagination:

@@ -1,0 +1,49 @@
+
+<%= paginator.render do %>
+  <div class="pagination-num">
+
+    <%
+       current = current_page
+       total   = total_pages
+       width   = total.to_s.size * 12 + 12
+       base_params = request.query_parameters
+       base_params[:action] = :index
+    %>
+
+    <%# FIRST %>
+    <% if current != 1 %>
+      <%= link_to mi_icon('keyboard_double_arrow_left-o'), url_for(base_params.merge(page: 1)), class: "first-page" %>
+    <% end %>
+
+    <%# PREVIOUS %>
+    <% if current > 1 %>
+      <%= link_to mi_icon('keyboard_arrow_left-o'), url_for(base_params.merge(page: current - 1)), class: "prev-page" %>
+    <% end %>
+
+    <%# INPUT FIELD FOR PAGE JUMP %>
+    <form id="kaminari-jump" action="/agile" method="get" style="display:inline;">
+
+      <% base_params.each do |key, value| %>
+        <input type="hidden" name="<%= key %>" value="<%= value %>">
+      <% end %>
+      <span><%= t('views.pagination.page') %></span>
+
+      <input type="number" id="topage" name="page" min="1" max="<%= total %>" value="<%= current %>" style="width: <%= width %>px;">
+    </form>
+
+    <span class="total-pages">
+      <%= t('views.pagination.from') %> <%= total %>
+    </span>
+
+    <%# NEXT %>
+    <% if current < total %>
+      <%= link_to mi_icon('keyboard_arrow_right-o'), url_for(base_params.merge(page: current + 1)), class: "next-page" %>
+    <% end %>
+
+    <%# LAST %>
+    <% if current != total %>
+      <%= link_to mi_icon('keyboard_double_arrow_right-o'), url_for(base_params.merge(page: total)), class: "last-page" %>
+    <% end %>
+
+  </div>
+<% end %>
