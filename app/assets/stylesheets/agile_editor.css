@@ -10,6 +10,7 @@
  *
  *= require agile/agile
  *= require agile/agile_apps
+ *= require agile/agile_dark.css
  *= require agile/jquery.datetimepicker.css
  *= require agile/select-multiple
  *= require agile/jstree
